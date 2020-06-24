@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="UsuarioBloqueado.aspx" />
     <Content Include="Web.config" />
     <Content Include="Inicio Sesion.aspx" />
   </ItemGroup>
@@ -78,6 +79,13 @@
     </Compile>
     <Compile Include="Inicio Sesion.aspx.designer.cs">
       <DependentUpon>Inicio Sesion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UsuarioBloqueado.aspx.cs">
+      <DependentUpon>UsuarioBloqueado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsuarioBloqueado.aspx.designer.cs">
+      <DependentUpon>UsuarioBloqueado.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
