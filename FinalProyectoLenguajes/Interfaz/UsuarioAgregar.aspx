@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Inicio Sesion.aspx.cs" Inherits="Interfaz.WebForm1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UsuarioAgregar.aspx.cs" Inherits="Interfaz.AgregarCliente" %>
 
 <!DOCTYPE html>
 
@@ -14,23 +14,14 @@
 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <title>Inicio De Sesión</title>
+    <title>Agregar Cliente</title>
 </head>
 <body>
     <form id="form1" runat="server">
         <div style="text-align: center">
-            Bievenidos Al Restaurante Pochotón<br />
+            Agregar Un Nuevo Cliente<br />
             <br />
-            Usuario<br />
-            <asp:TextBox ID="TextBox2" runat="server" Width="180px"></asp:TextBox>
-            <br />
-            Contraseña<br />
-            <asp:TextBox ID="TextBox1" runat="server" Width="180px"></asp:TextBox>
-            <br />
-            <br />
-            <asp:Button ID="btSign" runat="server" Text="Iniciar Sesion" CssClass="btn btn-primary" />
-&nbsp; O&nbsp;
-            <asp:Button ID="btRegist" runat="server" Text="Registrarse" CssClass="btn btn-primary" />
+            <asp:Button ID="btBack" runat="server" Text="Salir" Width="70px" CssClass="btn btn-warning" />
         </div>
     </form>
 </body>

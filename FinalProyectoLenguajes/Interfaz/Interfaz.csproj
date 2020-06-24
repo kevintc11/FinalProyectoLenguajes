@@ -67,50 +67,75 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AdministrarPlatos.aspx" />
-    <Content Include="AgregarPlato.aspx" />
-    <Content Include="BuscarPlatos.aspx" />
-    <Content Include="EliminarPlato.aspx" />
-    <Content Include="ModificarPlato.aspx" />
+    <Content Include="UsuarioAgregar.aspx" />
+    <Content Include="PlatoAgregar.aspx" />
+    <Content Include="PlatoBuscar.aspx" />
+    <Content Include="ClienteBloqueo.aspx" />
+    <Content Include="UsuarioBuscar.aspx" />
+    <Content Include="UsuarioMod.aspx" />
+    <Content Include="PlatoEliminar.aspx" />
+    <Content Include="PlatoMod.aspx" />
     <Content Include="Web.config" />
     <Content Include="Inicio Sesion.aspx" />
     <Content Include="MenuAdmin.aspx" />
+    <Content Include="PlatoMenu.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdministrarPlatos.aspx.cs">
-      <DependentUpon>AdministrarPlatos.aspx</DependentUpon>
+    <Compile Include="UsuarioAgregar.aspx.cs">
+      <DependentUpon>UsuarioAgregar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdministrarPlatos.aspx.designer.cs">
-      <DependentUpon>AdministrarPlatos.aspx</DependentUpon>
+    <Compile Include="UsuarioAgregar.aspx.designer.cs">
+      <DependentUpon>UsuarioAgregar.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AgregarPlato.aspx.cs">
-      <DependentUpon>AgregarPlato.aspx</DependentUpon>
+    <Compile Include="PlatoAgregar.aspx.cs">
+      <DependentUpon>PlatoAgregar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AgregarPlato.aspx.designer.cs">
-      <DependentUpon>AgregarPlato.aspx</DependentUpon>
+    <Compile Include="PlatoAgregar.aspx.designer.cs">
+      <DependentUpon>PlatoAgregar.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BuscarPlatos.aspx.cs">
-      <DependentUpon>BuscarPlatos.aspx</DependentUpon>
+    <Compile Include="PlatoBuscar.aspx.cs">
+      <DependentUpon>PlatoBuscar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="BuscarPlatos.aspx.designer.cs">
-      <DependentUpon>BuscarPlatos.aspx</DependentUpon>
+    <Compile Include="PlatoBuscar.aspx.designer.cs">
+      <DependentUpon>PlatoBuscar.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EliminarPlato.aspx.cs">
-      <DependentUpon>EliminarPlato.aspx</DependentUpon>
+    <Compile Include="ClienteBloqueo.aspx.cs">
+      <DependentUpon>ClienteBloqueo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="EliminarPlato.aspx.designer.cs">
-      <DependentUpon>EliminarPlato.aspx</DependentUpon>
+    <Compile Include="ClienteBloqueo.aspx.designer.cs">
+      <DependentUpon>ClienteBloqueo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ModificarPlato.aspx.cs">
-      <DependentUpon>ModificarPlato.aspx</DependentUpon>
+    <Compile Include="UsuarioBuscar.aspx.cs">
+      <DependentUpon>UsuarioBuscar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ModificarPlato.aspx.designer.cs">
-      <DependentUpon>ModificarPlato.aspx</DependentUpon>
+    <Compile Include="UsuarioBuscar.aspx.designer.cs">
+      <DependentUpon>UsuarioBuscar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UsuarioMod.aspx.cs">
+      <DependentUpon>UsuarioMod.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsuarioMod.aspx.designer.cs">
+      <DependentUpon>UsuarioMod.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PlatoEliminar.aspx.cs">
+      <DependentUpon>PlatoEliminar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PlatoEliminar.aspx.designer.cs">
+      <DependentUpon>PlatoEliminar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PlatoMod.aspx.cs">
+      <DependentUpon>PlatoMod.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PlatoMod.aspx.designer.cs">
+      <DependentUpon>PlatoMod.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Inicio Sesion.aspx.cs">
@@ -126,6 +151,13 @@
     </Compile>
     <Compile Include="MenuAdmin.aspx.designer.cs">
       <DependentUpon>MenuAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PlatoMenu.aspx.cs">
+      <DependentUpon>PlatoMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PlatoMenu.aspx.designer.cs">
+      <DependentUpon>PlatoMenu.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
