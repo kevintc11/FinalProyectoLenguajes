@@ -74,6 +74,7 @@
     <Content Include="ModificarPlato.aspx" />
     <Content Include="Web.config" />
     <Content Include="Inicio Sesion.aspx" />
+    <Content Include="MenuAdmin.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdministrarPlatos.aspx.cs">
@@ -118,6 +119,13 @@
     </Compile>
     <Compile Include="Inicio Sesion.aspx.designer.cs">
       <DependentUpon>Inicio Sesion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MenuAdmin.aspx.cs">
+      <DependentUpon>MenuAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MenuAdmin.aspx.designer.cs">
+      <DependentUpon>MenuAdmin.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
