@@ -13,5 +13,10 @@ namespace Interfaz
         {
 
         }
+
+        protected void SubmitBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
