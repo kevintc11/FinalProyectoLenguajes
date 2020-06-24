@@ -67,10 +67,50 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdministrarPlatos.aspx" />
+    <Content Include="AgregarPlato.aspx" />
+    <Content Include="BuscarPlatos.aspx" />
+    <Content Include="EliminarPlato.aspx" />
+    <Content Include="ModificarPlato.aspx" />
     <Content Include="Web.config" />
     <Content Include="Inicio Sesion.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministrarPlatos.aspx.cs">
+      <DependentUpon>AdministrarPlatos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministrarPlatos.aspx.designer.cs">
+      <DependentUpon>AdministrarPlatos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgregarPlato.aspx.cs">
+      <DependentUpon>AgregarPlato.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgregarPlato.aspx.designer.cs">
+      <DependentUpon>AgregarPlato.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BuscarPlatos.aspx.cs">
+      <DependentUpon>BuscarPlatos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BuscarPlatos.aspx.designer.cs">
+      <DependentUpon>BuscarPlatos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EliminarPlato.aspx.cs">
+      <DependentUpon>EliminarPlato.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EliminarPlato.aspx.designer.cs">
+      <DependentUpon>EliminarPlato.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarPlato.aspx.cs">
+      <DependentUpon>ModificarPlato.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarPlato.aspx.designer.cs">
+      <DependentUpon>ModificarPlato.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Inicio Sesion.aspx.cs">
       <DependentUpon>Inicio Sesion.aspx</DependentUpon>
