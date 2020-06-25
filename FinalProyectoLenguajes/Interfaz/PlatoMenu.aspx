@@ -24,14 +24,14 @@
             <br />
             <asp:Button ID="btSearch" runat="server" Height="35px" Text="Buscar Plato" Width="170px" CssClass="btn btn-primary" OnClick="btPed_Click" />
             <br />
-            <asp:Button ID="btModify" runat="server" Height="35px" Text="Modificar Plato" Width="170px" CssClass="btn btn-primary" />
+            <asp:Button ID="btModify" runat="server" Height="35px" Text="Modificar Plato" Width="170px" CssClass="btn btn-primary" OnClick="btModify_Click" />
             <br />
-            <asp:Button ID="btDelete" runat="server" Height="35px" Text="Eliminar Plato" Width="170px" CssClass="btn btn-primary" />
+            <asp:Button ID="btDelete" runat="server" Height="35px" Text="Eliminar Plato" Width="170px" CssClass="btn btn-primary" OnClick="btDelete_Click" />
             <br />
-            <asp:Button ID="btAdd" runat="server" Height="35px" Text="Agregar Plato" Width="170px" CssClass="btn btn-primary" />
+            <asp:Button ID="btAdd" runat="server" Height="35px" Text="Agregar Plato" Width="170px" CssClass="btn btn-primary" OnClick="btAdd_Click" />
             <br />
             <br />
-            <asp:Button ID="btBack" runat="server" Text="Volver" Width="70px" CssClass="btn btn-warning" />
+            <asp:Button ID="btBack" runat="server" Text="Volver" Width="70px" CssClass="btn btn-warning" OnClick="btBack_Click" />
         </div>
     </form>
 </body>

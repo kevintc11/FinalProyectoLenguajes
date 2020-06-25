@@ -13,5 +13,10 @@ namespace Interfaz
         {
 
         }
+
+        protected void btBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/PlatoMenu.aspx");
+        }
     }
 }

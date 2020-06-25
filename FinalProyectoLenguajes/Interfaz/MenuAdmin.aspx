@@ -25,17 +25,17 @@
             <asp:Label ID="lbName" runat="server" Text="*Nombre*"></asp:Label>
             <br />
             <br />
-            <asp:Button ID="btDishes" runat="server" Height="35px" Text="Administrar Platos" Width="170px" CssClass="btn btn-primary" />
+            <asp:Button ID="btDishes" runat="server" Height="35px" Text="Administrar Platos" Width="170px" CssClass="btn btn-primary" OnClick="btDishes_Click" />
 &nbsp;&nbsp;
-            <asp:Button ID="btUsers" runat="server" Height="35px" Text="Administrar Usuarios" Width="170px" CssClass="btn btn-primary" />
+            <asp:Button ID="btUsers" runat="server" Height="35px" Text="Administrar Usuarios" Width="170px" CssClass="btn btn-primary" OnClick="btUsers_Click" />
             <br />
             <br />
-            <asp:Button ID="btClient" runat="server" Height="35px" Text="Bloquear Clientes" Width="170px" CssClass="btn btn-primary" />
+            <asp:Button ID="btClient" runat="server" Height="35px" Text="Bloquear Clientes" Width="170px" CssClass="btn btn-primary" OnClick="btClient_Click" />
 &nbsp;&nbsp;
             <asp:Button ID="btPed" runat="server" Height="35px" Text="Administrar Pedidos" Width="170px" CssClass="btn btn-primary" />
             <br />
             <br />
-            <asp:Button ID="btBack" runat="server" Text="Salir" Width="70px" CssClass="btn btn-warning" />
+            <asp:Button ID="btBack" runat="server" Text="Salir" Width="70px" CssClass="btn btn-warning" OnClick="btBack_Click" />
         </div>
     </form>
 </body>

@@ -18,7 +18,11 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div style="text-align: center">
+            Modificar Plato<br />
+            <br />
+            <br />
+            <asp:Button ID="btBack" runat="server" Text="Volver" Width="70px" CssClass="btn btn-warning" OnClick="btBack_Click" />
         </div>
     </form>
 </body>

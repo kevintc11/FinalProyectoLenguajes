@@ -1,10 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PlatoEliminar.aspx.cs" Inherits="Interfaz.EliminarPlato" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UsuarioEliminar.aspx.cs" Inherits="Interfaz.UsuarioEliminar" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
 
@@ -14,13 +15,12 @@
 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <title>Eliminar Plato</title>
+    <title>Eliminar Usuario</title>
 </head>
 <body>
     <form id="form1" runat="server">
         <div style="text-align: center">
-            Eliminar Un Plato<br />
-            <br />
+            Eliminar Un Usuario<br />
             <br />
             <asp:Button ID="btBack" runat="server" Text="Volver" Width="70px" CssClass="btn btn-warning" OnClick="btBack_Click" />
         </div>

@@ -27,7 +27,7 @@
             Contraseña<br />
             <input id="Password1" type="password" /><br />
             <br />
-            <asp:Button ID="btSign" runat="server" Text="Iniciar Sesion" CssClass="btn btn-primary" />
+            <asp:Button ID="btSign" runat="server" Text="Iniciar Sesion" CssClass="btn btn-primary" OnClick="btSign_Click" />
 &nbsp; O&nbsp;
             <asp:Button ID="btRegist" runat="server" Text="Registrarse" CssClass="btn btn-primary" />
         </div>

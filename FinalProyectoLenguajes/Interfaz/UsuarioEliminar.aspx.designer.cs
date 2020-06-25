@@ -11,7 +11,7 @@ namespace Interfaz
 {
 
 
-    public partial class ModificarPlato
+    public partial class UsuarioEliminar
     {
 
         /// <summary>

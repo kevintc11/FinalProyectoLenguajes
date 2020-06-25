@@ -18,9 +18,11 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div style="text-align: center">
+            Agregar Un Plato<br />
             <br />
             <br />
+            <asp:Button ID="btBack" runat="server" CssClass="btn btn-warning" OnClick="btBack_Click" Text="Volver" Width="70px" />
             <br />
         </div>
     </form>

@@ -18,5 +18,25 @@ namespace Interfaz
         {
 
         }
+
+        protected void btBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Inicio Sesion.aspx");
+        }
+
+        protected void btDishes_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/PlatoMenu.aspx");
+        }
+
+        protected void btUsers_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/UsuarioMenu.aspx");
+        }
+
+        protected void btClient_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ClienteBloqueo.aspx");
+        }
     }
 }

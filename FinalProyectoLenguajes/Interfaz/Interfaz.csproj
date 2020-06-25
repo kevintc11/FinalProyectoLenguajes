@@ -72,6 +72,8 @@
     <Content Include="PlatoBuscar.aspx" />
     <Content Include="ClienteBloqueo.aspx" />
     <Content Include="UsuarioBuscar.aspx" />
+    <Content Include="UsuarioEliminar.aspx" />
+    <Content Include="UsuarioMenu.aspx" />
     <Content Include="UsuarioMod.aspx" />
     <Content Include="PlatoEliminar.aspx" />
     <Content Include="PlatoMod.aspx" />
@@ -115,6 +117,20 @@
     </Compile>
     <Compile Include="UsuarioBuscar.aspx.designer.cs">
       <DependentUpon>UsuarioBuscar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UsuarioEliminar.aspx.cs">
+      <DependentUpon>UsuarioEliminar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsuarioEliminar.aspx.designer.cs">
+      <DependentUpon>UsuarioEliminar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UsuarioMenu.aspx.cs">
+      <DependentUpon>UsuarioMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UsuarioMenu.aspx.designer.cs">
+      <DependentUpon>UsuarioMenu.aspx</DependentUpon>
     </Compile>
     <Compile Include="UsuarioMod.aspx.cs">
       <DependentUpon>UsuarioMod.aspx</DependentUpon>

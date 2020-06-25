@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Interfaz
 {
-    public partial class WebForm3 : System.Web.UI.Page
+    public partial class UsuarioMenu : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -16,22 +16,25 @@ namespace Interfaz
 
         protected void btPed_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/PlatoBuscar.aspx");
+            Response.Redirect("~/UsuarioAgregar.aspx");
         }
 
-        protected void btModify_Click(object sender, EventArgs e)
+        protected void btSearch_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/PlatoMod.aspx");
+            Response.Redirect("~/UsuarioBuscar.aspx");
+
         }
 
-        protected void btDelete_Click(object sender, EventArgs e)
+        protected void btMod_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/PlatoEliminar.aspx");
+            Response.Redirect("~/UsuarioMod.aspx");
+
         }
 
-        protected void btAdd_Click(object sender, EventArgs e)
+        protected void btDel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/PlatoAgregar.aspx");
+            Response.Redirect("~/UsuarioEliminar.aspx");
+
         }
 
         protected void btBack_Click(object sender, EventArgs e)
