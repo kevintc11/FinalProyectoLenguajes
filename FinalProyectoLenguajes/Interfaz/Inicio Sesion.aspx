@@ -18,15 +18,14 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div style="text-align: center">
+        <div style="text-align: center" id="txtPassword">
             Bievenidos Al Restaurante Pochotón<br />
             <br />
             Usuario<br />
             <asp:TextBox ID="TextBox2" runat="server" Width="180px"></asp:TextBox>
             <br />
             Contraseña<br />
-            <asp:TextBox ID="TextBox1" runat="server" Width="180px"></asp:TextBox>
-            <br />
+            <input id="Password1" type="password" /><br />
             <br />
             <asp:Button ID="btSign" runat="server" Text="Iniciar Sesion" CssClass="btn btn-primary" />
 &nbsp; O&nbsp;
