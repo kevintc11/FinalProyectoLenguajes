@@ -37,5 +37,10 @@ namespace Interfaz
             //               select cliente;
             TextBox2.Text = usuario1.NombreCompleto;
         }
+
+        protected void btRegist_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Registro.aspx");
+        }
     }
 }

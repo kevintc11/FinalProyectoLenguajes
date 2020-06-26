@@ -25,11 +25,12 @@
             <asp:TextBox ID="TextBox2" runat="server" Width="180px"></asp:TextBox>
             <br />
             Contraseña<br />
-            <input id="Password1" type="password" /><br />
+            <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
             <br />
-            <asp:Button ID="btSign" runat="server" Text="Iniciar Sesion" CssClass="btn btn-primary" OnClick="btSign_Click" />
+            <br />
+            <asp:Button ID="btSign" runat="server" Text="Iniciar Sesion" CssClass="btn btn-primary" OnClick="btSign_Click" Height="35px" Width="130px" />
 &nbsp; O&nbsp;
-            <asp:Button ID="btRegist" runat="server" Text="Registrarse" CssClass="btn btn-primary" />
+            <asp:Button ID="btRegist" runat="server" Text="Registrarse" CssClass="btn btn-primary" Height="35px" OnClick="btRegist_Click" Width="130px" />
         </div>
     </form>
 </body>

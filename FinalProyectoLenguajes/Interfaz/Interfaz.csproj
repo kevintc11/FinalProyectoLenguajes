@@ -80,6 +80,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ClienteMainMenu.aspx" />
+    <Content Include="CocineroMainMenu.aspx" />
+    <Content Include="Registro.aspx" />
     <Content Include="UsuarioAgregar.aspx" />
     <Content Include="PlatoAgregar.aspx" />
     <Content Include="PlatoBuscar.aspx" />
@@ -96,6 +99,27 @@
     <Content Include="PlatoMenu.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClienteMainMenu.aspx.cs">
+      <DependentUpon>ClienteMainMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ClienteMainMenu.aspx.designer.cs">
+      <DependentUpon>ClienteMainMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CocineroMainMenu.aspx.cs">
+      <DependentUpon>CocineroMainMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CocineroMainMenu.aspx.designer.cs">
+      <DependentUpon>CocineroMainMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Registro.aspx.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registro.aspx.designer.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UsuarioAgregar.aspx.cs">
       <DependentUpon>UsuarioAgregar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
