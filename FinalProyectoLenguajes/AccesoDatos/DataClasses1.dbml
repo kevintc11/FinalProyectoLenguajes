@@ -27,17 +27,6 @@
       <Association Name="Plato_Pedido_X_Plato" Member="Plato" ThisKey="PlatoID" OtherKey="PlatoID" Type="Plato" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Plato" Member="Plato">
-    <Type Name="Plato">
-      <Column Name="PlatoID" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Nombre" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="DescPlato" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Precio" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
-      <Column Name="Foto" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="Estado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Association Name="Plato_Pedido_X_Plato" Member="Pedido_X_Plato" ThisKey="PlatoID" OtherKey="PlatoID" Type="Pedido_X_Plato" />
-    </Type>
-  </Table>
   <Table Name="dbo.TipoUsuario" Member="TipoUsuario">
     <Type Name="TipoUsuario">
       <Column Name="TipoUsuarioID" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -53,9 +42,22 @@
       <Column Name="Contraseña" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="Bloqueado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="TipoUsuarioID" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
-      <Column Name="Usuario" Member="DescUsuario" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="DescUsuario" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ActivoSN" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="Usuario_Pedido" Member="Pedido" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Pedido" />
       <Association Name="TipoUsuario_Usuario" Member="TipoUsuario" ThisKey="TipoUsuarioID" OtherKey="TipoUsuarioID" Type="TipoUsuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Plato" Member="Plato">
+    <Type Name="Plato">
+      <Column Name="PlatoID" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DescPlato" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Precio" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="Foto" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX) NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Estado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ActivoSN" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Plato_Pedido_X_Plato" Member="Pedido_X_Plato" ThisKey="PlatoID" OtherKey="PlatoID" Type="Pedido_X_Plato" />
     </Type>
   </Table>
 </Database>
