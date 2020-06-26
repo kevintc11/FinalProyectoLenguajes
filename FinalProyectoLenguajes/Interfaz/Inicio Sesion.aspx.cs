@@ -16,7 +16,7 @@ namespace Interfaz
 
         protected void btSign_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/MenuAdmin.aspx");
+            //Response.Redirect("~/MenuAdmin.aspx");
         }
     }
 }
