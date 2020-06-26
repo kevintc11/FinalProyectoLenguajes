@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace AccesoDatos
 {
-    class LectArchivo
+    public class LectArchivo
     {
 
         public SqlConnectionStringBuilder leerServer1()
         {
 
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = "<server>.database.windows.net";
-            builder.UserID = "<username>";
-            builder.Password = "<password>";
-            builder.InitialCatalog = "<database>";
+            builder.DataSource = "proyectolenguajesfinal.database.windows.net";
+            builder.UserID = "nacho";
+            builder.Password = "Ignacio123";
+            builder.InitialCatalog = "dbproyectolenguajes";
 
             return builder;
         }
