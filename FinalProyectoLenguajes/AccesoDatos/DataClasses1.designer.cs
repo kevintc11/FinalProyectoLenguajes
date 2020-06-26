@@ -833,6 +833,8 @@ namespace AccesoDatos
 		
 		private short _TipoUsuarioID;
 		
+		private string _DescUsuario;
+		
 		private EntitySet<Pedido> _Pedido;
 		
 		private EntityRef<TipoUsuario> _TipoUsuario;
@@ -853,6 +855,8 @@ namespace AccesoDatos
     partial void OnBloqueadoChanged();
     partial void OnTipoUsuarioIDChanging(short value);
     partial void OnTipoUsuarioIDChanged();
+    partial void OnDescUsuarioChanging(string value);
+    partial void OnDescUsuarioChanged();
     #endregion
 		
 		public Usuario()
@@ -982,6 +986,26 @@ namespace AccesoDatos
 					this._TipoUsuarioID = value;
 					this.SendPropertyChanged("TipoUsuarioID");
 					this.OnTipoUsuarioIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Usuario", Storage="_DescUsuario", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string DescUsuario
+		{
+			get
+			{
+				return this._DescUsuario;
+			}
+			set
+			{
+				if ((this._DescUsuario != value))
+				{
+					this.OnDescUsuarioChanging(value);
+					this.SendPropertyChanging();
+					this._DescUsuario = value;
+					this.SendPropertyChanged("DescUsuario");
+					this.OnDescUsuarioChanged();
 				}
 			}
 		}

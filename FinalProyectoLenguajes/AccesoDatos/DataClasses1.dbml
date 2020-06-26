@@ -53,6 +53,7 @@
       <Column Name="Contraseña" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="Bloqueado" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="TipoUsuarioID" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="Usuario" Member="DescUsuario" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
       <Association Name="Usuario_Pedido" Member="Pedido" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Pedido" />
       <Association Name="TipoUsuario_Usuario" Member="TipoUsuario" ThisKey="TipoUsuarioID" OtherKey="TipoUsuarioID" Type="TipoUsuario" IsForeignKey="true" />
     </Type>
