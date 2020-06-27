@@ -72,7 +72,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GestorPedidos.cs" />
-    <Compile Include="GestorOrdenes.cs" />
+    <Compile Include="GestorPlatos.cs" />
     <Compile Include="GestorUsuarios.cs" />
     <Compile Include="LectArchivo.cs" />
     <Compile Include="Program.cs" />

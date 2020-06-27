@@ -7,7 +7,7 @@ using AccesoDatos;
 
 namespace LogicaNegocio
 {
-    public class MetodosInterfaz
+    public class AdministracionUsuarios
     {
         GestorUsuarios mUsers = new GestorUsuarios();
 

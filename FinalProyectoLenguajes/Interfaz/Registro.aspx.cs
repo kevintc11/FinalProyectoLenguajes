@@ -14,7 +14,7 @@ namespace Interfaz
 
         }
 
-        MetodosInterfaz mInterfaz = new MetodosInterfaz();
+        AdministracionUsuarios mInterfaz = new AdministracionUsuarios();
 
         protected void btBack_Click(object sender, EventArgs e)
         {

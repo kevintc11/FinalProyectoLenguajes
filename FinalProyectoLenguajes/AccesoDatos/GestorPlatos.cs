@@ -11,7 +11,7 @@ using System.Globalization;
 
 namespace AccesoDatos
 {
-    class GestorOrdenes
+    public class GestorPlatos
     {
         public Plato buscarPlato(int platoID)
         {

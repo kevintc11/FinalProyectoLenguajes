@@ -22,7 +22,7 @@ namespace Interfaz
 
         }
 
-        MetodosInterfaz interfaz = new MetodosInterfaz();
+        AdministracionUsuarios interfaz = new AdministracionUsuarios();
 
         protected void btSign_Click(object sender, EventArgs e)
         {
