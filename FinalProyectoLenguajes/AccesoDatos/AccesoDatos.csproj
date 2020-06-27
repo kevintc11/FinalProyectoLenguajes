@@ -71,7 +71,9 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gestor.cs" />
+    <Compile Include="GestorPedidos.cs" />
+    <Compile Include="GestorOrdenes.cs" />
+    <Compile Include="GestorUsuarios.cs" />
     <Compile Include="LectArchivo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
