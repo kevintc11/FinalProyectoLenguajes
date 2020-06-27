@@ -34,7 +34,8 @@
                 Correo Electrónico<br />
                 <asp:TextBox ID="txMail" runat="server"></asp:TextBox>
                 <br />
-                <br />
+                Dirección<br />
+                <asp:TextBox ID="btAddress" runat="server" AutoCompleteType="HomeStreetAddress" Height="124px" TextMode="MultiLine" Width="219px"></asp:TextBox>
                 <br />
                 Tipo De Usuario</div>
             <asp:RadioButtonList ID="rblUserT" runat="server">

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AccesoDatos
 {
-    class GestorUsuarios
+    public class GestorUsuarios
     {
         public dynamic consultaUsuario(String nombreUsuario)
         {
