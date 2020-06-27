@@ -276,5 +276,30 @@ namespace AccesoDatos
                 return false;
             }
         }
+
+        public Boolean iniciarSesión(string nickname, string password)
+        {
+            LectArchivo lectura1 = new LectArchivo();
+            SqlConnectionStringBuilder conect = lectura1.leerServer1();
+            SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+            DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+            Usuario usuarioConsulta = (Usuario)consultaUsuario(nickname);
+
+            if (usuarioConsulta == null)
+            {
+                throw new Exception("Nombre de usuario incorrecto");
+            }
+            else
+            {
+                if (usuarioConsulta.Contraseña.Equals(password))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
     }
 }

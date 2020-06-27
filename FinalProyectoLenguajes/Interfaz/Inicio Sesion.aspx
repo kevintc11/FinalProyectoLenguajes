@@ -22,10 +22,10 @@
             Bievenidos Al Restaurante Pochotón<br />
             <br />
             Usuario<br />
-            <asp:TextBox ID="TextBox2" runat="server" Width="180px"></asp:TextBox>
+            <asp:TextBox ID="txNick" runat="server" Width="180px"></asp:TextBox>
             <br />
             Contraseña<br />
-            <asp:TextBox ID="TextBox3" runat="server" TextMode="Password"></asp:TextBox>
+            <asp:TextBox ID="txPass" runat="server" TextMode="Password" Width="180px"></asp:TextBox>
             <br />
             <br />
             <asp:Button ID="btSign" runat="server" Text="Iniciar Sesion" CssClass="btn btn-primary" OnClick="btSign_Click" Height="35px" Width="130px" />

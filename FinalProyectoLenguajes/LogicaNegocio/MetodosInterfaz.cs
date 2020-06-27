@@ -33,5 +33,17 @@ namespace LogicaNegocio
         {
             mUsers.insertarUsuario(nombreUsuario, correoElectronico, nombreCompleto, contraseña, tipoUsuario, direccion);
         }
+
+        public Boolean iniciarSesion(string nickname, string password)
+        {
+            try
+            {
+                return mUsers.iniciarSesión(nickname, password);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Contraseña O Usuario Inválida");
+            }
+        }
     }
 }
