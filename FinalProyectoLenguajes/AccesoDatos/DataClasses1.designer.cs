@@ -39,12 +39,12 @@ namespace AccesoDatos
     partial void InsertTipoUsuario(TipoUsuario instance);
     partial void UpdateTipoUsuario(TipoUsuario instance);
     partial void DeleteTipoUsuario(TipoUsuario instance);
-    partial void InsertUsuario(Usuario instance);
-    partial void UpdateUsuario(Usuario instance);
-    partial void DeleteUsuario(Usuario instance);
     partial void InsertPlato(Plato instance);
     partial void UpdatePlato(Plato instance);
     partial void DeletePlato(Plato instance);
+    partial void InsertUsuario(Usuario instance);
+    partial void UpdateUsuario(Usuario instance);
+    partial void DeleteUsuario(Usuario instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -109,19 +109,19 @@ namespace AccesoDatos
 			}
 		}
 		
-		public System.Data.Linq.Table<Usuario> Usuario
-		{
-			get
-			{
-				return this.GetTable<Usuario>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Plato> Plato
 		{
 			get
 			{
 				return this.GetTable<Plato>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Usuario> Usuario
+		{
+			get
+			{
+				return this.GetTable<Usuario>();
 			}
 		}
 	}
@@ -633,305 +633,6 @@ namespace AccesoDatos
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Usuario")]
-	public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private short _UsuarioID;
-		
-		private string _CorreoElectronico;
-		
-		private string _NombreCompleto;
-		
-		private string _Contraseña;
-		
-		private bool _Bloqueado;
-		
-		private short _TipoUsuarioID;
-		
-		private string _DescUsuario;
-		
-		private bool _ActivoSN;
-		
-		private EntitySet<Pedido> _Pedido;
-		
-		private EntityRef<TipoUsuario> _TipoUsuario;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnUsuarioIDChanging(short value);
-    partial void OnUsuarioIDChanged();
-    partial void OnCorreoElectronicoChanging(string value);
-    partial void OnCorreoElectronicoChanged();
-    partial void OnNombreCompletoChanging(string value);
-    partial void OnNombreCompletoChanged();
-    partial void OnContraseñaChanging(string value);
-    partial void OnContraseñaChanged();
-    partial void OnBloqueadoChanging(bool value);
-    partial void OnBloqueadoChanged();
-    partial void OnTipoUsuarioIDChanging(short value);
-    partial void OnTipoUsuarioIDChanged();
-    partial void OnDescUsuarioChanging(string value);
-    partial void OnDescUsuarioChanged();
-    partial void OnActivoSNChanging(bool value);
-    partial void OnActivoSNChanged();
-    #endregion
-		
-		public Usuario()
-		{
-			this._Pedido = new EntitySet<Pedido>(new Action<Pedido>(this.attach_Pedido), new Action<Pedido>(this.detach_Pedido));
-			this._TipoUsuario = default(EntityRef<TipoUsuario>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioID", AutoSync=AutoSync.OnInsert, DbType="SmallInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public short UsuarioID
-		{
-			get
-			{
-				return this._UsuarioID;
-			}
-			set
-			{
-				if ((this._UsuarioID != value))
-				{
-					this.OnUsuarioIDChanging(value);
-					this.SendPropertyChanging();
-					this._UsuarioID = value;
-					this.SendPropertyChanged("UsuarioID");
-					this.OnUsuarioIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CorreoElectronico", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string CorreoElectronico
-		{
-			get
-			{
-				return this._CorreoElectronico;
-			}
-			set
-			{
-				if ((this._CorreoElectronico != value))
-				{
-					this.OnCorreoElectronicoChanging(value);
-					this.SendPropertyChanging();
-					this._CorreoElectronico = value;
-					this.SendPropertyChanged("CorreoElectronico");
-					this.OnCorreoElectronicoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NombreCompleto", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string NombreCompleto
-		{
-			get
-			{
-				return this._NombreCompleto;
-			}
-			set
-			{
-				if ((this._NombreCompleto != value))
-				{
-					this.OnNombreCompletoChanging(value);
-					this.SendPropertyChanging();
-					this._NombreCompleto = value;
-					this.SendPropertyChanged("NombreCompleto");
-					this.OnNombreCompletoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Contraseña", DbType="NVarChar(10) NOT NULL", CanBeNull=false)]
-		public string Contraseña
-		{
-			get
-			{
-				return this._Contraseña;
-			}
-			set
-			{
-				if ((this._Contraseña != value))
-				{
-					this.OnContraseñaChanging(value);
-					this.SendPropertyChanging();
-					this._Contraseña = value;
-					this.SendPropertyChanged("Contraseña");
-					this.OnContraseñaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Bloqueado", DbType="Bit NOT NULL")]
-		public bool Bloqueado
-		{
-			get
-			{
-				return this._Bloqueado;
-			}
-			set
-			{
-				if ((this._Bloqueado != value))
-				{
-					this.OnBloqueadoChanging(value);
-					this.SendPropertyChanging();
-					this._Bloqueado = value;
-					this.SendPropertyChanged("Bloqueado");
-					this.OnBloqueadoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TipoUsuarioID", DbType="SmallInt NOT NULL")]
-		public short TipoUsuarioID
-		{
-			get
-			{
-				return this._TipoUsuarioID;
-			}
-			set
-			{
-				if ((this._TipoUsuarioID != value))
-				{
-					if (this._TipoUsuario.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnTipoUsuarioIDChanging(value);
-					this.SendPropertyChanging();
-					this._TipoUsuarioID = value;
-					this.SendPropertyChanged("TipoUsuarioID");
-					this.OnTipoUsuarioIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DescUsuario", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string DescUsuario
-		{
-			get
-			{
-				return this._DescUsuario;
-			}
-			set
-			{
-				if ((this._DescUsuario != value))
-				{
-					this.OnDescUsuarioChanging(value);
-					this.SendPropertyChanging();
-					this._DescUsuario = value;
-					this.SendPropertyChanged("DescUsuario");
-					this.OnDescUsuarioChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActivoSN", DbType="Bit NOT NULL")]
-		public bool ActivoSN
-		{
-			get
-			{
-				return this._ActivoSN;
-			}
-			set
-			{
-				if ((this._ActivoSN != value))
-				{
-					this.OnActivoSNChanging(value);
-					this.SendPropertyChanging();
-					this._ActivoSN = value;
-					this.SendPropertyChanged("ActivoSN");
-					this.OnActivoSNChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_Pedido", Storage="_Pedido", ThisKey="UsuarioID", OtherKey="UsuarioID")]
-		public EntitySet<Pedido> Pedido
-		{
-			get
-			{
-				return this._Pedido;
-			}
-			set
-			{
-				this._Pedido.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TipoUsuario_Usuario", Storage="_TipoUsuario", ThisKey="TipoUsuarioID", OtherKey="TipoUsuarioID", IsForeignKey=true)]
-		public TipoUsuario TipoUsuario
-		{
-			get
-			{
-				return this._TipoUsuario.Entity;
-			}
-			set
-			{
-				TipoUsuario previousValue = this._TipoUsuario.Entity;
-				if (((previousValue != value) 
-							|| (this._TipoUsuario.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TipoUsuario.Entity = null;
-						previousValue.Usuario.Remove(this);
-					}
-					this._TipoUsuario.Entity = value;
-					if ((value != null))
-					{
-						value.Usuario.Add(this);
-						this._TipoUsuarioID = value.TipoUsuarioID;
-					}
-					else
-					{
-						this._TipoUsuarioID = default(short);
-					}
-					this.SendPropertyChanged("TipoUsuario");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Pedido(Pedido entity)
-		{
-			this.SendPropertyChanging();
-			entity.Usuario = this;
-		}
-		
-		private void detach_Pedido(Pedido entity)
-		{
-			this.SendPropertyChanging();
-			entity.Usuario = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Plato")]
 	public partial class Plato : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1135,6 +836,329 @@ namespace AccesoDatos
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Usuario")]
+	public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private short _UsuarioID;
+		
+		private string _CorreoElectronico;
+		
+		private string _NombreCompleto;
+		
+		private string _Contraseña;
+		
+		private bool _Bloqueado;
+		
+		private short _TipoUsuarioID;
+		
+		private string _DescUsuario;
+		
+		private bool _ActivoSN;
+		
+		private string _Direccion;
+		
+		private EntitySet<Pedido> _Pedido;
+		
+		private EntityRef<TipoUsuario> _TipoUsuario;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUsuarioIDChanging(short value);
+    partial void OnUsuarioIDChanged();
+    partial void OnCorreoElectronicoChanging(string value);
+    partial void OnCorreoElectronicoChanged();
+    partial void OnNombreCompletoChanging(string value);
+    partial void OnNombreCompletoChanged();
+    partial void OnContraseñaChanging(string value);
+    partial void OnContraseñaChanged();
+    partial void OnBloqueadoChanging(bool value);
+    partial void OnBloqueadoChanged();
+    partial void OnTipoUsuarioIDChanging(short value);
+    partial void OnTipoUsuarioIDChanged();
+    partial void OnDescUsuarioChanging(string value);
+    partial void OnDescUsuarioChanged();
+    partial void OnActivoSNChanging(bool value);
+    partial void OnActivoSNChanged();
+    partial void OnDireccionChanging(string value);
+    partial void OnDireccionChanged();
+    #endregion
+		
+		public Usuario()
+		{
+			this._Pedido = new EntitySet<Pedido>(new Action<Pedido>(this.attach_Pedido), new Action<Pedido>(this.detach_Pedido));
+			this._TipoUsuario = default(EntityRef<TipoUsuario>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UsuarioID", AutoSync=AutoSync.OnInsert, DbType="SmallInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public short UsuarioID
+		{
+			get
+			{
+				return this._UsuarioID;
+			}
+			set
+			{
+				if ((this._UsuarioID != value))
+				{
+					this.OnUsuarioIDChanging(value);
+					this.SendPropertyChanging();
+					this._UsuarioID = value;
+					this.SendPropertyChanged("UsuarioID");
+					this.OnUsuarioIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CorreoElectronico", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string CorreoElectronico
+		{
+			get
+			{
+				return this._CorreoElectronico;
+			}
+			set
+			{
+				if ((this._CorreoElectronico != value))
+				{
+					this.OnCorreoElectronicoChanging(value);
+					this.SendPropertyChanging();
+					this._CorreoElectronico = value;
+					this.SendPropertyChanged("CorreoElectronico");
+					this.OnCorreoElectronicoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NombreCompleto", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string NombreCompleto
+		{
+			get
+			{
+				return this._NombreCompleto;
+			}
+			set
+			{
+				if ((this._NombreCompleto != value))
+				{
+					this.OnNombreCompletoChanging(value);
+					this.SendPropertyChanging();
+					this._NombreCompleto = value;
+					this.SendPropertyChanged("NombreCompleto");
+					this.OnNombreCompletoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Contraseña", DbType="NVarChar(10) NOT NULL", CanBeNull=false)]
+		public string Contraseña
+		{
+			get
+			{
+				return this._Contraseña;
+			}
+			set
+			{
+				if ((this._Contraseña != value))
+				{
+					this.OnContraseñaChanging(value);
+					this.SendPropertyChanging();
+					this._Contraseña = value;
+					this.SendPropertyChanged("Contraseña");
+					this.OnContraseñaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Bloqueado", DbType="Bit NOT NULL")]
+		public bool Bloqueado
+		{
+			get
+			{
+				return this._Bloqueado;
+			}
+			set
+			{
+				if ((this._Bloqueado != value))
+				{
+					this.OnBloqueadoChanging(value);
+					this.SendPropertyChanging();
+					this._Bloqueado = value;
+					this.SendPropertyChanged("Bloqueado");
+					this.OnBloqueadoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TipoUsuarioID", DbType="SmallInt NOT NULL")]
+		public short TipoUsuarioID
+		{
+			get
+			{
+				return this._TipoUsuarioID;
+			}
+			set
+			{
+				if ((this._TipoUsuarioID != value))
+				{
+					if (this._TipoUsuario.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnTipoUsuarioIDChanging(value);
+					this.SendPropertyChanging();
+					this._TipoUsuarioID = value;
+					this.SendPropertyChanged("TipoUsuarioID");
+					this.OnTipoUsuarioIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DescUsuario", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string DescUsuario
+		{
+			get
+			{
+				return this._DescUsuario;
+			}
+			set
+			{
+				if ((this._DescUsuario != value))
+				{
+					this.OnDescUsuarioChanging(value);
+					this.SendPropertyChanging();
+					this._DescUsuario = value;
+					this.SendPropertyChanged("DescUsuario");
+					this.OnDescUsuarioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActivoSN", DbType="Bit NOT NULL")]
+		public bool ActivoSN
+		{
+			get
+			{
+				return this._ActivoSN;
+			}
+			set
+			{
+				if ((this._ActivoSN != value))
+				{
+					this.OnActivoSNChanging(value);
+					this.SendPropertyChanging();
+					this._ActivoSN = value;
+					this.SendPropertyChanged("ActivoSN");
+					this.OnActivoSNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Direccion", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Direccion
+		{
+			get
+			{
+				return this._Direccion;
+			}
+			set
+			{
+				if ((this._Direccion != value))
+				{
+					this.OnDireccionChanging(value);
+					this.SendPropertyChanging();
+					this._Direccion = value;
+					this.SendPropertyChanged("Direccion");
+					this.OnDireccionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_Pedido", Storage="_Pedido", ThisKey="UsuarioID", OtherKey="UsuarioID")]
+		public EntitySet<Pedido> Pedido
+		{
+			get
+			{
+				return this._Pedido;
+			}
+			set
+			{
+				this._Pedido.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TipoUsuario_Usuario", Storage="_TipoUsuario", ThisKey="TipoUsuarioID", OtherKey="TipoUsuarioID", IsForeignKey=true)]
+		public TipoUsuario TipoUsuario
+		{
+			get
+			{
+				return this._TipoUsuario.Entity;
+			}
+			set
+			{
+				TipoUsuario previousValue = this._TipoUsuario.Entity;
+				if (((previousValue != value) 
+							|| (this._TipoUsuario.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TipoUsuario.Entity = null;
+						previousValue.Usuario.Remove(this);
+					}
+					this._TipoUsuario.Entity = value;
+					if ((value != null))
+					{
+						value.Usuario.Add(this);
+						this._TipoUsuarioID = value.TipoUsuarioID;
+					}
+					else
+					{
+						this._TipoUsuarioID = default(short);
+					}
+					this.SendPropertyChanged("TipoUsuario");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Pedido(Pedido entity)
+		{
+			this.SendPropertyChanging();
+			entity.Usuario = this;
+		}
+		
+		private void detach_Pedido(Pedido entity)
+		{
+			this.SendPropertyChanging();
+			entity.Usuario = null;
 		}
 	}
 }
