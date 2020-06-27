@@ -13,17 +13,26 @@ namespace AccesoDatos
 {
     class GestorOrdenes
     {
-        public Plato buscarPlato(string nombrePlato)
+        public Plato buscarPlato(int platoID)
         {
             LectArchivo lectura1 = new LectArchivo();
             SqlConnectionStringBuilder conect = lectura1.leerServer1();
             SqlConnection conexion = new SqlConnection(conect.ConnectionString);
             DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
-            Plato plato1 = dc.Plato.First(pla => pla.Nombre.Equals(nombrePlato));
-            return plato1;
+
+            if (verificarPlato(platoID))
+            {
+                Plato plato1 = dc.Plato.First(pla => pla.PlatoID.Equals(platoID));
+                return plato1;
+            }
+            else
+            {
+                return null;
+            }
+            
         }
 
-        public void modificarPlato(int platoID, string nombre, string descPlato, int precio, int estado, string foto, int activo)
+        public void modifInsertPlato(Boolean isAdd, int platoID, string nombre, string descPlato, int precio, int estado, string foto, int activo)
         {
             LectArchivo lectura1 = new LectArchivo();
             SqlConnectionStringBuilder conect = lectura1.leerServer1();
@@ -34,7 +43,17 @@ namespace AccesoDatos
                 Plato platoNuevo;
                 if (nombre != null || nombre != "")
                 {
-                    platoNuevo = dc.Plato.First(pla => pla.Nombre.Equals(nombre));
+
+                    if (isAdd)
+                    {
+                        platoNuevo = new Plato();
+                        platoNuevo.Nombre = nombre;
+                    }
+                    else
+                    {
+                        platoNuevo = dc.Plato.First(pla => pla.Nombre.Equals(nombre));
+                    }
+                    
                 }
                 else
                 {
@@ -96,5 +115,51 @@ namespace AccesoDatos
                 MessageBox.Show("" + ex.Message);
             }
         }
+
+        public Boolean verificarPlato(int platoID)
+        {
+         
+                LectArchivo lectura1 = new LectArchivo();
+                SqlConnectionStringBuilder conect = lectura1.leerServer1();
+                SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+                DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+
+            try
+            {
+                Plato plato1 = dc.Plato.First(pla => pla.PlatoID.Equals(platoID));
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+       
+        }
+
+        public void eliminarPlato(int platoID)
+        {
+
+            LectArchivo lectura1 = new LectArchivo();
+            SqlConnectionStringBuilder conect = lectura1.leerServer1();
+            SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+            DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+
+            if (verificarPlato(platoID))
+            {
+                Plato plato1 = dc.Plato.First(pla => pla.PlatoID.Equals(platoID));
+                plato1.ActivoSN = false;
+                dc.SubmitChanges();
+                MessageBox.Show("Se elimino correctamente");
+                dc.Connection.Close();
+            }
+            else
+            {
+
+                ///Agregar el error
+            }
+
+        }
+
+
     }
 }
