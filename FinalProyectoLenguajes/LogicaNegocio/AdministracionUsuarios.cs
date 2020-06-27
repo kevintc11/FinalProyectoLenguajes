@@ -28,6 +28,12 @@ namespace LogicaNegocio
             }
         }
 
+        public int tipoUsuario(string nickname)
+        {
+            Usuario user = mUsers.consultaUsuario(nickname);
+            return user.TipoUsuarioID;
+        }
+
         public void insertarUsuario(string nombreUsuario, string correoElectronico, string nombreCompleto,
                                     string contraseña, int tipoUsuario, string direccion)
         {

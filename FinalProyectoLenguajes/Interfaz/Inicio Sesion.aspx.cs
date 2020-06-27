@@ -30,7 +30,18 @@ namespace Interfaz
             {
                 if (interfaz.iniciarSesion(txNick.Text, txPass.Text))
                 {
-                    Response.Redirect("~/ModuloAdmin/MenuAdmin.aspx");
+                    if(interfaz.tipoUsuario(txNick.Text) == 1)
+                    {
+                        Response.Redirect("~/ModuloAdmin/MenuAdmin.aspx");
+                    }
+                    else if(interfaz.tipoUsuario(txNick.Text) == 2)
+                    {
+                        Response.Redirect("~/ModuloCocinero/CocineroMainMenu.aspx");
+                    }
+                    else if(interfaz.tipoUsuario(txNick.Text) == 3) 
+                    {
+                        Response.Redirect("~/ModuloCliente/ClienteMainMenu.aspx");
+                    }
                 }
                 else
                 {

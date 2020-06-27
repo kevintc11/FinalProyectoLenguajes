@@ -22,7 +22,7 @@
             Lista De Pedidos Actuales<br />
             <br />
             <br />
-            <asp:Button ID="btBack" runat="server" CssClass="btn-warning" Text="Atras" Height="35px" Width="70px" />
+            <asp:Button ID="btBack" runat="server" CssClass="btn-warning" Text="Atras" Height="35px" Width="70px" OnClick="btBack_Click" />
         </div>
     </form>
 </body>
