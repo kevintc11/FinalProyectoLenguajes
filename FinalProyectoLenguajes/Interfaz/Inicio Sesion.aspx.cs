@@ -6,7 +6,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using AccesoDatos;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlTypes;
 using LogicaNegocio;

@@ -8,7 +8,7 @@ using System.Windows.Forms.VisualStyles;
 
 namespace AccesoDatos
 {
-    class GestorPedidos
+    public class GestorPedidos
     {
         public dynamic consultaPedidosSinFiltro()
         {
@@ -23,7 +23,7 @@ namespace AccesoDatos
             return pedidos;
         }
 
-        public dynamic consultaPedidosCocnFiltro(int filtro, int client, DateTime fechaA, DateTime fechaB, int porEstado)
+        public dynamic consultaPedidosCocnFiltro(int filtro, int client, string fechaA, string fechaB, int porEstado)
         {
             LectArchivo lectura1 = new LectArchivo();
             SqlConnectionStringBuilder conect = lectura1.leerServer1();
@@ -53,8 +53,8 @@ namespace AccesoDatos
                 {
 
                     var pedidos = from pedido in dc.Pedido
-                                  where pedido.FechaPedido >= fechaA
-                                  where pedido.FechaPedido <= fechaB
+                                  where pedido.FechaPedido >= DateTime.Parse(fechaA) 
+                                  where pedido.FechaPedido <= DateTime.Parse(fechaB)
                                   select pedido;
                     return pedidos;
 
@@ -72,12 +72,12 @@ namespace AccesoDatos
                                   select pedido;
                     return pedidos;
                 }
-                else if (client != 0 && fechaA != null)
+                else if (client != 0 && fechaA != "")
                 {
                     var pedidos = from pedido in dc.Pedido
                                   where pedido.UsuarioID == client
-                                  where pedido.FechaPedido >= fechaA
-                                  where pedido.FechaPedido <= fechaB
+                                  where pedido.FechaPedido >= DateTime.Parse(fechaA)
+                                  where pedido.FechaPedido <= DateTime.Parse(fechaB)
                                   select pedido;
                     return pedidos;
 
@@ -87,8 +87,8 @@ namespace AccesoDatos
 
                     var pedidos = from pedido in dc.Pedido
                                   where pedido.EstadoPedidoID == porEstado
-                                  where pedido.FechaPedido >= fechaA
-                                  where pedido.FechaPedido <= fechaB
+                                  where pedido.FechaPedido >= DateTime.Parse(fechaA)
+                                  where pedido.FechaPedido <= DateTime.Parse(fechaB)
                                   select pedido;
                     return pedidos;
                 }
@@ -96,16 +96,14 @@ namespace AccesoDatos
             }
             else
             {
-
                 var pedidos = from pedido in dc.Pedido
                               where pedido.UsuarioID == client
-                              where pedido.FechaPedido >= fechaA
-                              where pedido.FechaPedido <= fechaB
+                              where pedido.FechaPedido >= DateTime.Parse(fechaA)
+                              where pedido.FechaPedido <= DateTime.Parse(fechaB)
                               where pedido.EstadoPedidoID == porEstado
                               select pedido;
 
                 return pedidos;
-
             }
         }
 
