@@ -16,27 +16,27 @@ namespace Interfaz
 
         protected void btPed_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/PlatoBuscar.aspx");
+            Response.Redirect("~/ModuloAdmin/PlatoBuscar.aspx");
         }
 
         protected void btModify_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/PlatoMod.aspx");
+            Response.Redirect("~/ModuloAdmin/PlatoMod.aspx");
         }
 
         protected void btDelete_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/PlatoEliminar.aspx");
+            Response.Redirect("~/ModuloAdmin/PlatoEliminar.aspx");
         }
 
         protected void btAdd_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/PlatoAgregar.aspx");
+            Response.Redirect("~/ModuloAdmin/PlatoAgregar.aspx");
         }
 
         protected void btBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/MenuAdmin.aspx");
+            Response.Redirect("~/ModuloAdmin/MenuAdmin.aspx");
         }
     }
 }

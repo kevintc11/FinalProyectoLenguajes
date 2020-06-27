@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Interfaz
 {
-    public partial class UsuarioEliminar : System.Web.UI.Page
+    public partial class ClienteBloqueo : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -16,7 +16,7 @@ namespace Interfaz
 
         protected void btBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/UsuarioMenu.aspx");
+            Response.Redirect("~/ModuloAdmin/MenuAdmin.aspx");
         }
     }
 }

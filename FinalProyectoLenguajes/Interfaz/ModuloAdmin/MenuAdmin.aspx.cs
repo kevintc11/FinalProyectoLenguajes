@@ -26,17 +26,17 @@ namespace Interfaz
 
         protected void btDishes_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/PlatoMenu.aspx");
+            Response.Redirect("~/ModuloAdmin/PlatoMenu.aspx");
         }
 
         protected void btUsers_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/UsuarioMenu.aspx");
+            Response.Redirect("~/ModuloAdmin/UsuarioMenu.aspx");
         }
 
         protected void btClient_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/ClienteBloqueo.aspx");
+            Response.Redirect("~/ModuloAdmin/ClienteBloqueo.aspx");
         }
     }
 }

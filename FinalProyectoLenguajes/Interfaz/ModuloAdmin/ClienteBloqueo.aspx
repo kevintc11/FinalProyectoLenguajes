@@ -21,7 +21,7 @@
         <div style="text-align: center">
             Escoja El Cliente A Bloquear<br />
             <br />
-            <asp:Button ID="btBack" runat="server" CssClass="btn-warning" Text="Volver" />
+            <asp:Button ID="btBack" runat="server" CssClass="btn-warning" Text="Volver" OnClick="btBack_Click" />
         </div>
     </form>
 </body>

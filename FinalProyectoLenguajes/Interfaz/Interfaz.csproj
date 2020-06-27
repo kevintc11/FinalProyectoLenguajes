@@ -80,37 +80,37 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ClienteMainMenu.aspx" />
-    <Content Include="CocineroMainMenu.aspx" />
+    <Content Include="ModuloCliente\ClienteMainMenu.aspx" />
+    <Content Include="ModuloCocinero\CocineroMainMenu.aspx" />
     <Content Include="Registro.aspx" />
-    <Content Include="UsuarioAgregar.aspx" />
-    <Content Include="PlatoAgregar.aspx" />
-    <Content Include="PlatoBuscar.aspx" />
-    <Content Include="ClienteBloqueo.aspx" />
-    <Content Include="UsuarioBuscar.aspx" />
-    <Content Include="UsuarioEliminar.aspx" />
-    <Content Include="UsuarioMenu.aspx" />
-    <Content Include="UsuarioMod.aspx" />
-    <Content Include="PlatoEliminar.aspx" />
-    <Content Include="PlatoMod.aspx" />
+    <Content Include="ModuloAdmin\UsuarioAgregar.aspx" />
+    <Content Include="ModuloAdmin\PlatoAgregar.aspx" />
+    <Content Include="ModuloAdmin\PlatoBuscar.aspx" />
+    <Content Include="ModuloAdmin\ClienteBloqueo.aspx" />
+    <Content Include="ModuloAdmin\UsuarioBuscar.aspx" />
+    <Content Include="ModuloAdmin\UsuarioEliminar.aspx" />
+    <Content Include="ModuloAdmin\UsuarioMenu.aspx" />
+    <Content Include="ModuloAdmin\UsuarioMod.aspx" />
+    <Content Include="ModuloAdmin\PlatoEliminar.aspx" />
+    <Content Include="ModuloAdmin\PlatoMod.aspx" />
     <Content Include="Web.config" />
     <Content Include="Inicio Sesion.aspx" />
-    <Content Include="MenuAdmin.aspx" />
-    <Content Include="PlatoMenu.aspx" />
+    <Content Include="ModuloAdmin\MenuAdmin.aspx" />
+    <Content Include="ModuloAdmin\PlatoMenu.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClienteMainMenu.aspx.cs">
+    <Compile Include="ModuloCliente\ClienteMainMenu.aspx.cs">
       <DependentUpon>ClienteMainMenu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ClienteMainMenu.aspx.designer.cs">
+    <Compile Include="ModuloCliente\ClienteMainMenu.aspx.designer.cs">
       <DependentUpon>ClienteMainMenu.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CocineroMainMenu.aspx.cs">
+    <Compile Include="ModuloCocinero\CocineroMainMenu.aspx.cs">
       <DependentUpon>CocineroMainMenu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CocineroMainMenu.aspx.designer.cs">
+    <Compile Include="ModuloCocinero\CocineroMainMenu.aspx.designer.cs">
       <DependentUpon>CocineroMainMenu.aspx</DependentUpon>
     </Compile>
     <Compile Include="Registro.aspx.cs">
@@ -120,74 +120,74 @@
     <Compile Include="Registro.aspx.designer.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UsuarioAgregar.aspx.cs">
+    <Compile Include="ModuloAdmin\UsuarioAgregar.aspx.cs">
       <DependentUpon>UsuarioAgregar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UsuarioAgregar.aspx.designer.cs">
+    <Compile Include="ModuloAdmin\UsuarioAgregar.aspx.designer.cs">
       <DependentUpon>UsuarioAgregar.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PlatoAgregar.aspx.cs">
+    <Compile Include="ModuloAdmin\PlatoAgregar.aspx.cs">
       <DependentUpon>PlatoAgregar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PlatoAgregar.aspx.designer.cs">
+    <Compile Include="ModuloAdmin\PlatoAgregar.aspx.designer.cs">
       <DependentUpon>PlatoAgregar.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PlatoBuscar.aspx.cs">
+    <Compile Include="ModuloAdmin\PlatoBuscar.aspx.cs">
       <DependentUpon>PlatoBuscar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PlatoBuscar.aspx.designer.cs">
+    <Compile Include="ModuloAdmin\PlatoBuscar.aspx.designer.cs">
       <DependentUpon>PlatoBuscar.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ClienteBloqueo.aspx.cs">
+    <Compile Include="ModuloAdmin\ClienteBloqueo.aspx.cs">
       <DependentUpon>ClienteBloqueo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ClienteBloqueo.aspx.designer.cs">
+    <Compile Include="ModuloAdmin\ClienteBloqueo.aspx.designer.cs">
       <DependentUpon>ClienteBloqueo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UsuarioBuscar.aspx.cs">
+    <Compile Include="ModuloAdmin\UsuarioBuscar.aspx.cs">
       <DependentUpon>UsuarioBuscar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UsuarioBuscar.aspx.designer.cs">
+    <Compile Include="ModuloAdmin\UsuarioBuscar.aspx.designer.cs">
       <DependentUpon>UsuarioBuscar.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UsuarioEliminar.aspx.cs">
+    <Compile Include="ModuloAdmin\UsuarioEliminar.aspx.cs">
       <DependentUpon>UsuarioEliminar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UsuarioEliminar.aspx.designer.cs">
+    <Compile Include="ModuloAdmin\UsuarioEliminar.aspx.designer.cs">
       <DependentUpon>UsuarioEliminar.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UsuarioMenu.aspx.cs">
+    <Compile Include="ModuloAdmin\UsuarioMenu.aspx.cs">
       <DependentUpon>UsuarioMenu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UsuarioMenu.aspx.designer.cs">
+    <Compile Include="ModuloAdmin\UsuarioMenu.aspx.designer.cs">
       <DependentUpon>UsuarioMenu.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UsuarioMod.aspx.cs">
+    <Compile Include="ModuloAdmin\UsuarioMod.aspx.cs">
       <DependentUpon>UsuarioMod.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UsuarioMod.aspx.designer.cs">
+    <Compile Include="ModuloAdmin\UsuarioMod.aspx.designer.cs">
       <DependentUpon>UsuarioMod.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PlatoEliminar.aspx.cs">
+    <Compile Include="ModuloAdmin\PlatoEliminar.aspx.cs">
       <DependentUpon>PlatoEliminar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PlatoEliminar.aspx.designer.cs">
+    <Compile Include="ModuloAdmin\PlatoEliminar.aspx.designer.cs">
       <DependentUpon>PlatoEliminar.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PlatoMod.aspx.cs">
+    <Compile Include="ModuloAdmin\PlatoMod.aspx.cs">
       <DependentUpon>PlatoMod.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PlatoMod.aspx.designer.cs">
+    <Compile Include="ModuloAdmin\PlatoMod.aspx.designer.cs">
       <DependentUpon>PlatoMod.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -198,18 +198,18 @@
     <Compile Include="Inicio Sesion.aspx.designer.cs">
       <DependentUpon>Inicio Sesion.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MenuAdmin.aspx.cs">
+    <Compile Include="ModuloAdmin\MenuAdmin.aspx.cs">
       <DependentUpon>MenuAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MenuAdmin.aspx.designer.cs">
+    <Compile Include="ModuloAdmin\MenuAdmin.aspx.designer.cs">
       <DependentUpon>MenuAdmin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PlatoMenu.aspx.cs">
+    <Compile Include="ModuloAdmin\PlatoMenu.aspx.cs">
       <DependentUpon>PlatoMenu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PlatoMenu.aspx.designer.cs">
+    <Compile Include="ModuloAdmin\PlatoMenu.aspx.designer.cs">
       <DependentUpon>PlatoMenu.aspx</DependentUpon>
     </Compile>
   </ItemGroup>

@@ -48,7 +48,7 @@
                 <asp:TextBox ID="txPassd1" runat="server"></asp:TextBox>
                 <br />
                 <br />
-                <asp:Button ID="btRegist" runat="server" OnClick="btRegist_Click" Text="Registrarse" />
+                <asp:Button ID="btRegist" runat="server" CssClass="btn btn-primary" OnClick="btRegist_Click" Text="Registrarse" />
                 <br />
                 <asp:Button ID="btBack" runat="server" CssClass="btn-warning" OnClick="btBack_Click" Text="Volver" />
 &nbsp;

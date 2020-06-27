@@ -7,17 +7,21 @@ using System.Web.UI.WebControls;
 
 namespace Interfaz
 {
-    public partial class EliminarPlato : System.Web.UI.Page
+    public partial class AgregarPlato : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
         protected void btBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/PlatoMenu.aspx");
-
+            Response.Redirect("~/ModuloAdmin/PlatoMenu.aspx");
         }
     }
 }

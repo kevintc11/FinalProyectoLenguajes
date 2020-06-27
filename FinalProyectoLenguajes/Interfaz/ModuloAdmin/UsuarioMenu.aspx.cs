@@ -16,30 +16,30 @@ namespace Interfaz
 
         protected void btPed_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/UsuarioAgregar.aspx");
+            Response.Redirect("~/ModuloAdmin/UsuarioAgregar.aspx");
         }
 
         protected void btSearch_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/UsuarioBuscar.aspx");
+            Response.Redirect("~/ModuloAdmin/UsuarioBuscar.aspx");
 
         }
 
         protected void btMod_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/UsuarioMod.aspx");
+            Response.Redirect("~/ModuloAdmin/UsuarioMod.aspx");
 
         }
 
         protected void btDel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/UsuarioEliminar.aspx");
+            Response.Redirect("~/ModuloAdmin/UsuarioEliminar.aspx");
 
         }
 
         protected void btBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/MenuAdmin.aspx");
+            Response.Redirect("~/ModuloAdmin/MenuAdmin.aspx");
         }
     }
 }
