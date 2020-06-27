@@ -34,6 +34,34 @@ namespace AccesoDatos
             }
         }
 
+
+        public void eliminarCliente(string nombreUsuario)
+        {
+            LectArchivo lectura1 = new LectArchivo();
+
+            SqlConnectionStringBuilder conect = lectura1.leerServer1();
+            SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+            DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+            
+            if (comprobarUsuario(nombreUsuario))
+            {
+                throw new Exception("El usuasario ya esta eliminado");
+            }
+
+            //Cliente cliente = dc.Cliente.First(clie => clie.Cedula.Equals(cedula));
+            var usuario1 = (from usuario in dc.Usuario
+                            where usuario.DescUsuario.Equals(nombreUsuario)
+                            where usuario.ActivoSN == true
+                            select usuario).Single();
+          
+            usuario1.ActivoSN = false;
+            dc.SubmitChanges();
+            dc.Connection.Close();
+            
+          
+        }
+
+
         public Boolean comprobarUsuario(String nombreUsuario)
         {
             Usuario usuarioNuevo = (Usuario)consultaUsuario(nombreUsuario);

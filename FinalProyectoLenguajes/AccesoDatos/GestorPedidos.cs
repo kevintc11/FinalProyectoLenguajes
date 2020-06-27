@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms.VisualStyles;
 
 namespace AccesoDatos
 {
@@ -106,7 +107,80 @@ namespace AccesoDatos
                 return pedidos;
 
             }
-            return null;
         }
+
+        public void actualizarEstadoPedido(int pedidoID, int estadoID)
+        {
+
+            LectArchivo lectura1 = new LectArchivo();
+            SqlConnectionStringBuilder conect = lectura1.leerServer1();
+            SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+            DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+
+            
+
+            if (verificarEstadoPedido(estadoID) && verificarPedido(pedidoID))
+            {
+                Pedido pedido = dc.Pedido.First(ped => ped.PedidoID.Equals(pedidoID));
+
+                pedido.EstadoPedidoID = Convert.ToInt16(estadoID);
+                dc.SubmitChanges();
+                dc.Connection.Close();
+            }
+
+        }
+        public EstadoPedido getEstado(int estadoID)
+        {
+            if (verificarEstadoPedido(estadoID))
+            {
+                LectArchivo lectura1 = new LectArchivo();
+                SqlConnectionStringBuilder conect = lectura1.leerServer1();
+                SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+                DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+                EstadoPedido estadoPedido = dc.EstadoPedido.First(clie => clie.EstadoPedidoID.Equals(estadoID));
+                return estadoPedido;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public Boolean verificarEstadoPedido(int estadoID)
+        {
+            LectArchivo lectura1 = new LectArchivo();
+            SqlConnectionStringBuilder conect = lectura1.leerServer1();
+            SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+            DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+
+            try
+            {
+                EstadoPedido estadoPedido = dc.EstadoPedido.First(clie => clie.EstadoPedidoID.Equals(estadoID));
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public Boolean verificarPedido(int pedidoID)
+        {
+            LectArchivo lectura1 = new LectArchivo();
+            SqlConnectionStringBuilder conect = lectura1.leerServer1();
+            SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+            DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+
+            try
+            {
+                Pedido pedido = dc.Pedido.First(ped => ped.PedidoID.Equals(pedidoID));
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
     }
 }
