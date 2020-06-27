@@ -31,7 +31,7 @@
             <asp:Button ID="btAdd" runat="server" Height="35px" Text="Agregar Plato" Width="170px" CssClass="btn btn-primary" OnClick="btAdd_Click" />
             <br />
             <br />
-            <asp:Button ID="btBack" runat="server" Text="Volver" Width="70px" CssClass="btn btn-warning" OnClick="btBack_Click" />
+            <asp:Button ID="btBack" runat="server" Text="Volver" Width="70px" CssClass="btn btn-warning" OnClick="btBack_Click" Height="35px" />
         </div>
     </form>
 </body>

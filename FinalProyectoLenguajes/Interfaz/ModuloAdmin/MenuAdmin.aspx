@@ -32,10 +32,10 @@
             <br />
             <asp:Button ID="btClient" runat="server" Height="35px" Text="Bloquear Clientes" Width="170px" CssClass="btn btn-primary" OnClick="btClient_Click" />
 &nbsp;&nbsp;
-            <asp:Button ID="btPed" runat="server" Height="35px" Text="Administrar Pedidos" Width="170px" CssClass="btn btn-primary" />
+            <asp:Button ID="btPed" runat="server" Height="35px" Text="Administrar Pedidos" Width="170px" CssClass="btn btn-primary" OnClick="btPed_Click" />
             <br />
             <br />
-            <asp:Button ID="btBack" runat="server" Text="Salir" Width="70px" CssClass="btn btn-warning" OnClick="btBack_Click" />
+            <asp:Button ID="btBack" runat="server" Text="Salir" Width="70px" CssClass="btn btn-warning" OnClick="btBack_Click" Height="35px" />
         </div>
     </form>
 </body>

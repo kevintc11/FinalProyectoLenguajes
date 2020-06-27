@@ -38,5 +38,10 @@ namespace Interfaz
         {
             Response.Redirect("~/ModuloAdmin/ClienteBloqueo.aspx");
         }
+
+        protected void btPed_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ModuloAdmin/Pedidos.aspx");
+        }
     }
 }

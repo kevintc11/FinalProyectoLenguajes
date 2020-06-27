@@ -15,13 +15,16 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <title>Bloquear Cliente</title>
+    <style type="text/css">
+        .btn-warning {}
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div style="text-align: center">
             Escoja El Cliente A Bloquear<br />
             <br />
-            <asp:Button ID="btBack" runat="server" CssClass="btn-warning" Text="Volver" OnClick="btBack_Click" />
+            <asp:Button ID="btBack" runat="server" CssClass="btn-warning" Text="Volver" OnClick="btBack_Click" Height="35px" Width="70px" />
         </div>
     </form>
 </body>

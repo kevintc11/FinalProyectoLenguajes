@@ -1,10 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ClienteMainMenu.aspx.cs" Inherits="Interfaz.ClienteMainMenu" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ClienteMainMenu.aspx.cs" Inherits="Interfaz.ModuloCliente.ClienteDatos" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
 
@@ -14,11 +14,22 @@
 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <title>Cliente Menú</title>
+    <title>Menu De Cliente</title>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div style="text-align: center">
+            Menú Cliente<br />
+            Bienvenido
+            <asp:Label ID="lbName" runat="server" Text="*Nombre*"></asp:Label>
+            <br />
+            <br />
+            <asp:Button ID="btPedidos" runat="server" Text="Pedidos" CssClass="btn btn-primary" Height="35px" OnClick="btPedidos_Click" Width="170px" />
+            <br />
+            <asp:Button ID="btModInfo" runat="server" Text="Modificar Datos" CssClass="btn btn-primary" Height="35px" OnClick="btModInfo_Click" Width="170px"/>
+            <br />
+            <br />
+            <asp:Button ID="btSalir" runat="server" Text="Salir" CssClass="btn btn-warning" Height="35px" OnClick="btSalir_Click" Width="70px" />
         </div>
     </form>
 </body>

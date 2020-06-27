@@ -80,7 +80,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ModuloAdmin\Pedidos.aspx" />
     <Content Include="ModuloCliente\ClienteMainMenu.aspx" />
+    <Content Include="ModuloCliente\ClienteDatos.aspx" />
+    <Content Include="ModuloCliente\ClientePedidos.aspx" />
     <Content Include="ModuloCocinero\CocineroMainMenu.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="ModuloAdmin\UsuarioAgregar.aspx" />
@@ -99,12 +102,33 @@
     <Content Include="ModuloAdmin\PlatoMenu.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ModuloAdmin\Pedidos.aspx.cs">
+      <DependentUpon>Pedidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModuloAdmin\Pedidos.aspx.designer.cs">
+      <DependentUpon>Pedidos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ModuloCliente\ClienteMainMenu.aspx.cs">
       <DependentUpon>ClienteMainMenu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ModuloCliente\ClienteMainMenu.aspx.designer.cs">
       <DependentUpon>ClienteMainMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloCliente\ClienteDatos.aspx.cs">
+      <DependentUpon>ClienteDatos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModuloCliente\ClienteDatos.aspx.designer.cs">
+      <DependentUpon>ClienteDatos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModuloCliente\ClientePedidos.aspx.cs">
+      <DependentUpon>ClientePedidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModuloCliente\ClientePedidos.aspx.designer.cs">
+      <DependentUpon>ClientePedidos.aspx</DependentUpon>
     </Compile>
     <Compile Include="ModuloCocinero\CocineroMainMenu.aspx.cs">
       <DependentUpon>CocineroMainMenu.aspx</DependentUpon>

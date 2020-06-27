@@ -21,7 +21,7 @@
         <div style="text-align: center">
             Busqueda De Cliente<br />
             <br />
-            <asp:Button ID="btBack" runat="server" CssClass="btn-warning" Text="Volver" OnClick="btBack_Click" />
+            <asp:Button ID="btBack" runat="server" CssClass="btn-warning" Text="Volver" OnClick="btBack_Click" Height="35px" Width="70px" />
         </div>
     </form>
 </body>

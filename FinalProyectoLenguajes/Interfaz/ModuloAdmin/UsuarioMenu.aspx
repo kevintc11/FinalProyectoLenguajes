@@ -30,7 +30,7 @@
             <asp:Button ID="btDel" runat="server" Height="35px" Text="Eliminar Usuario" Width="170px" CssClass="btn btn-primary" OnClick="btDel_Click" />
             <br />
             <br />
-            <asp:Button ID="btBack" runat="server" Text="Volver" Width="70px" CssClass="btn btn-warning" OnClick="btBack_Click" />
+            <asp:Button ID="btBack" runat="server" Text="Volver" Width="70px" CssClass="btn btn-warning" OnClick="btBack_Click" Height="35px" />
         </div>
     </form>
 </body>

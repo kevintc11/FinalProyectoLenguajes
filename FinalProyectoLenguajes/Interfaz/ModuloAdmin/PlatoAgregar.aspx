@@ -22,7 +22,7 @@
             Agregar Un Plato<br />
             <br />
             <br />
-            <asp:Button ID="btBack" runat="server" CssClass="btn btn-warning" OnClick="btBack_Click" Text="Volver" Width="70px" />
+            <asp:Button ID="btBack" runat="server" CssClass="btn btn-warning" OnClick="btBack_Click" Text="Volver" Width="70px" Height="35px" />
             <br />
         </div>
     </form>
