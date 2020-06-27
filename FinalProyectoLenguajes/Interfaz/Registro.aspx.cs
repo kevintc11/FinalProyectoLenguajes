@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using LogicaNegocio;
 namespace Interfaz
 {
     public partial class Registro : System.Web.UI.Page
@@ -13,6 +13,8 @@ namespace Interfaz
         {
 
         }
+
+        MetodosInterfaz mInterfaz = new MetodosInterfaz();
 
         protected void btBack_Click(object sender, EventArgs e)
         {
@@ -26,7 +28,8 @@ namespace Interfaz
 
         public Boolean espaciosVacios()
         {
-            if(txUser.Text == "" || txName.Text == "" || txMail.Text == "" || txPassd1.Text == "" || rblUserT.SelectedIndex <= -1)
+            if(txUser.Text == "" || txName.Text == "" || txMail.Text == "" || txAddress.Text == "" ||
+               txPassd1.Text == "" || rblUserT.SelectedIndex <= -1 || !mInterfaz.comprobarCorreo(txMail.Text))
             {
                 Type cstype = this.GetType();
 
@@ -44,23 +47,48 @@ namespace Interfaz
 
         public void Regist()
         {
+            int valor = 0;
             if(espaciosVacios() == true)
             {
-                txName.Text = "Hora Si Caballero";
-
-                switch(int.Parse(rblUserT.SelectedValue))
+                if(mInterfaz.comprobarUsuario(txUser.Text))
                 {
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                }
-                //Comprobacion de existencia y creación
-            }else
-            {
+                    Type cstype = this.GetType();
 
+                    ClientScriptManager cs = Page.ClientScript;
+
+                    if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                    {
+                        String cstext = "alert('Usuario Ya Existente');";
+                        cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                    }
+                }
+                else
+                {
+                    switch (int.Parse(rblUserT.SelectedValue))
+                    {
+                        case 1:
+                            valor = 1;
+                            break;
+                        case 2:
+                            valor = 2;
+                            break;
+                        case 3:
+                            valor = 3;
+                            break;
+                    }
+                    mInterfaz.insertarUsuario(txUser.Text, txMail.Text, txName.Text,
+                                              txPassd1.Text, valor, txAddress.Text);
+
+                    Type cstype = this.GetType();
+
+                    ClientScriptManager cs = Page.ClientScript;
+
+                    if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                    {
+                        String cstext = "alert('Usuario Creado Con Éxito');";
+                        cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                    }
+                }
             }
         }
     }

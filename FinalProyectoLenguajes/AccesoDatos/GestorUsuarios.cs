@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -13,16 +14,132 @@ namespace AccesoDatos
     {
         public dynamic consultaUsuario(String nombreUsuario)
         {
-            LectArchivo lectura1 = new LectArchivo();
+            try
+            {
+                LectArchivo lectura1 = new LectArchivo();
 
-            SqlConnectionStringBuilder conect = lectura1.leerServer1();
-            SqlConnection conexion = new SqlConnection(conect.ConnectionString);
-            DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
-            Usuario usuario1 = dc.Usuario.First(usua => usua.UsuarioID.Equals(nombreUsuario));
-            return usuario1;
+                SqlConnectionStringBuilder conect = lectura1.leerServer1();
+                SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+                DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+                //Usuario usuario1 = dc.Usuario.First(usua => usua.UsuarioID.Equals(nombreUsuario));
+                var usuario1 = (from usuario in dc.Usuario
+                                where usuario.DescUsuario.Equals(nombreUsuario)
+                                where usuario.ActivoSN == true
+                                select usuario).Single();
+                return usuario1;
+            }
+            catch(Exception)
+            {
+                return null;  
+            }
         }
 
-        public void actualizarUsuario(string nombreUsuario, string correoElectronico, string nombreCompleto, string contraseña, Boolean bloqueado, int tipoUsuario)
+        public Boolean comprobarUsuario(String nombreUsuario)
+        {
+            Usuario usuarioNuevo = (Usuario)consultaUsuario(nombreUsuario);
+            if (usuarioNuevo == null)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public void insertarUsuario(string nombreUsuario, string correoElectronico, string nombreCompleto, string contraseña, int tipoUsuario, string direccion)
+        {
+            //try
+            //{
+                LectArchivo lectura1 = new LectArchivo();
+
+                SqlConnectionStringBuilder conect = lectura1.leerServer1();
+                SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+                DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+                Usuario usuario1 = new Usuario();
+
+                if (comprobarUsuario(nombreUsuario))
+                {
+                    throw new Exception("El nombre de usuario ingresado ya existe, selecione otro");
+                }
+
+                if (nombreUsuario != null && nombreUsuario != "")
+                {
+                    usuario1.DescUsuario = nombreUsuario;
+                }
+                else
+                {
+                    throw new Exception("El nombre de usuario no puede estar vacío");
+                }
+
+                if (comprobarCorreo(correoElectronico) == true)
+                {
+                    usuario1.CorreoElectronico = correoElectronico;
+                }
+                else
+                {
+                    throw new Exception("Digite un correo válido");
+                }
+
+
+                if (nombreCompleto != null && nombreCompleto != "")
+                {
+                    usuario1.NombreCompleto = nombreCompleto;
+                }
+                else
+                {
+                    throw new Exception("Digite un nombre válido");
+                }
+
+                if (contraseña != null && contraseña != "")
+                {
+                    usuario1.Contraseña = contraseña;
+                }
+                else
+                {
+                    throw new Exception("Digite una contraseña válido");
+                }
+
+                if (direccion != null && direccion != "")
+                {
+                    usuario1.Direccion = direccion;
+                }
+                else
+                {
+                    throw new Exception("Digite una contraseña válido");
+                }
+
+                if (tipoUsuario >= 1 || tipoUsuario <= 3)
+                {
+                    usuario1.TipoUsuarioID = Convert.ToInt16(tipoUsuario);
+                }
+                else
+                {
+                    throw new Exception("Digite un tipo de usuario válido");
+                }
+                usuario1.Bloqueado = false;
+                usuario1.ActivoSN = true;
+
+
+
+                dc.Usuario.InsertOnSubmit(usuario1);
+                dc.SubmitChanges();
+                dc.Connection.Close();
+
+
+
+            //}
+            //catch (IOException ex)
+            //{
+             //   throw new Exception("Ocurrió un error, verifique la ruta de acceso a la base de datos.");
+            //}
+            //catch (Exception e)
+            //{
+            //    throw new Exception(e.Message);
+            //}
+        }
+
+
+
+
+        public void actualizarUsuario(string nombreUsuario, string correoElectronico, string nombreCompleto, string contraseña, Boolean bloqueado, string direccion)
         {
             LectArchivo lectura1 = new LectArchivo();
 
@@ -72,6 +189,14 @@ namespace AccesoDatos
                     throw new Exception("Error: La contraseña no es válido.");
                 }
 
+                if (direccion != null && direccion != "")
+                {
+                    usuario1.Direccion = direccion;
+                }
+                else
+                {
+                    throw new Exception("Error: La direccion no es válido.");
+                }
 
                 if (comprobarCorreo(correoElectronico) == true)
                 {
@@ -91,14 +216,6 @@ namespace AccesoDatos
                     throw new Exception("Error: El valor de bloqueado no valido no válido.");
                 }
 
-                if (tipoUsuario >= 0 || tipoUsuario <= 3 && tipoUsuario != null)
-                {
-                    usuario1.TipoUsuarioID = Convert.ToInt16(tipoUsuario);
-                }
-                else
-                {
-                    throw new Exception("Error: El valor de tipo de usuario es no valido no válido.");
-                }
                 dc.SubmitChanges();
                 //MessageBox.Show("Se actualizó correctamente"); AQUI PUEDE VER UN MENSAJE
                 dc.Connection.Close();
@@ -106,7 +223,6 @@ namespace AccesoDatos
             }
 
         }
-
 
         public Boolean esNumero(object objeto)
         {

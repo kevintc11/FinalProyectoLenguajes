@@ -15,5 +15,23 @@ namespace LogicaNegocio
         {
             return mUsers.comprobarCorreo(correo);
         }
+
+        public Boolean comprobarUsuario(String nombreUsuario)
+        {
+            try
+            {
+                return mUsers.comprobarUsuario(nombreUsuario);
+            }
+            catch (InvalidOperationException)
+            {
+                return false;
+            }
+        }
+
+        public void insertarUsuario(string nombreUsuario, string correoElectronico, string nombreCompleto,
+                                    string contraseña, int tipoUsuario, string direccion)
+        {
+            mUsers.insertarUsuario(nombreUsuario, correoElectronico, nombreCompleto, contraseña, tipoUsuario, direccion);
+        }
     }
 }
