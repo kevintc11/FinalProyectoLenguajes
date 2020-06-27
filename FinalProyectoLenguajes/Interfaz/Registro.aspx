@@ -35,17 +35,19 @@
                 <asp:TextBox ID="txMail" runat="server"></asp:TextBox>
                 <br />
                 <br />
+                Dirección<br />
+                <asp:TextBox ID="txAddress" runat="server" AutoCompleteType="HomeStreetAddress" Height="124px" TextMode="MultiLine" Width="219px"></asp:TextBox>
                 <br />
                 Tipo De Usuario</div>
             <asp:RadioButtonList ID="rblUserT" runat="server">
                 <asp:ListItem Value="1">Administrador</asp:ListItem>
                 <asp:ListItem Value="2">Cocinero</asp:ListItem>
-                <asp:ListItem Value="3">Cliente</asp:ListItem>
+                <asp:ListItem Value="3" Selected="True">Cliente</asp:ListItem>
             </asp:RadioButtonList>
             <div class="text-left">
                 <br />
                 Contraseña<br />
-                <asp:TextBox ID="txPassd1" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txPassd1" runat="server" TextMode="Password"></asp:TextBox>
                 <br />
                 <br />
                 <asp:Button ID="btRegist" runat="server" CssClass="btn btn-primary" OnClick="btRegist_Click" Text="Registrarse" />

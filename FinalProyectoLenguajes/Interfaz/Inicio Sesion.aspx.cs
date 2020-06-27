@@ -30,7 +30,7 @@ namespace Interfaz
             SqlConnection conexion = new SqlConnection(conect.ConnectionString);
             DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
 
-            Usuario usuario1 = dc.Usuario.First(usua => usua.UsuarioID.Equals(1));
+            Usuario usuario1 = dc.Usuario.First(usua => usua.DescUsuario.Equals("NachoMan"));
             
             //var clientes = from cliente in dc.Cliente
             //               where cliente.indicActivoCliente == 1
