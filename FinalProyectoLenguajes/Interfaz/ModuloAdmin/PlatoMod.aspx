@@ -18,11 +18,33 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div style="text-align: center">
+        <div class="text-left">
             Modificar Plato<br />
             <br />
+            Nombre Del Plato<br />
+            <asp:TextBox ID="tbDishName" runat="server"></asp:TextBox>
             <br />
-            <asp:Button ID="btBack" runat="server" Text="Volver" Width="70px" CssClass="btn btn-warning" OnClick="btBack_Click" Height="35px" />
+            <br />
+            Descripción Del Plato<br />
+            <asp:TextBox ID="tbDesc" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            Precio Del Plato<br />
+            <asp:TextBox ID="tbPrice" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            Foto Del Plato<br />
+            *No Disponible*<br />
+            <br />
+            Estado<br />
+            <asp:RadioButtonList ID="RadioButtonList1" runat="server">
+                <asp:ListItem Selected="True" Value="1">Habilitado</asp:ListItem>
+                <asp:ListItem Value="2">Desabilitado</asp:ListItem>
+            </asp:RadioButtonList>
+            <asp:Button ID="btMod" runat="server" CssClass="btn btn-primary" Height="30px" Text="Modificar" Width="90px" OnClick="btMod_Click" />
+            <br />
+            <br />
+            <asp:Button ID="btBack" runat="server"  Text="Volver" Width="70px" CssClass="btn btn-warning" OnClick="btBack_Click" Height="35px" />
         </div>
     </form>
 </body>

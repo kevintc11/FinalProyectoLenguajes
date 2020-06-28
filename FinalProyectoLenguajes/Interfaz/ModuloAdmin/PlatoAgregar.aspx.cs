@@ -23,5 +23,31 @@ namespace Interfaz
         {
             Response.Redirect("~/ModuloAdmin/PlatoMenu.aspx");
         }
+
+        protected void btAdd_Click(object sender, EventArgs e)
+        {
+            if(espaciosVacios())
+            {
+
+            }
+        }
+
+        public Boolean espaciosVacios()
+        {
+            if (tbDishName.Text == "" || tbDesc.Text == "" || tbPrice.Text == "")
+            {
+                Type cstype = this.GetType();
+
+                ClientScriptManager cs = Page.ClientScript;
+
+                if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                {
+                    String cstext = "alert('Debe de Llenar Correctamente Todos los Datos Requeridos');";
+                    cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                }
+                return false;
+            }
+            return true;
+        }
     }
 }

@@ -18,8 +18,24 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div style="text-align: center">
+        <div class="text-left">
             Agregar Un Plato<br />
+            <br />
+            Nombre Del Plato<br />
+            <asp:TextBox ID="tbDishName" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            Descripción Del Plato<br />
+            <asp:TextBox ID="tbDesc" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            Precio Del Plato<br />
+            <asp:TextBox ID="tbPrice" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            Foto Del Plato<br />
+            *No Disponible*<br />
+            <asp:Button ID="btAdd" runat="server" CssClass="btn btn-primary" Height="30px" Text="Agregar" Width="90px" OnClick="btAdd_Click" />
             <br />
             <br />
             <asp:Button ID="btBack" runat="server" CssClass="btn btn-warning" OnClick="btBack_Click" Text="Volver" Width="70px" Height="35px" />
