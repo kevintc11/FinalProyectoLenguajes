@@ -18,5 +18,31 @@ namespace Interfaz
         {
             Response.Redirect("~/ModuloAdmin/MenuAdmin.aspx");
         }
+
+        protected void btBlock_Click(object sender, EventArgs e)
+        {
+            if(espaciosVacios())
+            {
+
+            }
+        }
+
+        public Boolean espaciosVacios()
+        {
+            if (tbBlock.Text == "")
+            {
+                Type cstype = this.GetType();
+
+                ClientScriptManager cs = Page.ClientScript;
+
+                if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                {
+                    String cstext = "alert('Debe de Llenar Correctamente Todos los Datos Requeridos');";
+                    cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                }
+                return false;
+            }
+            return true;
+        }
     }
 }

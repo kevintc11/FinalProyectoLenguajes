@@ -69,25 +69,6 @@ namespace Interfaz
                     cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
                 }
             }
-           
-
-           
-
-            ////Response.Redirect("~/MenuAdmin.aspx");
-
-
-            //LectArchivo lectura1 = new LectArchivo();
-
-            //SqlConnectionStringBuilder conect = lectura1.leerServer1();
-            //SqlConnection conexion = new SqlConnection(conect.ConnectionString);
-            //DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
-
-            //Usuario usuario1 = dc.Usuario.First(usua => usua.DescUsuario.Equals("NachoMan"));
-            
-            ////var clientes = from cliente in dc.Cliente
-            ////               where cliente.indicActivoCliente == 1
-            ////               select cliente;
-            //TextBox2.Text = usuario1.NombreCompleto;
         }
 
         protected void btRegist_Click(object sender, EventArgs e)

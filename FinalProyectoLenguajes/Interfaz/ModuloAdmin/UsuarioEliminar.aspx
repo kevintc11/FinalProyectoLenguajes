@@ -16,11 +16,23 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <title>Eliminar Usuario</title>
+    <style type="text/css">
+        .auto-style1 {
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div style="text-align: center">
+        <div class="auto-style1">
             Eliminar Un Usuario<br />
+            <br />
+            Nick De Cliente
+            <br />
+            <asp:TextBox ID="tbNick" runat="server"></asp:TextBox>
+            <br />
+            <asp:Button ID="btDelete" runat="server" CssClass="btn-primary" Text="Eliminar" Height="30px" OnClick="btSearch_Click" Width="90px" />
+            <br />
             <br />
             <asp:Button ID="btBack" runat="server" Text="Volver" Width="70px" CssClass="btn btn-warning" OnClick="btBack_Click" Height="35px" />
         </div>

@@ -18,8 +18,27 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div style="text-align: center">
+        <div class="text-left">
             Busqueda De Cliente<br />
+            <asp:GridView ID="dgClientes" runat="server" BorderStyle="Double" CellPadding="4" EmptyDataText="Vacio" ForeColor="#333333" GridLines="Vertical" ShowFooter="True" ShowHeaderWhenEmpty="True" Width="454px">
+                <AlternatingRowStyle BackColor="White" />
+                <EditRowStyle BackColor="#2461BF" />
+                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#EFF3FB" />
+                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                <SortedDescendingHeaderStyle BackColor="#4870BE" />
+            </asp:GridView>
+            <br />
+            Nickname Del Usuario<br />
+            <asp:TextBox ID="tbNick" runat="server"></asp:TextBox>
+            <br />
+            <asp:Button ID="btSearch" runat="server" CssClass="btn-primary" Text="Buscar" Height="30px" OnClick="btSearch_Click" Width="90px" />
+            <br />
             <br />
             <asp:Button ID="btBack" runat="server" CssClass="btn-warning" Text="Volver" OnClick="btBack_Click" Height="35px" Width="70px" />
         </div>

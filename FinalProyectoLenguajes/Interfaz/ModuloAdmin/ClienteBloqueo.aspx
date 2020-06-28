@@ -21,8 +21,18 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div style="text-align: center">
+        <div style="text-align: left">
+            <div class="text-left">
             Escoja El Cliente A Bloquear<br />
+            </div>
+            <asp:GridView ID="gvClientes" runat="server">
+            </asp:GridView>
+            <br />
+            Cliente ID A Bloquear<br />
+            <asp:TextBox ID="tbBlock" runat="server"></asp:TextBox>
+            <br />
+            <asp:Button ID="btBlock" runat="server" CssClass="btn-primary" OnClick="btBlock_Click" Text="Bloquear" />
+            <br />
             <br />
             <asp:Button ID="btBack" runat="server" CssClass="btn-warning" Text="Volver" OnClick="btBack_Click" Height="35px" Width="70px" />
         </div>

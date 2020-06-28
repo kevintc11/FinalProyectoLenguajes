@@ -18,8 +18,35 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div style="text-align: center">
+        <div class="text-left">
             Agregar Un Nuevo Cliente<br />
+            <br />
+            Nombre Usuario<br />
+            <asp:TextBox ID="tbNick" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            Nombre Completo<br />
+            <asp:TextBox ID="tbName" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            Correo Electrónico<br />
+            <asp:TextBox ID="tbMail" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            Dirección<br />
+                <asp:TextBox ID="tbAddress" runat="server" AutoCompleteType="HomeStreetAddress" Height="124px" TextMode="MultiLine" Width="219px"></asp:TextBox>
+                <br />
+            <br />
+            Tipo De Usuario<asp:RadioButtonList ID="rblUserT" runat="server">
+                <asp:ListItem Value="1">Administrador</asp:ListItem>
+                <asp:ListItem Value="2" Selected="True">Cocinero</asp:ListItem>
+            </asp:RadioButtonList>
+            <br />
+            Contraseña<br />
+            <asp:TextBox ID="tbPass" runat="server"></asp:TextBox>
+            <br />
+            <asp:Button ID="btAdd" runat="server" CssClass="btn btn-primary" Text="Agregar" OnClick="btAdd_Click" Height="30px" Width="90px" />
+            <br />
             <br />
             <asp:Button ID="btBack" runat="server" Text="Salir" Width="70px" CssClass="btn btn-warning" OnClick="btBack_Click" Height="35px" />
         </div>
