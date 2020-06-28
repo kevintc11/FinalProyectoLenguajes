@@ -45,7 +45,7 @@
             Contraseña<br />
             <asp:TextBox ID="tbPass" runat="server"></asp:TextBox>
             <br />
-            <asp:Button ID="btAdd" runat="server" CssClass="btn btn-primary" Text="Agregar" OnClick="btAdd_Click" Height="30px" Width="90px" />
+            <asp:Button ID="btAdd" runat="server" CssClass="btn btn-primary" Text="Agregar" OnClick="btAdd_Click" Height="38px" Width="90px" />
             <br />
             <br />
             <asp:Button ID="btBack" runat="server" Text="Salir" Width="70px" CssClass="btn btn-warning" OnClick="btBack_Click" Height="35px" />

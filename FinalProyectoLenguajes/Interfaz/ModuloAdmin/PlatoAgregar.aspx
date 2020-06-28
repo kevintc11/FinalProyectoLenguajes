@@ -35,7 +35,7 @@
             <br />
             Foto Del Plato<br />
             *No Disponible*<br />
-            <asp:Button ID="btAdd" runat="server" CssClass="btn btn-primary" Height="30px" Text="Agregar" Width="90px" OnClick="btAdd_Click" />
+            <asp:Button ID="btAdd" runat="server" CssClass="btn btn-primary" Height="38px" Text="Agregar" Width="90px" OnClick="btAdd_Click" />
             <br />
             <br />
             <asp:Button ID="btBack" runat="server" CssClass="btn btn-warning" OnClick="btBack_Click" Text="Volver" Width="70px" Height="35px" />

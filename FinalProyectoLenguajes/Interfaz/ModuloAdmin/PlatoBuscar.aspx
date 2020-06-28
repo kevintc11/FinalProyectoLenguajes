@@ -37,7 +37,7 @@
             ID Del Plato<br />
             <asp:TextBox ID="tbSearch" runat="server"></asp:TextBox>
             <br />
-            <asp:Button ID="btSearch" runat="server" CssClass="btn btn-primary" Height="30px" Text="Buscar" Width="90px" OnClick="btSearch_Click" />
+            <asp:Button ID="btSearch" runat="server" CssClass="btn btn-primary" Height="38px" Text="Buscar" Width="90px" OnClick="btSearch_Click" />
             <br />
             <br />
             <asp:Button ID="btBack" runat="server" Text="Volver" Width="70px" CssClass="btn btn-warning" OnClick="btBack_Click" Height="35px" />
