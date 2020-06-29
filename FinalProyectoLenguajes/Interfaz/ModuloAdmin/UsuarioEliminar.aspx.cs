@@ -4,11 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using LogicaNegocio;
 
 namespace Interfaz
 {
     public partial class UsuarioEliminar : System.Web.UI.Page
     {
+
+        AdministracionUsuarios usuarios = new AdministracionUsuarios();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -23,7 +27,28 @@ namespace Interfaz
         {
             if(espaciosVacios())
             {
-
+                try
+                {
+                    usuarios.eliminarCliente(tbNick.Text);
+                    Type cstype = this.GetType();
+                    ClientScriptManager cs = Page.ClientScript;
+                    if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                    {
+                        String cstext = "alert('Usuario eliminado correctamente');";
+                        cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                    }
+                }
+                catch (Exception)
+                {
+                    Type cstype = this.GetType();
+                    ClientScriptManager cs = Page.ClientScript;
+                    if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                    {
+                        String cstext = "alert('Usuario no existe');";
+                        cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                    }
+                }
+                
             }
         }
 

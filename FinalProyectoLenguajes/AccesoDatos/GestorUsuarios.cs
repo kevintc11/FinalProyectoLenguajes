@@ -114,7 +114,7 @@ namespace AccesoDatos
             SqlConnection conexion = new SqlConnection(conect.ConnectionString);
             DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
             
-            if (comprobarUsuario(nombreUsuario))
+            if (!comprobarUsuario(nombreUsuario))
             {
                 throw new Exception("El usuasario ya esta eliminado");
             }
@@ -128,8 +128,6 @@ namespace AccesoDatos
             usuario1.ActivoSN = false;
             dc.SubmitChanges();
             dc.Connection.Close();
-            
-          
         }
 
 

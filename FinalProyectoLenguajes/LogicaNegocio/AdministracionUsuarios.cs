@@ -11,6 +11,11 @@ namespace LogicaNegocio
     {
         GestorUsuarios mUsers = new GestorUsuarios();
 
+
+        public void eliminarCliente(string nickname)
+        {
+            mUsers.eliminarCliente(nickname);
+        }
         public Boolean comprobarCorreo(String correo)
         {
             return mUsers.comprobarCorreo(correo);
