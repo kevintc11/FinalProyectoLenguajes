@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
 namespace AccesoDatos
 {
     public class GestorPedidos
     {
+
         public dynamic consultaPedidosSinFiltro()
         {
             LectArchivo lectura1 = new LectArchivo();
@@ -188,11 +191,12 @@ namespace AccesoDatos
             SqlConnection conexion = new SqlConnection(conect.ConnectionString);
             DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
 
-            var pedidos = from pedidoXplato in dc.Pedido_X_Plato
+            var pedidos = (from pedidoXplato in dc.Pedido_X_Plato
                           join pedido in dc.Pedido on pedidoXplato.PedidoID equals pedido.PedidoID
                           join plato in dc.Plato on pedidoXplato.PlatoID equals plato.PlatoID
                           join usuario in dc.Usuario on pedido.UsuarioID equals usuario.UsuarioID
-                          where pedido.EstadoPedidoID <= 3
+                          join estado in dc.EstadoPedido on pedido.EstadoPedidoID equals estado.EstadoPedidoID
+                           where pedido.EstadoPedidoID <= 3
                           orderby pedido.FechaPedido ascending
                           select new
                           {
@@ -200,9 +204,12 @@ namespace AccesoDatos
                               plato.PlatoID
                           ,
                               plato.Nombre,
-                              plato.DescPlato
-                          };
-
+                              plato.DescPlato,
+                              pedido.FechaPedido,
+                              pedido.PedidoID,
+                              pedido.EstadoPedidoID,
+                              estado.DescEstadoPedido
+                          }).ToList();
             return pedidos;
         }
 
