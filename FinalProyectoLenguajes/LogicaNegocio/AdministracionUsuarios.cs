@@ -16,6 +16,16 @@ namespace LogicaNegocio
             return mUsers.comprobarCorreo(correo);
         }
 
+        public dynamic consultaClientes()
+        {
+            return mUsers.consultaClientes();
+        }
+
+        public void bloquearCliente(string nickname)
+        {
+            mUsers.bloquearUsuario(nickname);
+        }
+
         public Boolean comprobarUsuario(String nombreUsuario)
         {
             try
@@ -42,7 +52,7 @@ namespace LogicaNegocio
 
         public void actualizarUsuario(string nombreUsuario, string correoElectronico, string nombreCompleto, string contraseña, string direccion)
         {
-            mUsers.actualizarUsuario(nombreUsuario, correoElectronico, nombreCompleto, contraseña, true, direccion);
+            mUsers.actualizarUsuario(nombreUsuario, correoElectronico, nombreCompleto, contraseña, false, direccion);
         }
 
         public dynamic obtenerUsuario(string nickname)

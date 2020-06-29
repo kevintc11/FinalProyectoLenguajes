@@ -34,6 +34,56 @@ namespace AccesoDatos
             }
         }
 
+        public dynamic consultaClientes()
+        {
+            try
+            {
+                LectArchivo lectura1 = new LectArchivo();
+
+                SqlConnectionStringBuilder conect = lectura1.leerServer1();
+                SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+                DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+                var usuario1 = (from usuario in dc.Usuario
+                                where usuario.Bloqueado == false && usuario.ActivoSN == true && usuario.TipoUsuarioID == 3
+                                select usuario);
+                return usuario1;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public void bloquearUsuario(string nickname)
+        {
+            try
+            {
+                LectArchivo lectura1 = new LectArchivo();
+
+                SqlConnectionStringBuilder conect = lectura1.leerServer1();
+                SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+                DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+                //Usuario usuario1 = dc.Usuario.First(usua => usua.UsuarioID.Equals(nombreUsuario));
+                var usuario1 = (from usuario in dc.Usuario
+                                where (usuario.DescUsuario.Equals(nickname) && usuario.ActivoSN == true && usuario.TipoUsuarioID == 3 && usuario.Bloqueado == false)
+                                select usuario).Single();
+                
+                if (usuario1 != null)
+                {
+                    Usuario usuarioNuevo = null;
+                    usuarioNuevo = (Usuario)usuario1;
+                    actualizarUsuario(usuarioNuevo.DescUsuario, usuarioNuevo.CorreoElectronico, 
+                                      usuarioNuevo.NombreCompleto, usuarioNuevo.Contraseña, true, usuarioNuevo.Direccion);
+                    dc.SubmitChanges();
+                    dc.Connection.Close();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public dynamic consultaUsuarioLista(String nombreUsuario)
         {
             try

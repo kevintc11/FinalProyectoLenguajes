@@ -28,7 +28,7 @@
             <asp:GridView ID="gvClientes" runat="server">
             </asp:GridView>
             <br />
-            Cliente ID A Bloquear<br />
+            Nombre Usuario a Bloquear<br />
             <asp:TextBox ID="tbBlock" runat="server"></asp:TextBox>
             <br />
             <asp:Button ID="btBlock" runat="server" CssClass="btn-primary" OnClick="btBlock_Click" Text="Bloquear" />
