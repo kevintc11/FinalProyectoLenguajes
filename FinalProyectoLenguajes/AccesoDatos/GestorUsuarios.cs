@@ -45,8 +45,7 @@ namespace AccesoDatos
                 DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
                 //Usuario usuario1 = dc.Usuario.First(usua => usua.UsuarioID.Equals(nombreUsuario));
                 var usuario1 = (from usuario in dc.Usuario
-                                where usuario.DescUsuario.Equals(nombreUsuario)
-                                where usuario.ActivoSN == true
+                                where (usuario.DescUsuario.Equals(nombreUsuario) && usuario.ActivoSN == true)
                                 select usuario);
                 return usuario1;
             }

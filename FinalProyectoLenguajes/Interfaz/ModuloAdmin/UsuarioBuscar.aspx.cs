@@ -28,7 +28,7 @@ namespace Interfaz
             {
                 if(mInterfaz.comprobarUsuario(tbNick.Text))
                 {
-                    dgClientes.DataSource = mInterfaz.obtenerUsuario(tbNick.Text);
+                    dgClientes.DataSource = mInterfaz.obtenerUsuarioUnicoLista(tbNick.Text);
                     dgClientes.DataBind();
                 }
                 else
