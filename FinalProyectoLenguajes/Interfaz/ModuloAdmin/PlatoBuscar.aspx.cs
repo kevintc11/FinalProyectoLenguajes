@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using LogicaNegocio;
 
 namespace Interfaz
 {
     public partial class BuscarPlatos : System.Web.UI.Page
     {
+        AdministracionPlatos platos = new AdministracionPlatos();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+        
             dgPlato.DataBind();
         }
 
@@ -28,7 +33,9 @@ namespace Interfaz
         {
             if(espaciosVacios())
             {
-
+                int platoID = int.Parse(tbSearch.Text);
+                dgPlato.DataSource = platos.buscarPlato(platoID);
+                dgPlato.DataBind();
             }
         }
 

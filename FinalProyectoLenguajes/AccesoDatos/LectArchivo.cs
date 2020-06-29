@@ -15,8 +15,8 @@ namespace AccesoDatos
 
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             builder.DataSource = "proyectolenguajesfinal.database.windows.net";
-            builder.UserID = "juan";
-            builder.Password = "carlos12.";
+            builder.UserID = "kevintc";
+            builder.Password = "K.tc1218";
             builder.InitialCatalog = "dbproyectolenguajes";
 
             return builder;

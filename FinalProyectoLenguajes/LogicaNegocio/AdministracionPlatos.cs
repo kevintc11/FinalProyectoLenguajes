@@ -14,6 +14,10 @@ namespace LogicaNegocio
         GestorPlatos gestor = new GestorPlatos();
         GestorPedidos pedidos = new GestorPedidos();
         
+        public dynamic buscarPlato(int platoID)
+        {
+            return gestor.buscarPlato(platoID);
+        }
 
         public void insertarPlato(bool isAdd, int platoID, string nombre, string descPlato, int precio, int estado, string foto, int activo)
         {

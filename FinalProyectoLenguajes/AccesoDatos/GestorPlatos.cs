@@ -13,7 +13,7 @@ namespace AccesoDatos
 {
     public class GestorPlatos
     {
-        public Plato buscarPlato(int platoID)
+        public dynamic buscarPlato(int platoID)
         {
             LectArchivo lectura1 = new LectArchivo();
             SqlConnectionStringBuilder conect = lectura1.leerServer1();
@@ -22,14 +22,17 @@ namespace AccesoDatos
 
             if (verificarPlato(platoID))
             {
-                Plato plato1 = dc.Plato.First(pla => pla.PlatoID.Equals(platoID));
-                return plato1;
+                var platoa = from plato in dc.Plato
+                             where plato.PlatoID == platoID
+                             select plato;
+
+                //Plato plato1 = dc.Plato.First(pla => pla.PlatoID.Equals(platoID));
+                return platoa;
             }
             else
             {
                 return null;
             }
-            
         }
 
         public void modifInsertPlato(Boolean isAdd, int platoID, string nombre, string descPlato, int precio, int estado, string foto, int activo)
