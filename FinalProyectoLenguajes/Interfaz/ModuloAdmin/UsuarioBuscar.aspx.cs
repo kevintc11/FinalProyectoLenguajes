@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LogicaNegocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,6 +15,8 @@ namespace Interfaz
             dgClientes.DataBind();
         }
 
+        AdministracionUsuarios mInterfaz = new AdministracionUsuarios();
+
         protected void btBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/ModuloAdmin/UsuarioMenu.aspx");
@@ -23,7 +26,23 @@ namespace Interfaz
         {
             if(espaciosVacios())
             {
+                if(mInterfaz.comprobarUsuario(tbNick.Text))
+                {
+                    dgClientes.DataSource = mInterfaz.obtenerUsuario(tbNick.Text);
+                    dgClientes.DataBind();
+                }
+                else
+                {
+                    Type cstype = this.GetType();
 
+                    ClientScriptManager cs = Page.ClientScript;
+
+                    if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                    {
+                        String cstext = "alert('El Usuario No Existe');";
+                        cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                    }
+                }
             }
         }
 
