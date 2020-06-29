@@ -4,11 +4,15 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using LogicaNegocio;
 
 namespace Interfaz
 {
     public partial class AgregarPlato : System.Web.UI.Page
     {
+
+        AdministracionPlatos platos = new AdministracionPlatos();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -28,7 +32,27 @@ namespace Interfaz
         {
             if(espaciosVacios())
             {
-
+                try
+                {
+                    platos.insertarPlato(true, 0, tbDishName.Text, tbDesc.Text, int.Parse(tbPrice.Text), 1, null, 1);
+                    Type cstype = this.GetType();
+                    ClientScriptManager cs = Page.ClientScript;
+                    if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                    {
+                        String cstext = "alert('El plato se insertó correctamente');";
+                        cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                    }
+                }
+                catch (Exception)
+                {
+                    Type cstype = this.GetType();
+                    ClientScriptManager cs = Page.ClientScript;
+                    if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                    {
+                        String cstext = "alert('El plato no se pudo insertar');";
+                        cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                    }
+                }
             }
         }
 

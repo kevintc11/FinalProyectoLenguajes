@@ -13,6 +13,17 @@ namespace LogicaNegocio
     {
         GestorPlatos gestor = new GestorPlatos();
         GestorPedidos pedidos = new GestorPedidos();
+        GestorUsuarios usuarios = new GestorUsuarios();
+
+        public Boolean esNumero(object x)
+        {
+            return usuarios.esNumero(x);
+        }
+
+        public dynamic buscarPlato2(int platoID)
+        {
+            return gestor.buscarPlato2(platoID);
+        }
 
         public dynamic buscarPlato(int platoID)
         {

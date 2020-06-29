@@ -24,6 +24,24 @@ namespace Interfaz
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// Control tbPlatoID.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbPlatoID;
+
+        /// <summary>
+        /// Control btnComprobar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnComprobar;
+
+        /// <summary>
         /// Control tbDishName.
         /// </summary>
         /// <remarks>
@@ -51,13 +69,13 @@ namespace Interfaz
         protected global::System.Web.UI.WebControls.TextBox tbPrice;
 
         /// <summary>
-        /// Control RadioButtonList1.
+        /// Control rdEstado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList1;
+        protected global::System.Web.UI.WebControls.RadioButtonList rdEstado;
 
         /// <summary>
         /// Control btMod.

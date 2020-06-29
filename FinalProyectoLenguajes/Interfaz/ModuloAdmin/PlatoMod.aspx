@@ -21,6 +21,12 @@
         <div class="text-left">
             Modificar Plato<br />
             <br />
+            PlatoID<br />
+            <asp:TextBox ID="tbPlatoID" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Button ID="btnComprobar" runat="server" OnClick="btnComprobar_Click1" Text="Comprobar" />
+            <br />
             Nombre Del Plato<br />
             <asp:TextBox ID="tbDishName" runat="server"></asp:TextBox>
             <br />
@@ -37,9 +43,9 @@
             *No Disponible*<br />
             <br />
             Estado<br />
-            <asp:RadioButtonList ID="RadioButtonList1" runat="server">
+            <asp:RadioButtonList ID="rdEstado" runat="server">
                 <asp:ListItem Selected="True" Value="1">Habilitado</asp:ListItem>
-                <asp:ListItem Value="2">Desabilitado</asp:ListItem>
+                <asp:ListItem Value="0">Desabilitado</asp:ListItem>
             </asp:RadioButtonList>
             <asp:Button ID="btMod" runat="server" CssClass="btn btn-primary" Height="38px" Text="Modificar" Width="90px" OnClick="btMod_Click" />
             <br />

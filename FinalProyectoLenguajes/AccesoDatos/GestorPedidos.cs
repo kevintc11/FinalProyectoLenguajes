@@ -188,10 +188,20 @@ namespace AccesoDatos
             SqlConnection conexion = new SqlConnection(conect.ConnectionString);
             DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
 
-            var pedidos = from pedido in dc.Pedido
+            var pedidos = from pedidoXplato in dc.Pedido_X_Plato
+                          join pedido in dc.Pedido on pedidoXplato.PedidoID equals pedido.PedidoID
+                          join plato in dc.Plato on pedidoXplato.PlatoID equals plato.PlatoID
+                          join usuario in dc.Usuario on pedido.UsuarioID equals usuario.UsuarioID
                           where pedido.EstadoPedidoID <= 3
                           orderby pedido.FechaPedido ascending
-                          select pedido;
+                          select new
+                          {
+                              usuario.NombreCompleto,
+                              plato.PlatoID
+                          ,
+                              plato.Nombre,
+                              plato.DescPlato
+                          };
 
             return pedidos;
         }

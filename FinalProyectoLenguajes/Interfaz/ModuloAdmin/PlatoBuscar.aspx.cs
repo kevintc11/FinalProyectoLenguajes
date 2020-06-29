@@ -31,11 +31,23 @@ namespace Interfaz
 
         protected void btSearch_Click(object sender, EventArgs e)
         {
-            if(espaciosVacios())
+            if(espaciosVacios() && platos.esNumero(tbSearch.Text))
             {
                 int platoID = int.Parse(tbSearch.Text);
-                dgPlato.DataSource = platos.buscarPlato(platoID);
+                dgPlato.DataSource = platos.buscarPlato2(platoID);
                 dgPlato.DataBind();
+            }
+            else
+            {
+                Type cstype = this.GetType();
+
+                ClientScriptManager cs = Page.ClientScript;
+
+                if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                {
+                    String cstext = "alert('Sólo se permiten números');";
+                    cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                }
             }
         }
 
