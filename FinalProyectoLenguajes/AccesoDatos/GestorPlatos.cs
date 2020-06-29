@@ -130,7 +130,11 @@ namespace AccesoDatos
             try
             {
                 Plato plato1 = dc.Plato.First(pla => pla.PlatoID.Equals(platoID));
-                return true;
+                if (plato1 != null)
+                {
+                    return true;
+                }
+                return false;
             }
             catch (Exception ex)
             {
@@ -149,16 +153,21 @@ namespace AccesoDatos
 
             if (verificarPlato(platoID))
             {
-                Plato plato1 = dc.Plato.First(pla => pla.PlatoID.Equals(platoID));
-                plato1.ActivoSN = false;
-                dc.SubmitChanges();
-                MessageBox.Show("Se elimino correctamente");
-                dc.Connection.Close();
+                var plato1 = (from plato in dc.Plato
+                              where plato.PlatoID == platoID && plato.ActivoSN == true
+                              select plato).Single();
+                if (plato1.DescPlato != "")
+                {
+                    Plato platoNuevo = plato1;
+                    //Plato plato1 = dc.Plato.First(pla => pla.PlatoID.Equals(platoID));
+                    platoNuevo.ActivoSN = false;
+                    dc.SubmitChanges();
+                    dc.Connection.Close();
+                }
             }
             else
             {
-
-                ///Agregar el error
+                throw new Exception("Plato no existe");
             }
 
         }

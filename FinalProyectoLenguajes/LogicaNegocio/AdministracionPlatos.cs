@@ -13,7 +13,7 @@ namespace LogicaNegocio
     {
         GestorPlatos gestor = new GestorPlatos();
         GestorPedidos pedidos = new GestorPedidos();
-        
+
         public dynamic buscarPlato(int platoID)
         {
             return gestor.buscarPlato(platoID);
@@ -31,7 +31,7 @@ namespace LogicaNegocio
 
         public void eliminarPlato(int platoID)
         {
-            gestor.buscarPlato(platoID);
+            gestor.eliminarPlato(platoID);
         }
 
         public dynamic Pedidos()

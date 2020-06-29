@@ -180,5 +180,21 @@ namespace AccesoDatos
             }
         }
 
+        public dynamic GetListPedidosActivos()
+        {
+
+            LectArchivo lectura1 = new LectArchivo();
+            SqlConnectionStringBuilder conect = lectura1.leerServer1();
+            SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+            DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+
+            var pedidos = from pedido in dc.Pedido
+                          where pedido.EstadoPedidoID <= 3
+                          orderby pedido.FechaPedido ascending
+                          select pedido;
+
+            return pedidos;
+        }
+
     }
 }
