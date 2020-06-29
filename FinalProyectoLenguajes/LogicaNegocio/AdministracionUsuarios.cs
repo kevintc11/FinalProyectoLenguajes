@@ -40,6 +40,21 @@ namespace LogicaNegocio
             mUsers.insertarUsuario(nombreUsuario, correoElectronico, nombreCompleto, contraseña, tipoUsuario, direccion);
         }
 
+        public void actualizarUsuario(string nombreUsuario, string correoElectronico, string nombreCompleto, string contraseña, string direccion)
+        {
+            mUsers.actualizarUsuario(nombreUsuario, correoElectronico, nombreCompleto, contraseña, true, direccion);
+        }
+
+        public dynamic obtenerUsuario(string nickname)
+        {
+            return mUsers.consultaUsuario(nickname);
+        }
+
+        public dynamic obtenerUsuarioUnicoLista(string nickname)
+        {
+            return mUsers.consultaUsuarioLista(nickname);
+        }
+
         public Boolean iniciarSesion(string nickname, string password)
         {
             try

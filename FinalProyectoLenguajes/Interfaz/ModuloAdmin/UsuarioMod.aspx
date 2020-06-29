@@ -21,8 +21,10 @@
         <div class="text-left">
             Modificar Usuario<br />
             <br />
-            Nick De Usuario}<br />
+            Nick De Usuario<br />
             <asp:TextBox ID="tbNick" runat="server"></asp:TextBox>
+            <br />
+            <asp:Button ID="btCheck" runat="server" CssClass="btn-primary" Height="30px" Text="Comprobar" Width="108px" OnClick="btCheck_Click" />
             <br />
             <br />
             Nombre Completo<br />

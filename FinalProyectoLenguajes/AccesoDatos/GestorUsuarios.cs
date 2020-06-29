@@ -34,6 +34,28 @@ namespace AccesoDatos
             }
         }
 
+        public dynamic consultaUsuarioLista(String nombreUsuario)
+        {
+            try
+            {
+                LectArchivo lectura1 = new LectArchivo();
+
+                SqlConnectionStringBuilder conect = lectura1.leerServer1();
+                SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+                DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+                //Usuario usuario1 = dc.Usuario.First(usua => usua.UsuarioID.Equals(nombreUsuario));
+                var usuario1 = (from usuario in dc.Usuario
+                                where usuario.DescUsuario.Equals(nombreUsuario)
+                                where usuario.ActivoSN == true
+                                select usuario);
+                return usuario1;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
 
         public void eliminarCliente(string nombreUsuario)
         {
@@ -176,7 +198,7 @@ namespace AccesoDatos
             DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
 
 
-            Usuario usuario1 = dc.Usuario.First(usua => usua.UsuarioID.Equals(nombreUsuario));
+            Usuario usuario1 = dc.Usuario.First(usua => usua.DescUsuario.Equals(nombreUsuario));
             if (usuario1 == null)
             {
                 throw new Exception("No se encontroe al usuario");
@@ -235,13 +257,13 @@ namespace AccesoDatos
                     throw new Exception("Error: Correo no válido.");
                 }
 
-                if (bloqueado == true || bloqueado == true)
+                if (bloqueado == true || bloqueado == false)
                 {
                     usuario1.Bloqueado = bloqueado;
                 }
                 else
                 {
-                    throw new Exception("Error: El valor de bloqueado no valido no válido.");
+                    new Exception("Error: El valor de bloqueado no valido no válido.");
                 }
 
                 dc.SubmitChanges();
