@@ -14,10 +14,9 @@ namespace Interfaz.ModuloCocinero
         AdministracionPedidos pedidos = new AdministracionPedidos();
         protected void Page_Load(object sender, EventArgs e)
         {
-            dgPedidos.DataBind();
             dgPedidos.DataSource = pedidos.pedidosActivos();
-            
             dgPedidos.DataBind();
+            cambiarColores();
         }
 
         protected void dgPedidos_SelectedIndexChanged(object sender, EventArgs e)

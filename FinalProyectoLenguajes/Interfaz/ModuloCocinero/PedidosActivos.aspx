@@ -10,18 +10,27 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            Pedidos Activos</div>
-        <asp:GridView ID="dgPedidos" runat="server" OnSelectedIndexChanged="dgPedidos_SelectedIndexChanged">
-        </asp:GridView>
-        <br />
-        Para cambiar el estado de la orden, digite el pedidoID<br />
-        <br />
-        <asp:TextBox ID="tbPedidoID" runat="server"></asp:TextBox>
-        <br />
-        <br />
-        <asp:Button ID="btnCambiarEstado" runat="server" OnClick="btnCambiarEstado_Click" Text="Cambiar estado de orden" />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="btnDeshacer" runat="server" OnClick="btnDeshacer_Click" Text="Deshacer" />
+            <asp:ScriptManager ID="ScriptManager1" runat="server">
+            </asp:ScriptManager>
+&nbsp;<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                    Pedidos Activos<asp:GridView ID="dgPedidos" runat="server" OnSelectedIndexChanged="dgPedidos_SelectedIndexChanged">
+                    </asp:GridView>
+                    <br />
+                    Para cambiar el estado de la orden, digite el pedidoID<br />
+                    <br />
+                    <asp:TextBox ID="tbPedidoID" runat="server"></asp:TextBox>
+                    <br />
+                    <br />
+                    <asp:Button ID="btnCambiarEstado" runat="server" OnClick="btnCambiarEstado_Click" Text="Cambiar estado de orden" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Button ID="btnDeshacer" runat="server" OnClick="btnDeshacer_Click" Text="Deshacer" />
+                </ContentTemplate>
+            </asp:UpdatePanel>
+            <br />
+            <br />
+            <br />
+        </div>
     </form>
 </body>
 </html>
