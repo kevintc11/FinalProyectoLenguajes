@@ -53,6 +53,7 @@ namespace Interfaz.ModuloCocinero
         protected void btnCambiarEstado_Click(object sender, EventArgs e)
         {
             ejecucion();
+            cambiarColores();
         }
 
         public void ejecucion()
@@ -61,61 +62,43 @@ namespace Interfaz.ModuloCocinero
             {
                 if (pedidos.esNumero(tbPedidoID.Text))
                 {
-
                     if (pedidos.comprobarPedido(tbPedidoID.Text))
                     {
                         btnDeshacer.Enabled = true;
-                        idTempestado = pedidos.estadoPedidoID(tbPedidoID.Text);
+                        Session["temporal1"] = pedidos.estadoPedidoID(tbPedidoID.Text);
+                            //pedidos.estadoPedidoID(tbPedidoID.Text);
                         pedidos.actualizarEstadoPedido(int.Parse(tbPedidoID.Text), 5);
-                        idTempPedido = int.Parse(tbPedidoID.Text);
+                        Session["temporal2"] = int.Parse(tbPedidoID.Text);
+                        dgPedidos.DataSource = pedidos.pedidosActivos();
                         dgPedidos.DataBind();
-
-                        Type cstype = this.GetType();
-
-                        ClientScriptManager cs = Page.ClientScript;
-
-                        if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
-                        {
-                            String cstext = "alert('El pedido fue entregado');";
-                            cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
-                        }
-                        Response.Redirect("~/ModuloCocinero/PedidosActivos.aspx");
+                        lbError.Text = "El pedido fue entregado";
                     }
                     else
                     {
-                        Type cstype = this.GetType();
-
-                        ClientScriptManager cs = Page.ClientScript;
-
-                        if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
-                        {
-                            String cstext = "alert('El pedido no existe');";
-                            cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
-                        }
-                        Response.Redirect("~/ModuloCocinero/PedidosActivos.aspx");
+                        lbError.Text = "El pedido no existe";
                     }
                 }
                 else
                 {
-                    Type cstype = this.GetType();
-
-                    ClientScriptManager cs = Page.ClientScript;
-
-                    if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
-                    {
-                        String cstext = "alert('Valor Invalido');";
-                        cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
-                    }
-                    Response.Redirect("~/ModuloCocinero/PedidosActivos.aspx");
+                    lbError.Text = "Valor Invalido";
                 }
             }
+        }
+
+        public void reinicar()
+        {
+            int idTempPedido = (int)Session["temporal2"];
+            int idTempestado = (int)Session["temporal1"];
+            pedidos.actualizarEstadoPedido(idTempPedido, idTempestado);
+            dgPedidos.DataSource = pedidos.pedidosActivos();
+            dgPedidos.DataBind();
+            lbError.Text = "Cambios Desechos";
         }
 
         public Boolean espaciosVacios()
         {
             if (tbPedidoID.Text == "")
             {
-                
                 Type cstype = this.GetType();
 
                 ClientScriptManager cs = Page.ClientScript;
@@ -132,8 +115,9 @@ namespace Interfaz.ModuloCocinero
 
         protected void btnDeshacer_Click(object sender, EventArgs e)
         {
-
+            reinicar();
             cambiarColores();
+            btnDeshacer.Enabled = false;
         }
 
         protected void Timer1_Tick(object sender, EventArgs e)

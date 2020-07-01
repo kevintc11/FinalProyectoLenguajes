@@ -35,7 +35,7 @@ namespace Interfaz
                     }
                     else if(interfaz.tipoUsuario(txNick.Text) == 2)
                     {
-                        Response.Redirect("~/ModuloCocinero/CocineroMainMenu.aspx");
+                        Response.Redirect("~/ModuloCocinero/PedidosActivos.aspx");
                     }
                     else if(interfaz.tipoUsuario(txNick.Text) == 3) 
                     {

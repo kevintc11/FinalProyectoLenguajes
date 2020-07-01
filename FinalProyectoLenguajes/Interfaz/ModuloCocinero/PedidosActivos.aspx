@@ -27,23 +27,21 @@
                     </asp:GridView>
                     <br />
                     <br />
+                    Para cambiar el estado de la orden, digite el pedidoID<br />
+                    <asp:TextBox ID="tbPedidoID" runat="server" Width="140px"></asp:TextBox>
+                    <br />
+                    <br />
+                    <asp:Button ID="btnCambiarEstado" runat="server" CssClass="btn btn-primary" Height="35px" OnClick="btnCambiarEstado_Click" Text="Cambiar estado de orden" Width="210px" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnDeshacer" runat="server" CssClass="btn btn-primary" Height="35px" OnClick="btnDeshacer_Click" Text="Deshacer" />
+                    <br />
                 </ContentTemplate>
             </asp:UpdatePanel>
             <asp:UpdatePanel ID="UpdatePanel5" runat="server">
                 <ContentTemplate>
-                    <asp:Timer ID="Timer1" runat="server" Interval="100" OnInit="Page_Load" OnTick="Timer1_Tick">
-                    </asp:Timer>
+                    <asp:Label ID="lbError" runat="server" ForeColor="Red"></asp:Label>
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
-        <p>
-        Para cambiar el estado de la orden, digite el pedidoID<br />
-        <asp:TextBox ID="tbPedidoID" runat="server" Width="140px"></asp:TextBox>
-        <br />
-        <br />
-        <asp:Button ID="btnCambiarEstado" runat="server" CssClass="btn btn-primary" OnClick="btnCambiarEstado_Click" Text="Cambiar estado de orden" Height="35px" Width="210px" />
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnDeshacer" runat="server" CssClass="btn btn-primary" OnClick="btnDeshacer_Click" Text="Deshacer" Height="35px" />
-        </p>
     </form>
 </body>
 </html>
