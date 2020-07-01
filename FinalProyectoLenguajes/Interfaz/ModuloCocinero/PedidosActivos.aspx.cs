@@ -11,9 +11,14 @@ namespace Interfaz.ModuloCocinero
 {
     public partial class PedidosActivos : System.Web.UI.Page
     {
+
+
+        int idTempPedido;
+        int idTempestado;
         AdministracionPedidos pedidos = new AdministracionPedidos();
         protected void Page_Load(object sender, EventArgs e)
         {
+            btnDeshacer.Enabled = false;
             dgPedidos.DataSource = pedidos.pedidosActivos();
             dgPedidos.DataBind();
             cambiarColores();
@@ -24,10 +29,8 @@ namespace Interfaz.ModuloCocinero
 
         }
 
-
         private void cambiarColores()
         {
-
             foreach (GridViewRow row in dgPedidos.Rows)
             {
                 string valor = dgPedidos.Rows[row.RowIndex].Cells[6].Text;
@@ -49,21 +52,62 @@ namespace Interfaz.ModuloCocinero
 
         protected void btnCambiarEstado_Click(object sender, EventArgs e)
         {
+            ejecucion();
+        }
+
+        public void ejecucion()
+        {
             if (espaciosVacios())
             {
-                pedidos.actualizarEstadoPedido(int.Parse(tbPedidoID.Text), 5);
-                dgPedidos.DataBind();
-                
-                Type cstype = this.GetType();
-
-                ClientScriptManager cs = Page.ClientScript;
-
-                if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                if (pedidos.esNumero(tbPedidoID.Text))
                 {
-                    String cstext = "alert('El pedido fue entregado');";
-                    cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+
+                    if (pedidos.comprobarPedido(tbPedidoID.Text))
+                    {
+                        btnDeshacer.Enabled = true;
+                        idTempestado = pedidos.estadoPedidoID(tbPedidoID.Text);
+                        pedidos.actualizarEstadoPedido(int.Parse(tbPedidoID.Text), 5);
+                        idTempPedido = int.Parse(tbPedidoID.Text);
+                        dgPedidos.DataBind();
+
+                        Type cstype = this.GetType();
+
+                        ClientScriptManager cs = Page.ClientScript;
+
+                        if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                        {
+                            String cstext = "alert('El pedido fue entregado');";
+                            cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                        }
+                        Response.Redirect("~/ModuloCocinero/PedidosActivos.aspx");
+                    }
+                    else
+                    {
+                        Type cstype = this.GetType();
+
+                        ClientScriptManager cs = Page.ClientScript;
+
+                        if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                        {
+                            String cstext = "alert('El pedido no existe');";
+                            cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                        }
+                        Response.Redirect("~/ModuloCocinero/PedidosActivos.aspx");
+                    }
                 }
-                Response.Redirect("~/ModuloCocinero/PedidosActivos.aspx");
+                else
+                {
+                    Type cstype = this.GetType();
+
+                    ClientScriptManager cs = Page.ClientScript;
+
+                    if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                    {
+                        String cstext = "alert('Valor Invalido');";
+                        cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                    }
+                    Response.Redirect("~/ModuloCocinero/PedidosActivos.aspx");
+                }
             }
         }
 
@@ -71,6 +115,7 @@ namespace Interfaz.ModuloCocinero
         {
             if (tbPedidoID.Text == "")
             {
+                
                 Type cstype = this.GetType();
 
                 ClientScriptManager cs = Page.ClientScript;
@@ -87,13 +132,14 @@ namespace Interfaz.ModuloCocinero
 
         protected void btnDeshacer_Click(object sender, EventArgs e)
         {
+
             cambiarColores();
         }
 
         protected void Timer1_Tick(object sender, EventArgs e)
         {
             int valor  = int.Parse(DateTime.Now.Second.ToString());
-            Label2.Text = valor + "";
+            //Label2.Text = valor + "";
         }
     }
 }

@@ -13,6 +13,26 @@ namespace AccesoDatos
     public class GestorPedidos
     {
 
+        public Pedido getPedido(int pedidoID)
+        {
+            try
+            {
+                LectArchivo lectura1 = new LectArchivo();
+                SqlConnectionStringBuilder conect = lectura1.leerServer1();
+                SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+                DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+
+                var pedidos = (from pedido in dc.Pedido
+                               where pedido.PedidoID == pedidoID
+                               select pedido).Single();
+                return pedidos;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public dynamic consultaPedidosSinFiltro()
         {
             LectArchivo lectura1 = new LectArchivo();

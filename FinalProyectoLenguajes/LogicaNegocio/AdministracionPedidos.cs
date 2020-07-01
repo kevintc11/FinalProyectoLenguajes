@@ -11,6 +11,7 @@ namespace LogicaNegocio
     {
 
         GestorPedidos pedidos = new GestorPedidos();
+        GestorUsuarios usuarios = new GestorUsuarios();
 
         public dynamic pedidosActivos()
         {
@@ -20,6 +21,25 @@ namespace LogicaNegocio
         public void actualizarEstadoPedido(int pedidoID, int estadoID)
         {
             pedidos.actualizarEstadoPedido(pedidoID, estadoID);
+        }
+
+        public int estadoPedidoID (string pedidoID)
+        {
+            return pedidos.getPedido(int.Parse(pedidoID)).EstadoPedidoID;
+        }
+
+        public Boolean comprobarPedido(string pedidoID)
+        {
+            if(pedidos.getPedido(int.Parse(pedidoID)) != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public Boolean esNumero(String dato)
+        {
+            return usuarios.esNumero(dato);
         }
     }
 }
