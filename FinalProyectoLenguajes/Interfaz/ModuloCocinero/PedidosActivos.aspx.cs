@@ -89,5 +89,11 @@ namespace Interfaz.ModuloCocinero
         {
             cambiarColores();
         }
+
+        protected void Timer1_Tick(object sender, EventArgs e)
+        {
+            int valor  = int.Parse(DateTime.Now.Second.ToString());
+            Label2.Text = valor + "";
+        }
     }
 }

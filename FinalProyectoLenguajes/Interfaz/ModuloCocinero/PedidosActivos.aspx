@@ -16,6 +16,14 @@
                 <ContentTemplate>
                     Pedidos Activos<asp:GridView ID="dgPedidos" runat="server" OnSelectedIndexChanged="dgPedidos_SelectedIndexChanged">
                     </asp:GridView>
+                    <asp:UpdatePanel ID="UpdatePanel5" runat="server">
+                        <ContentTemplate>
+                            <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+                            <br />
+                            <asp:Timer ID="Timer1" runat="server" Interval="100" OnInit="Page_Load" OnTick="Timer1_Tick">
+                            </asp:Timer>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                     <br />
                     Para cambiar el estado de la orden, digite el pedidoID<br />
                     <br />
@@ -27,7 +35,6 @@
                     <asp:Button ID="btnDeshacer" runat="server" OnClick="btnDeshacer_Click" Text="Deshacer" />
                 </ContentTemplate>
             </asp:UpdatePanel>
-            <br />
             <br />
             <br />
         </div>
