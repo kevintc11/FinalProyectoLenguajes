@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -15,9 +16,18 @@ namespace Interfaz.ModuloCocinero
 
         int idTempPedido;
         int idTempestado;
+        string dato = "false";
         AdministracionPedidos pedidos = new AdministracionPedidos();
         protected void Page_Load(object sender, EventArgs e)
         {
+            string iniciaHilo = (string)Session["hilo"];
+            if (iniciaHilo == "true")
+            {
+                lblHilo.Text = "2";
+                Session["hilo"] = dato;
+                Thread tAct = new Thread(hiloAct);
+                tAct.Start();
+            }
             btnDeshacer.Enabled = false;
             dgPedidos.DataSource = pedidos.pedidosActivos();
             dgPedidos.DataBind();
@@ -124,6 +134,21 @@ namespace Interfaz.ModuloCocinero
         {
             int valor  = int.Parse(DateTime.Now.Second.ToString());
             //Label2.Text = valor + "";
+        }
+
+        protected void hiloAct()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                cambiarColores();
+                pedidos.cambiarEstadoPedAutomatic(int.Parse(DateTime.Now.Minute.ToString()));
+                Thread.Sleep(6000);
+            }
+        }
+
+        protected void btSalir_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

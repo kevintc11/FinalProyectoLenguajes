@@ -26,6 +26,7 @@
                     Pedidos Activos<asp:GridView ID="dgPedidos" runat="server" OnSelectedIndexChanged="dgPedidos_SelectedIndexChanged">
                     </asp:GridView>
                     <br />
+                    <asp:Label ID="lblHilo" runat="server"></asp:Label>
                     <br />
                     Para cambiar el estado de la orden, digite el pedidoID<br />
                     <asp:TextBox ID="tbPedidoID" runat="server" Width="140px"></asp:TextBox>
@@ -33,6 +34,8 @@
                     <br />
                     <asp:Button ID="btnCambiarEstado" runat="server" CssClass="btn btn-primary" Height="35px" OnClick="btnCambiarEstado_Click" Text="Cambiar estado de orden" Width="210px" />
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnDeshacer" runat="server" CssClass="btn btn-primary" Height="35px" OnClick="btnDeshacer_Click" Text="Deshacer" />
+                    <br />
+                    <asp:Button ID="btSalir" runat="server" CssClass="btn btn-warning" Height="35px" OnClick="btSalir_Click" Text="Salir" Width="70px" />
                     <br />
                 </ContentTemplate>
             </asp:UpdatePanel>

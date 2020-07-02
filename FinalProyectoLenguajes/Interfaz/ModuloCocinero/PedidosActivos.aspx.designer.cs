@@ -51,6 +51,15 @@ namespace Interfaz.ModuloCocinero
         protected global::System.Web.UI.WebControls.GridView dgPedidos;
 
         /// <summary>
+        /// Control lblHilo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblHilo;
+
+        /// <summary>
         /// Control tbPedidoID.
         /// </summary>
         /// <remarks>
@@ -76,6 +85,15 @@ namespace Interfaz.ModuloCocinero
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnDeshacer;
+
+        /// <summary>
+        /// Control btSalir.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btSalir;
 
         /// <summary>
         /// Control UpdatePanel5.

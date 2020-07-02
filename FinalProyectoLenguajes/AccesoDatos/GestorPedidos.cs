@@ -233,5 +233,85 @@ namespace AccesoDatos
             return pedidos;
         }
 
+        public void actualizarAutomatic(int horaActual)
+        {
+            MessageBox.Show("Probandodooo");
+            LectArchivo lectura1 = new LectArchivo();
+            SqlConnectionStringBuilder conect = lectura1.leerServer1();
+            SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+            DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+
+            var pedidos = from Pedido in dc.Pedido
+                          where Pedido.EstadoPedidoID < 4
+                          select Pedido;
+
+            foreach (var pedido in pedidos)
+            {
+                cambiarEstadoPedidoAutomatic(pedido.PedidoID, horaActual);
+            }
+        }
+
+        public void cambiarEstadoPedidoAutomatic(int pedidoID, int horaAct)
+        {
+
+            LectArchivo lectura1 = new LectArchivo();
+            SqlConnectionStringBuilder conect = lectura1.leerServer1();
+            SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+            DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+            Pedido pedido = dc.Pedido.First(ped => ped.PedidoID.Equals(pedidoID));
+
+            int tiempoPedido = int.Parse(pedido.FechaPedido.Minute.ToString());
+            Boolean esMayor = false;
+
+            if (horaAct > tiempoPedido)
+            {
+                esMayor = true;
+            }
+
+            int tiempoTranscurrido = 0;
+
+            if (esMayor)
+            {
+
+                tiempoTranscurrido = (horaAct - tiempoPedido);
+
+
+                if (tiempoTranscurrido < 3)
+                {
+                    pedido.EstadoPedidoID = 1;
+                }
+                else if (tiempoTranscurrido < 7)
+                {
+                    pedido.EstadoPedidoID = 2;
+                }
+                else
+                {
+                    pedido.EstadoPedidoID = 3;
+                }
+
+            }
+            else
+            {
+
+                tiempoTranscurrido = (horaAct - tiempoPedido) + 60;
+                if (tiempoTranscurrido < 3)
+                {
+                    pedido.EstadoPedidoID = 1;
+                }
+                else if (tiempoTranscurrido < 7)
+                {
+                    pedido.EstadoPedidoID = 2;
+                }
+                else
+                {
+                    pedido.EstadoPedidoID = 3;
+                }
+
+            }
+            dc.SubmitChanges();
+            dc.Connection.Close();
+
+        }
+
     }
 }

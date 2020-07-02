@@ -14,11 +14,12 @@ namespace Interfaz
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
-        
 
+        string dato = "true";
         protected void Page_Load(object sender, EventArgs e)
         {
             Session["temporal1"] = null;
+            Session["hilo"] = null;
         }
 
         AdministracionUsuarios interfaz = new AdministracionUsuarios();
@@ -37,6 +38,7 @@ namespace Interfaz
                     }
                     else if(interfaz.tipoUsuario(txNick.Text) == 2)
                     {
+                        Session["hilo"] = dato;
                         userData = "~/ModuloCocinero/PedidosActivos.aspx?usuario=" + txNick.Text;
                         Response.Redirect(userData);
                     }

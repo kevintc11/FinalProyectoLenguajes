@@ -41,5 +41,10 @@ namespace LogicaNegocio
         {
             return usuarios.esNumero(dato);
         }
+
+        public void cambiarEstadoPedAutomatic(int hora)
+        {
+            pedidos.actualizarAutomatic(hora);
+        }
     }
 }
