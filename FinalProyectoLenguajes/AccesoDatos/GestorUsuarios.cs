@@ -246,79 +246,79 @@ namespace AccesoDatos
 
 
             Usuario usuario1 = dc.Usuario.First(usua => usua.DescUsuario.Equals(nombreUsuario));
-            if (usuario1 == null)
-            {
-                throw new Exception("No se encontroe al usuario");
-            }
-            else
-            {
-                if (nombreUsuario != null && nombreUsuario != "")
+
+                if (usuario1 == null)
                 {
-                    usuario1.DescUsuario = nombreUsuario;
+                    throw new Exception("No se encontroe al usuario");
                 }
                 else
                 {
-                    throw new Exception("Error: El nombre de usuario no es válido.");
-                }
-                if (correoElectronico != null && correoElectronico != "")
-                {
-                    usuario1.CorreoElectronico = correoElectronico;
-                }
-                else
-                {
-                    throw new Exception("Error: El correo electronico no es válido.");
-                }
-                if (contraseña != null && contraseña != "")
-                {
-                    usuario1.Contraseña = contraseña;
-                }
-                else
-                {
-                    throw new Exception("Error: La contraseña no es válido.");
-                }
+                    if (nombreUsuario != null && nombreUsuario != "")
+                    {
+                        usuario1.DescUsuario = nombreUsuario;
+                    }
+                    else
+                    {
+                        throw new Exception("Error: El nombre de usuario no es válido.");
+                    }
+                    if (correoElectronico != null && correoElectronico != "")
+                    {
+                        usuario1.CorreoElectronico = correoElectronico;
+                    }
+                    else
+                    {
+                        throw new Exception("Error: El correo electronico no es válido.");
+                    }
+                    if (contraseña != null && contraseña != "")
+                    {
+                        usuario1.Contraseña = contraseña;
+                    }
+                    else
+                    {
+                        throw new Exception("Error: La contraseña no es válido.");
+                    }
 
-                if (nombreCompleto != null && nombreCompleto != "")
-                {
-                    usuario1.NombreCompleto = nombreCompleto;
-                }
-                else
-                {
-                    throw new Exception("Error: La contraseña no es válido.");
-                }
+                    if (nombreCompleto != null && nombreCompleto != "")
+                    {
+                        usuario1.NombreCompleto = nombreCompleto;
+                    }
+                    else
+                    {
+                        throw new Exception("Error: La contraseña no es válido.");
+                    }
 
-                if (direccion != null && direccion != "")
-                {
-                    usuario1.Direccion = direccion;
-                }
-                else
-                {
-                    throw new Exception("Error: La direccion no es válido.");
-                }
+                    if (direccion != null && direccion != "")
+                    {
+                        usuario1.Direccion = direccion;
+                    }
+                    else
+                    {
+                        throw new Exception("Error: La direccion no es válido.");
+                    }
 
-                if (comprobarCorreo(correoElectronico) == true)
-                {
-                    usuario1.CorreoElectronico = correoElectronico;
-                }
-                else
-                {
-                    throw new Exception("Error: Correo no válido.");
-                }
+                    if (comprobarCorreo(correoElectronico) == true)
+                    {
+                        usuario1.CorreoElectronico = correoElectronico;
+                    }
+                    else
+                    {
+                        throw new Exception("Error: Correo no válido.");
+                    }
 
-                if (bloqueado == true || bloqueado == false)
-                {
-                    usuario1.Bloqueado = bloqueado;
+                    if (bloqueado == true || bloqueado == false)
+                    {
+                        usuario1.Bloqueado = bloqueado;
+                    }
+                    else
+                    {
+                        new Exception("Error: El valor de bloqueado no valido no válido.");
+                    }
+
+                    dc.SubmitChanges();
+                    //MessageBox.Show("Se actualizó correctamente"); AQUI PUEDE VER UN MENSAJE
+                    dc.Connection.Close();
+
                 }
-                else
-                {
-                    new Exception("Error: El valor de bloqueado no valido no válido.");
-                }
-
-                dc.SubmitChanges();
-                //MessageBox.Show("Se actualizó correctamente"); AQUI PUEDE VER UN MENSAJE
-                dc.Connection.Close();
-
-            }
-
         }
 
         public Boolean esNumero(object objeto)

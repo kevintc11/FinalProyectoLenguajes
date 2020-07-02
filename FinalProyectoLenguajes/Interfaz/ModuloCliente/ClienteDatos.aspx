@@ -19,6 +19,26 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            Modificacion De Informacion De Cliente<br />
+            <br />
+            Nombre Completo<br />
+            <asp:TextBox ID="tbName" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            Correo<br />
+            <asp:TextBox ID="tbMail" runat="server"></asp:TextBox>
+            <br />
+            <br />
+            Dirección<br />
+                <asp:TextBox ID="tbAddress" runat="server" AutoCompleteType="HomeStreetAddress" Height="124px" TextMode="MultiLine" Width="219px"></asp:TextBox>
+                <br />
+            <br />
+            Contraseña<br />
+            <asp:TextBox ID="tbPass" runat="server"></asp:TextBox>
+            <br />
+            <asp:Button ID="btMod" runat="server" CssClass="btn-primary" Height="30px" Text="Modificar" Width="90px" OnClick="btMod_Click" />
+            <br />
+            <asp:Button ID="btBack" runat="server" CssClass="btn-warning" Text="Volver" OnClick="btBack_Click" Height="35px" Width="70px" />
         </div>
     </form>
 </body>

@@ -18,7 +18,7 @@ namespace Interfaz
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Session["temporal1"] = null;
         }
 
         AdministracionUsuarios interfaz = new AdministracionUsuarios();
@@ -27,19 +27,23 @@ namespace Interfaz
         {
             try
             {
+                String userData;
                 if (interfaz.iniciarSesion(txNick.Text, txPass.Text))
                 {
                     if(interfaz.tipoUsuario(txNick.Text) == 1)
                     {
-                        Response.Redirect("~/ModuloAdmin/MenuAdmin.aspx");
+                        userData = "~/ModuloAdmin/MenuAdmin.aspx?usuario=" + txNick.Text;
+                        Response.Redirect(userData);
                     }
                     else if(interfaz.tipoUsuario(txNick.Text) == 2)
                     {
-                        Response.Redirect("~/ModuloCocinero/PedidosActivos.aspx");
+                        userData = "~/ModuloCocinero/PedidosActivos.aspx?usuario=" + txNick.Text;
+                        Response.Redirect(userData);
                     }
                     else if(interfaz.tipoUsuario(txNick.Text) == 3) 
                     {
-                        Response.Redirect("~/ModuloCliente/ClienteMainMenu.aspx");
+                        userData = "~/ModuloCliente/ClienteMainMenu.aspx?usuario=" + txNick.Text;
+                        Response.Redirect(userData);
                     }
                 }
                 else

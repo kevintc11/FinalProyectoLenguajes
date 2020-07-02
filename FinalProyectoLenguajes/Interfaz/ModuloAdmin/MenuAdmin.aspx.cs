@@ -9,9 +9,12 @@ namespace Interfaz
 {
     public partial class WebForm2 : System.Web.UI.Page
     {
+        string nick;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Session["temporal1"] = Request.QueryString["usuario"];
+            nick = (string)Session["temporal1"];
+            lbName.Text = nick;
         }
 
         protected void SubmitBtn_Click(object sender, EventArgs e)

@@ -36,7 +36,7 @@ namespace Interfaz
 
         protected void btBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/ModuloAdmin/MenuAdmin.aspx");
+            Response.Redirect("~/ModuloAdmin/MenuAdmin.aspx?usuario=" + (string)Session["temporal1"]);
         }
     }
 }
