@@ -84,7 +84,6 @@
     <Content Include="ModuloCliente\ClienteMainMenu.aspx" />
     <Content Include="ModuloCliente\ClienteDatos.aspx" />
     <Content Include="ModuloCliente\ClientePedidos.aspx" />
-    <Content Include="ModuloCocinero\CocineroMainMenu.aspx" />
     <Content Include="ModuloCocinero\PedidosActivos.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="ModuloAdmin\UsuarioAgregar.aspx" />
@@ -130,13 +129,6 @@
     </Compile>
     <Compile Include="ModuloCliente\ClientePedidos.aspx.designer.cs">
       <DependentUpon>ClientePedidos.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ModuloCocinero\CocineroMainMenu.aspx.cs">
-      <DependentUpon>CocineroMainMenu.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ModuloCocinero\CocineroMainMenu.aspx.designer.cs">
-      <DependentUpon>CocineroMainMenu.aspx</DependentUpon>
     </Compile>
     <Compile Include="ModuloCocinero\PedidosActivos.aspx.cs">
       <DependentUpon>PedidosActivos.aspx</DependentUpon>

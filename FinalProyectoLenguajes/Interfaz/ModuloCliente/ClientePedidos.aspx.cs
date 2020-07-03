@@ -13,5 +13,44 @@ namespace Interfaz.ModuloCliente
         {
 
         }
+
+        protected void btBack_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void bt_Click(object sender, EventArgs e)
+        {
+            if(espaciosVacios())
+            {
+                Type cstype = this.GetType();
+
+                ClientScriptManager cs = Page.ClientScript;
+
+                if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                {
+                    String cstext = "alert('Platillo Agregado Correctamente');";
+                    cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                }
+            }
+        }
+
+        public Boolean espaciosVacios()
+        {
+            if (tbDishID.Text == "" || tbCant.Text == "")
+            {
+                Type cstype = this.GetType();
+
+                ClientScriptManager cs = Page.ClientScript;
+
+                if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                {
+                    String cstext = "alert('Debe de Llenar Correctamente Todos los Datos Requeridos');";
+                    cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                }
+                return false;
+            }
+            return true;
+        }
     }
 }

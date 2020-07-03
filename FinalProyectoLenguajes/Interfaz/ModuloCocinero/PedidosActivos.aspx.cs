@@ -13,7 +13,7 @@ namespace Interfaz.ModuloCocinero
     public partial class PedidosActivos : System.Web.UI.Page
     {
 
-
+        Thread tAct;
         int idTempPedido;
         int idTempestado;
         string dato = "false";
@@ -25,7 +25,7 @@ namespace Interfaz.ModuloCocinero
             {
                 lblHilo.Text = "2";
                 Session["hilo"] = dato;
-                Thread tAct = new Thread(hiloAct);
+                tAct = new Thread(hiloAct);
                 tAct.Start();
             }
             btnDeshacer.Enabled = false;
@@ -138,12 +138,13 @@ namespace Interfaz.ModuloCocinero
 
         protected void hiloAct()
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 2; i++)
             {
                 cambiarColores();
                 pedidos.cambiarEstadoPedAutomatic(int.Parse(DateTime.Now.Minute.ToString()));
                 Thread.Sleep(6000);
             }
+            tAct.Abort();
         }
 
         protected void btSalir_Click(object sender, EventArgs e)

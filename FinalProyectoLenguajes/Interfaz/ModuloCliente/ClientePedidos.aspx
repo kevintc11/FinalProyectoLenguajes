@@ -19,6 +19,23 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            Menu De Platos<asp:GridView ID="gvMenu" runat="server">
+            </asp:GridView>
+            <br />
+            Plato ID<br />
+            <asp:TextBox ID="tbDishID" runat="server"></asp:TextBox>
+            <br />
+            Cantidad
+            <br />
+            <asp:TextBox ID="tbCant" runat="server"></asp:TextBox>
+            <br />
+            <asp:Button ID="bt" runat="server" CssClass="btn-primary" Text="Agregar" OnClick="bt_Click" />
+            <br />
+            <br />
+            Carrito De Compras<asp:GridView ID="gvCarrito" runat="server">
+            </asp:GridView>
+            <br />
+            <asp:Button ID="btBack" runat="server" CssClass="btn-warning" Text="Volver" OnClick="btBack_Click" Height="35px" Width="70px" />
         </div>
     </form>
 </body>
