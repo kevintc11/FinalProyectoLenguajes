@@ -1,6 +1,10 @@
-﻿using LogicaNegocio;
+﻿using AccesoDatos;
+using LogicaNegocio;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -26,15 +30,16 @@ namespace Interfaz
                 {
                     if (platos.buscarPlato(int.Parse(tbId.Text)) != null)
                     {
-                        Type cstype = this.GetType();
-
-                        ClientScriptManager cs = Page.ClientScript;
-
-                        if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
-                        {
-                            String cstext = "alert('Exito');";
-                            cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
-                        }
+                        Plato pli = platos.buscarPlato(int.Parse(tbId.Text));
+                        lbName.Text = pli.Nombre;
+                        lbDesc.Text = pli.DescPlato;
+                        lbPrice.Text = pli.Precio.ToString();
+                        string ruta = Server.MapPath("~/Imagen/");
+                        ruta = Path.Combine(ruta, "plato.png");
+                        MemoryStream ms = new MemoryStream(platos.mostrarImagen(int.Parse(tbId.Text)));
+                        Bitmap imagenBit = (Bitmap)System.Drawing.Image.FromStream(ms);
+                        imagenBit.Save(ruta, ImageFormat.Png);
+                        imgPlato.ImageUrl = ("~/Imagen/plato.png");
                     }
                     else
                     {
@@ -127,6 +132,11 @@ namespace Interfaz
                 return false;
             }
             return true;
+        }
+
+        protected void btBack_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ModuloCliente/ClienteMainMenu.aspx?usuario=" + (String)Session["temporal1"]);
         }
     }
 }

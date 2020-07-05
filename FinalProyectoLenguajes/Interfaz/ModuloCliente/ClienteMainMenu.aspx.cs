@@ -42,8 +42,12 @@ namespace Interfaz.ModuloCliente
 
         protected void btModInfo_Click(object sender, EventArgs e)
         {
-            
             Response.Redirect("~/ModuloCliente/ClienteDatos.aspx");
+        }
+
+        protected void btMenu_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ModuloCliente/ClientePlatosMenu.aspx");
         }
     }
 }

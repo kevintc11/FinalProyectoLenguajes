@@ -61,11 +61,11 @@
             <br />
             <br />
             Foto<br />
-            <asp:Image ID="Image1" runat="server" Height="80px" Width="80px" />
+            <asp:Image ID="imgPlato" runat="server" Height="80px" Width="80px" />
             <br />
             <br />
             <br />
-            <asp:Button ID="btBack" runat="server" CssClass="btn-warning" Height="35px" Text="Volver" />
+            <asp:Button ID="btBack" runat="server" CssClass="btn-warning" Height="35px" Text="Volver" OnClick="btBack_Click" />
         </div>
     </form>
 </body>

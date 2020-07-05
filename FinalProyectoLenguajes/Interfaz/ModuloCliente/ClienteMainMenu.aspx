@@ -28,6 +28,8 @@
             <br />
             <asp:Button ID="btModInfo" runat="server" Text="Modificar Datos" CssClass="btn btn-primary" Height="35px" OnClick="btModInfo_Click" Width="170px"/>
             <br />
+            <asp:Button ID="btMenu" runat="server" Text="Menu Platos" CssClass="btn btn-primary" Height="35px" Width="170px" OnClick="btMenu_Click"/>
+            <br />
             <br />
             <asp:Button ID="btSalir" runat="server" Text="Salir" CssClass="btn btn-warning" Height="35px" OnClick="btSalir_Click" Width="70px" />
         </div>

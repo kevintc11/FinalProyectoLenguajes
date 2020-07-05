@@ -32,24 +32,37 @@ namespace Interfaz
         {
             if(espaciosVacios())
             {
-                try
+                if(fuPhoto.FileBytes.Length > 15)
                 {
-                    platos.insertarPlato(true, 0, tbDishName.Text, tbDesc.Text, int.Parse(tbPrice.Text), 1, fuPhoto.FileBytes, 1);
-                    Type cstype = this.GetType();
-                    ClientScriptManager cs = Page.ClientScript;
-                    if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                    try
                     {
-                        String cstext = "alert('El plato se insertó correctamente');";
-                        cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                        platos.insertarPlato(true, 0, tbDishName.Text, tbDesc.Text, int.Parse(tbPrice.Text), 1, fuPhoto.FileBytes, 1);
+                        Type cstype = this.GetType();
+                        ClientScriptManager cs = Page.ClientScript;
+                        if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                        {
+                            String cstext = "alert('El plato se insertó correctamente');";
+                            cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                        }
                     }
-                }
-                catch (Exception)
+                    catch (Exception)
+                    {
+                        Type cstype = this.GetType();
+                        ClientScriptManager cs = Page.ClientScript;
+                        if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                        {
+                            String cstext = "alert('El plato no se pudo insertar');";
+                            cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                        }
+                    }
+                } 
+                else
                 {
                     Type cstype = this.GetType();
                     ClientScriptManager cs = Page.ClientScript;
                     if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
                     {
-                        String cstext = "alert('El plato no se pudo insertar');";
+                        String cstext = "alert('Debe Utilizar Una Fotografía');";
                         cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
                     }
                 }
