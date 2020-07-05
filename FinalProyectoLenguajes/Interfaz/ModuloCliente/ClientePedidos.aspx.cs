@@ -16,8 +16,8 @@ namespace Interfaz.ModuloCliente
     {
         AdministracionPedidos pedidos = new AdministracionPedidos();
         AdministracionPlatos platos = new AdministracionPlatos();
+        AdministracionUsuarios gestionUsuario = new AdministracionUsuarios();
         Plato platoBuscado = new Plato();
-        ListPlatoInfo listaPlatosOriginal = new ListPlatoInfo();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,21 +33,59 @@ namespace Interfaz.ModuloCliente
         protected void bt_Click(object sender, EventArgs e)
         {
 
-
-            if(espaciosVacios())
+            if (espaciosVacios())
             {
-                platoBuscado = platos.buscarPlato(int.Parse(tbDishID.Text));
-                PlatoInfo platoNuevo = new PlatoInfo(int.Parse(tbDishID.Text), int.Parse(tbCant.Text),
-                    (pedidos.getLastPedidoID().PedidoID + 1), platoBuscado.Precio, platoBuscado.Nombre);
+                if (platos.validarPlato(int.Parse(tbDishID.Text)))
+                {
+                    platoBuscado = platos.buscarPlato(int.Parse(tbDishID.Text));
 
-                ((ListPlatoInfo)Session["TempLista"]).addPlato(platoNuevo);
-                //listaPlatosOriginal.addPlato(platoNuevo);
-                ((ListPlatoInfo)Session["TempLista"]).eliminarPlato();
+                    if (platoBuscado == null)
+                    {
+                        Type cstype = this.GetType();
 
-                gvCarrito.DataSource = ((ListPlatoInfo)Session["TempLista"]).GetListPlatoInfo();
-                gvCarrito.DataBind();
-                //pedidos.insertPedido("04-01-2003",1,1);
+                        ClientScriptManager cs = Page.ClientScript;
+
+                        if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                        {
+                            String cstext = "alert('El platoID ingresado no coincide con ningún plato');";
+                            cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                        }
+                    }
+                    else
+                    {
+                        PlatoInfo platoNuevo = new PlatoInfo(int.Parse(tbDishID.Text), int.Parse(tbCant.Text),
+                        (pedidos.getLastPedidoID().PedidoID + 1), platoBuscado.Precio, platoBuscado.Nombre);
+
+                        if (((ListPlatoInfo)Session["TempLista"]).contienePlato(platoNuevo.getPlatoID()))
+                        {
+                            ((ListPlatoInfo)Session["TempLista"]).setCantidadPlatoExistente(platoNuevo.getCantidadPlato(), platoNuevo.getPlatoID());
+                        }
+                        else
+                        {
+                            ((ListPlatoInfo)Session["TempLista"]).addPlato(platoNuevo);
+                        }
+
+                        gvCarrito.DataSource = ((ListPlatoInfo)Session["TempLista"]).GetListPlatoInfo();
+                        gvCarrito.DataBind();
+                    }
+                 
+                }
+                else
+                {
+                    Type cstype = this.GetType();
+
+                    ClientScriptManager cs = Page.ClientScript;
+
+                    if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                    {
+                        String cstext = "alert('El platoID ingresado no coincide con ningún plato');";
+                        cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                    }
+
+                }
+
             }
+
         }
 
         public Boolean espaciosVacios()
@@ -66,6 +104,167 @@ namespace Interfaz.ModuloCliente
                 return false;
             }
             return true;
+        }
+
+
+        public Boolean espaciosVaciosDatosCarrito()
+        {
+            if (txtPedidoID.Text == "" || txtCantidad.Text == "")
+            {
+                Type cstype = this.GetType();
+
+                ClientScriptManager cs = Page.ClientScript;
+
+                if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                {
+                    String cstext = "alert('Debe de Llenar Correctamente Todos los Datos Requeridos');";
+                    cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                }
+                return false;
+            }
+            return true;
+        }
+
+        public Boolean espaciosVaciosOpcEliminar()
+        {
+            if (txtPedidoID.Text == "")
+            {
+                Type cstype = this.GetType();
+
+                ClientScriptManager cs = Page.ClientScript;
+
+                if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                {
+                    String cstext = "alert('Debe de ingresar el PlatoID del plato que desea eliminar de su pedido');";
+                    cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                }
+                return false;
+            }
+            return true;
+        }
+
+        protected void btnModificar_Click1(object sender, EventArgs e)
+        {
+            if (espaciosVaciosDatosCarrito())
+            {
+                if (platos.validarPlato(int.Parse(txtPedidoID.Text)))
+                {
+                    if (((ListPlatoInfo)Session["TempLista"]).contienePlato(int.Parse(txtPedidoID.Text)))
+                    {
+                        ((ListPlatoInfo)Session["TempLista"]).modificarCantidadPlatos(int.Parse(txtCantidad.Text), int.Parse(txtPedidoID.Text));
+                    }
+                    else
+                    {
+                        Type cstype = this.GetType();
+
+                        ClientScriptManager cs = Page.ClientScript;
+
+                        if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                        {
+                            String cstext = "alert('El platoID ingresado no coincide con nigún plato de su lista');";
+                            cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                        }
+                    }
+                }
+                else
+                {
+                    Type cstype = this.GetType();
+
+                    ClientScriptManager cs = Page.ClientScript;
+
+                    if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                    {
+                        String cstext = "alert('El platoID ingresado no coincide con ningún plato');";
+                        cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                    }
+                }
+               
+
+            }
+            gvMenu.DataSource = platos.listPlatos();
+            gvMenu.DataBind();
+            gvCarrito.DataSource = ((ListPlatoInfo)Session["TempLista"]).GetListPlatoInfo();
+            gvCarrito.DataBind();
+        }
+
+        protected void btnEliminar_Click1(object sender, EventArgs e)
+        {
+            if (espaciosVaciosOpcEliminar())
+            {
+                if (platos.validarPlato(int.Parse(txtPedidoID.Text)))
+                {
+                    if (((ListPlatoInfo)Session["TempLista"]).contienePlato(int.Parse(txtPedidoID.Text)))
+                    {
+                        ((ListPlatoInfo)Session["TempLista"]).eliminarPlato(((ListPlatoInfo)Session["TempLista"]).getPlato(int.Parse(txtPedidoID.Text)));
+                    }
+                    else
+                    {
+                        Type cstype = this.GetType();
+
+                        ClientScriptManager cs = Page.ClientScript;
+
+                        if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                        {
+                            String cstext = "alert('El platoID ingresado no coincide con nigún plato de su lista');";
+                            cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                        }
+                    }
+                }
+                else
+                {
+                    Type cstype = this.GetType();
+
+                    ClientScriptManager cs = Page.ClientScript;
+
+                    if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                    {
+                        String cstext = "alert('El platoID ingresado no coincide con ningún plato');";
+                        cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                    }
+                }
+
+            }
+            gvMenu.DataSource = platos.listPlatos();
+            gvMenu.DataBind();
+            gvCarrito.DataSource = ((ListPlatoInfo)Session["TempLista"]).GetListPlatoInfo();
+            gvCarrito.DataBind();
+        }
+
+        protected void btnConfirm_Click(object sender, EventArgs e)
+        {
+            if (((ListPlatoInfo)Session["TempLista"]).isEmpty() == false)
+            {
+                string nombreActual = Session["temporal1"].ToString();
+                Usuario actual = gestionUsuario.obtenerUsuario(nombreActual);
+
+                pedidos.insertarPedido(1, actual.UsuarioID);
+
+                ListPlatoInfo listaFinal = new ListPlatoInfo();
+
+                listaFinal = ((ListPlatoInfo)Session["TempLista"]);
+                foreach (PlatoInfo info in listaFinal.GetListPlatoInfo())
+                {
+                    platos.insertarPedido_Plato(info.getCantidadPlato(), info.getPlatoID(), info.getPedidoID());
+                }
+            }
+            else
+            {
+
+                Type cstype = this.GetType();
+
+                ClientScriptManager cs = Page.ClientScript;
+
+                if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                {
+                    String cstext = "alert('Debe de agregar platos a su pedido');";
+                    cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                }
+
+                gvMenu.DataSource = platos.listPlatos();
+                gvMenu.DataBind();
+                gvCarrito.DataSource = ((ListPlatoInfo)Session["TempLista"]).GetListPlatoInfo();
+                gvCarrito.DataBind();
+            }
         }
     }
 }

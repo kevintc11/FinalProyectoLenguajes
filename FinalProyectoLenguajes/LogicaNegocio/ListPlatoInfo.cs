@@ -24,10 +24,79 @@ namespace LogicaNegocio
             return listaPlatos;
         }
 
-        public void eliminarPlato()
+        public void eliminarPlato(PlatoInfo platoRemove)
         {
-            MessageBox.Show(listaPlatos.Count() + "");
+            listaPlatos.Remove(platoRemove);
+        }
+
+        public Boolean contienePlato(int platoIDSearch)
+        {
+
+            PlatoInfo plato = new PlatoInfo();
+
+            foreach (PlatoInfo info in listaPlatos)
+            {
+                if (info.getPlatoID() == platoIDSearch)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public PlatoInfo getPlato(int platoID)
+        {
+            PlatoInfo plato = new PlatoInfo();
+
+            foreach (PlatoInfo info in listaPlatos)
+            {
+                if (info.getPlatoID() == platoID)
+                {
+                    plato = info;
+                }
+            }
+            return plato;
+        }
+
+        public void modificarCantidadPlatos(int cantidadNueva, int platoID)
+        {
+            foreach (PlatoInfo info in listaPlatos)
+            {
+                if (info.getPlatoID() == platoID)
+                {
+                    info.setCantidadPlato(cantidadNueva);
+                    info.setPrecioTotal(info.getPrecioPlato() * Decimal.ToInt32(info.getCantidadPlato()));
+                    return;
+                }
+            }
 
         }
+
+
+        public void setCantidadPlatoExistente(int cantidadNueva, int platoID)
+        {
+            foreach (PlatoInfo info in listaPlatos)
+            {
+                if (info.getPlatoID() == platoID)
+                {
+                    info.setCantidadPlato(info.getCantidadPlato() + cantidadNueva);
+                    info.setPrecioTotal(info.getPrecioPlato() * Decimal.ToInt32(info.getCantidadPlato()));
+                    return;
+                }
+            }
+
+        }
+
+        public Boolean isEmpty()
+        {
+            if (listaPlatos.Count() >= 1)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
     }
 }

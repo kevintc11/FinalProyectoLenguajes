@@ -330,7 +330,7 @@ namespace AccesoDatos
         }
 
 
-        public void insertarPedido(string fecha, int estadoPedidoID, int usuarioID)
+        public void insertarPedido(int estadoPedidoID, int usuarioID)
         {
 
 

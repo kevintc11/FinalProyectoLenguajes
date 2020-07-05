@@ -12,6 +12,7 @@ namespace LogicaNegocio
         public int platoID { get; set; }
         public int cantidadPlato { get; set; }
         public decimal precioTotal { get; set; }
+        public decimal precioPlato { get; set; }
         public int pedidoID { get; set; }
         public string nombrePlato { get; set; }
 
@@ -21,8 +22,11 @@ namespace LogicaNegocio
             this.cantidadPlato = cantidadPlato;
             this.pedidoID = pedidoID;
             this.nombrePlato = nombrePlato;
+            this.precioPlato = precioPlato;
             this.precioTotal = precioPlato * cantidadPlato;
         }
+
+        public PlatoInfo() { }
 
         public int getPlatoID()
         {
@@ -39,14 +43,14 @@ namespace LogicaNegocio
             return nombrePlato;
         }
 
-        //public decimal getPrecioTotal()
-        //{
-        //    return precioPlato * cantidadPlato;
-        //}
-
         public decimal getPrecioTotal()
         {
             return precioTotal;
+        }
+
+        public decimal getPrecioPlato()
+        {
+            return precioPlato;
         }
 
         public int getCantidadPlato()
@@ -54,5 +58,14 @@ namespace LogicaNegocio
             return cantidadPlato;
         }
 
+        public void setCantidadPlato(int cantidadPlato)
+        {
+            this.cantidadPlato = cantidadPlato;
+        }
+
+        public void setPrecioTotal(decimal precioTotal)
+        {
+            this.precioTotal = precioTotal;
+        }
     }
 }

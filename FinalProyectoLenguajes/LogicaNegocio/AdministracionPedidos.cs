@@ -51,5 +51,10 @@ namespace LogicaNegocio
         {
             return pedidos.GetLastPedido();
         }
+
+        public void insertarPedido(int estadoID, int usuarioID)
+        {
+            pedidos.insertarPedido(estadoID,usuarioID);
+        }
     }
 }

@@ -62,17 +62,17 @@
             </asp:GridView>
             <br />
             PedidoID<br />
-            <asp:TextBox ID="TextBox1" runat="server" Width="220px"></asp:TextBox>
+            <asp:TextBox ID="txtPedidoID" runat="server" Width="220px"></asp:TextBox>
             <br />
             Cantidad Plato<br />
-            <asp:TextBox ID="TextBox2" runat="server" Width="220px"></asp:TextBox>
+            <asp:TextBox ID="txtCantidad" runat="server" Width="220px"></asp:TextBox>
             <br />
-            <asp:Button ID="btnModificar" runat="server" CssClass="btn-primary" Height="35px" Text="Modificar" />
+            <asp:Button ID="btnModificar" runat="server" CssClass="btn-primary" Height="35px" Text="Modificar" OnClick="btnModificar_Click1" />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnEliminar" runat="server" CssClass="btn-primary" Height="35px" Text="Eliminar" />
+            <asp:Button ID="btnEliminar" runat="server" CssClass="btn-primary" Height="35px" Text="Eliminar" OnClick="btnEliminar_Click1" />
             <br />
             <br />
-            <asp:Button ID="btnConfirm" runat="server" CssClass="btn-primary" Height="35px" Text="Confirmar" />
+            <asp:Button ID="btnConfirm" runat="server" CssClass="btn-primary" Height="35px" Text="Confirmar" OnClick="btnConfirm_Click" />
             <br />
             <br />
             <asp:Button ID="btBack" runat="server" CssClass="btn-warning" Text="Volver" OnClick="btBack_Click" Height="35px" Width="70px" />

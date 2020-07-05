@@ -79,5 +79,15 @@ namespace LogicaNegocio
         {
             return gestor.listPlatosActivos();
         }
+
+        public void insertarPedido_Plato(int cantidadPlato, int platoID, int pedidoID)
+        {
+            gestor.insertarPedidoXPlato(cantidadPlato, platoID, pedidoID);
+        }
+
+        public Boolean validarPlato(int platoID)
+        {
+            return gestor.verificarPlato(platoID);
+        }
     }
 }

@@ -42,6 +42,7 @@ namespace AccesoDatos
 
                 var platos = (from plato in dc.Plato
                               where plato.Estado == true
+                              where plato.ActivoSN == true
                               select new { plato.PlatoID, plato.Nombre, plato.Precio }).ToList();
 
                 return platos;
