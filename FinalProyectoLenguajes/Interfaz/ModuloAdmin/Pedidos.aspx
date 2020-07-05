@@ -38,9 +38,9 @@
             <br />
             Filtro<br />
             <asp:CheckBoxList ID="cblFilter" runat="server" OnSelectedIndexChanged="CheckBoxList1_SelectedIndexChanged">
-                <asp:ListItem>ClienteID</asp:ListItem>
-                <asp:ListItem>Rango De Fechas</asp:ListItem>
-                <asp:ListItem>Estado</asp:ListItem>
+                <asp:ListItem Value="1">ClienteID</asp:ListItem>
+                <asp:ListItem Value="2">Rango De Fechas</asp:ListItem>
+                <asp:ListItem Value="3">Estado</asp:ListItem>
             </asp:CheckBoxList>
             <br />
             ClienteID A Filtrar<br />

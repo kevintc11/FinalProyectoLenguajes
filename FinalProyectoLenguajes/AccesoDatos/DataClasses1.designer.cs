@@ -39,12 +39,12 @@ namespace AccesoDatos
     partial void InsertTipoUsuario(TipoUsuario instance);
     partial void UpdateTipoUsuario(TipoUsuario instance);
     partial void DeleteTipoUsuario(TipoUsuario instance);
-    partial void InsertPlato(Plato instance);
-    partial void UpdatePlato(Plato instance);
-    partial void DeletePlato(Plato instance);
     partial void InsertUsuario(Usuario instance);
     partial void UpdateUsuario(Usuario instance);
     partial void DeleteUsuario(Usuario instance);
+    partial void InsertPlato(Plato instance);
+    partial void UpdatePlato(Plato instance);
+    partial void DeletePlato(Plato instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -109,19 +109,19 @@ namespace AccesoDatos
 			}
 		}
 		
-		public System.Data.Linq.Table<Plato> Plato
-		{
-			get
-			{
-				return this.GetTable<Plato>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Usuario> Usuario
 		{
 			get
 			{
 				return this.GetTable<Usuario>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Plato> Plato
+		{
+			get
+			{
+				return this.GetTable<Plato>();
 			}
 		}
 	}
@@ -633,212 +633,6 @@ namespace AccesoDatos
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Plato")]
-	public partial class Plato : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private short _PlatoID;
-		
-		private string _Nombre;
-		
-		private string _DescPlato;
-		
-		private decimal _Precio;
-		
-		private System.Data.Linq.Binary _Foto;
-		
-		private bool _Estado;
-		
-		private bool _ActivoSN;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnPlatoIDChanging(short value);
-    partial void OnPlatoIDChanged();
-    partial void OnNombreChanging(string value);
-    partial void OnNombreChanged();
-    partial void OnDescPlatoChanging(string value);
-    partial void OnDescPlatoChanged();
-    partial void OnPrecioChanging(decimal value);
-    partial void OnPrecioChanged();
-    partial void OnFotoChanging(System.Data.Linq.Binary value);
-    partial void OnFotoChanged();
-    partial void OnEstadoChanging(bool value);
-    partial void OnEstadoChanged();
-    partial void OnActivoSNChanging(bool value);
-    partial void OnActivoSNChanged();
-    #endregion
-		
-		public Plato()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlatoID", AutoSync=AutoSync.OnInsert, DbType="SmallInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public short PlatoID
-		{
-			get
-			{
-				return this._PlatoID;
-			}
-			set
-			{
-				if ((this._PlatoID != value))
-				{
-					this.OnPlatoIDChanging(value);
-					this.SendPropertyChanging();
-					this._PlatoID = value;
-					this.SendPropertyChanged("PlatoID");
-					this.OnPlatoIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Nombre
-		{
-			get
-			{
-				return this._Nombre;
-			}
-			set
-			{
-				if ((this._Nombre != value))
-				{
-					this.OnNombreChanging(value);
-					this.SendPropertyChanging();
-					this._Nombre = value;
-					this.SendPropertyChanged("Nombre");
-					this.OnNombreChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DescPlato", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string DescPlato
-		{
-			get
-			{
-				return this._DescPlato;
-			}
-			set
-			{
-				if ((this._DescPlato != value))
-				{
-					this.OnDescPlatoChanging(value);
-					this.SendPropertyChanging();
-					this._DescPlato = value;
-					this.SendPropertyChanged("DescPlato");
-					this.OnDescPlatoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Precio", DbType="Money NOT NULL")]
-		public decimal Precio
-		{
-			get
-			{
-				return this._Precio;
-			}
-			set
-			{
-				if ((this._Precio != value))
-				{
-					this.OnPrecioChanging(value);
-					this.SendPropertyChanging();
-					this._Precio = value;
-					this.SendPropertyChanged("Precio");
-					this.OnPrecioChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Foto", DbType="VarBinary(MAX) NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary Foto
-		{
-			get
-			{
-				return this._Foto;
-			}
-			set
-			{
-				if ((this._Foto != value))
-				{
-					this.OnFotoChanging(value);
-					this.SendPropertyChanging();
-					this._Foto = value;
-					this.SendPropertyChanged("Foto");
-					this.OnFotoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="Bit NOT NULL")]
-		public bool Estado
-		{
-			get
-			{
-				return this._Estado;
-			}
-			set
-			{
-				if ((this._Estado != value))
-				{
-					this.OnEstadoChanging(value);
-					this.SendPropertyChanging();
-					this._Estado = value;
-					this.SendPropertyChanged("Estado");
-					this.OnEstadoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActivoSN", DbType="Bit NOT NULL")]
-		public bool ActivoSN
-		{
-			get
-			{
-				return this._ActivoSN;
-			}
-			set
-			{
-				if ((this._ActivoSN != value))
-				{
-					this.OnActivoSNChanging(value);
-					this.SendPropertyChanging();
-					this._ActivoSN = value;
-					this.SendPropertyChanged("ActivoSN");
-					this.OnActivoSNChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Usuario")]
 	public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1159,6 +953,212 @@ namespace AccesoDatos
 		{
 			this.SendPropertyChanging();
 			entity.Usuario = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Plato")]
+	public partial class Plato : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private short _PlatoID;
+		
+		private string _Nombre;
+		
+		private string _DescPlato;
+		
+		private decimal _Precio;
+		
+		private byte[] _Foto;
+		
+		private bool _Estado;
+		
+		private bool _ActivoSN;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPlatoIDChanging(short value);
+    partial void OnPlatoIDChanged();
+    partial void OnNombreChanging(string value);
+    partial void OnNombreChanged();
+    partial void OnDescPlatoChanging(string value);
+    partial void OnDescPlatoChanged();
+    partial void OnPrecioChanging(decimal value);
+    partial void OnPrecioChanged();
+    partial void OnFotoChanging(byte[] value);
+    partial void OnFotoChanged();
+    partial void OnEstadoChanging(bool value);
+    partial void OnEstadoChanged();
+    partial void OnActivoSNChanging(bool value);
+    partial void OnActivoSNChanged();
+    #endregion
+		
+		public Plato()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlatoID", AutoSync=AutoSync.OnInsert, DbType="SmallInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public short PlatoID
+		{
+			get
+			{
+				return this._PlatoID;
+			}
+			set
+			{
+				if ((this._PlatoID != value))
+				{
+					this.OnPlatoIDChanging(value);
+					this.SendPropertyChanging();
+					this._PlatoID = value;
+					this.SendPropertyChanged("PlatoID");
+					this.OnPlatoIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nombre", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Nombre
+		{
+			get
+			{
+				return this._Nombre;
+			}
+			set
+			{
+				if ((this._Nombre != value))
+				{
+					this.OnNombreChanging(value);
+					this.SendPropertyChanging();
+					this._Nombre = value;
+					this.SendPropertyChanged("Nombre");
+					this.OnNombreChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DescPlato", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string DescPlato
+		{
+			get
+			{
+				return this._DescPlato;
+			}
+			set
+			{
+				if ((this._DescPlato != value))
+				{
+					this.OnDescPlatoChanging(value);
+					this.SendPropertyChanging();
+					this._DescPlato = value;
+					this.SendPropertyChanged("DescPlato");
+					this.OnDescPlatoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Precio", DbType="Money NOT NULL")]
+		public decimal Precio
+		{
+			get
+			{
+				return this._Precio;
+			}
+			set
+			{
+				if ((this._Precio != value))
+				{
+					this.OnPrecioChanging(value);
+					this.SendPropertyChanging();
+					this._Precio = value;
+					this.SendPropertyChanged("Precio");
+					this.OnPrecioChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Foto", DbType="Image", UpdateCheck=UpdateCheck.Never)]
+		public byte[] Foto
+		{
+			get
+			{
+				return this._Foto;
+			}
+			set
+			{
+				if ((this._Foto != value))
+				{
+					this.OnFotoChanging(value);
+					this.SendPropertyChanging();
+					this._Foto = value;
+					this.SendPropertyChanged("Foto");
+					this.OnFotoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Estado", DbType="Bit NOT NULL")]
+		public bool Estado
+		{
+			get
+			{
+				return this._Estado;
+			}
+			set
+			{
+				if ((this._Estado != value))
+				{
+					this.OnEstadoChanging(value);
+					this.SendPropertyChanging();
+					this._Estado = value;
+					this.SendPropertyChanged("Estado");
+					this.OnEstadoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ActivoSN", DbType="Bit NOT NULL")]
+		public bool ActivoSN
+		{
+			get
+			{
+				return this._ActivoSN;
+			}
+			set
+			{
+				if ((this._ActivoSN != value))
+				{
+					this.OnActivoSNChanging(value);
+					this.SendPropertyChanging();
+					this._ActivoSN = value;
+					this.SendPropertyChanged("ActivoSN");
+					this.OnActivoSNChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

@@ -42,6 +42,7 @@ namespace AccesoDatos
             }
         }
 
+
         public dynamic buscarPlato2(int platoID)
         {
             LectArchivo lectura1 = new LectArchivo();
@@ -71,7 +72,7 @@ namespace AccesoDatos
             }
         }
 
-        public void modifInsertPlato(Boolean isAdd, int platoID, string nombre, string descPlato, int precio, int estado, string foto, int activo)
+        public void modifInsertPlato(Boolean isAdd, int platoID, string nombre, string descPlato, int precio, int estado, byte[] foto, int activo)
         {
             LectArchivo lectura1 = new LectArchivo();
             SqlConnectionStringBuilder conect = lectura1.leerServer1();
@@ -79,11 +80,9 @@ namespace AccesoDatos
             DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
             try
             {
-                MessageBox.Show("PUTOO");
                 Plato platoNuevo;
-                if (buscarPlato(platoID) == null)
+                if (buscarPlato(platoID) == null && isAdd != true)
                 {
-                    MessageBox.Show("PUTOO");
                     throw new Exception("Plato no existe");
                 }
                 else
@@ -122,6 +121,18 @@ namespace AccesoDatos
                     else
                     {
                         throw new Exception("Error: Precio del producto inválido");
+                    }
+                    if (foto != null && isAdd == false)
+                    {
+                        platoNuevo.Foto = foto;
+                    }
+                    else if(foto != null)
+                    {
+                        platoNuevo.Foto = foto;
+                        
+                    }else
+                    {
+                        throw new Exception("Otra vez aqui");
                     }
                     if (estado == 0 || estado == 1)
                     {
@@ -226,6 +237,74 @@ namespace AccesoDatos
 
         }
 
+        public dynamic buscarPlatoFiltro(string nombrePlato)
+        {
+            LectArchivo lectura1 = new LectArchivo();
+            SqlConnectionStringBuilder conect = lectura1.leerServer1();
+            SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+            DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
 
+            try
+            {
+                if (verificarPlatoNombre(nombrePlato))
+                {
+
+                    var platoa = (from plato in dc.Plato
+                                  where plato.Nombre.Contains(nombrePlato) && plato.ActivoSN == true
+                                  select plato);
+
+                    return platoa;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public Boolean verificarPlatoNombre(string nombrePlato)
+        {
+
+            LectArchivo lectura1 = new LectArchivo();
+            SqlConnectionStringBuilder conect = lectura1.leerServer1();
+            SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+            DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+
+            try
+            {
+                Plato plato1 = dc.Plato.First(pla => pla.Nombre.Contains(nombrePlato));
+                if (plato1 != null)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
+
+        public byte[] mostrarImagen(int platoID)
+        {
+            LectArchivo lectura1 = new LectArchivo();
+            SqlConnectionStringBuilder conect = lectura1.leerServer1();
+            SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+            DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+
+            if (buscarPlato(platoID) != null)
+            {
+                var platos = (from plato in dc.Plato
+                              where plato.PlatoID == platoID
+                              select plato).Single();
+                return platos.Foto;
+            }
+            return null;
+        }
     }
 }

@@ -12,8 +12,16 @@ namespace Interfaz.ModuloAdmin
 {
     public partial class Pedidos : System.Web.UI.Page
     {
+
+        private Boolean filtroCliente;
+        private Boolean filtroFecha;
+        private Boolean filtroEstado;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            filtroCliente = false;
+            filtroFecha = false;
+            filtroEstado = false;
             dgPedidos.DataSource = metodosP.Pedidos();
             dgPedidos.DataBind();
         }
@@ -43,50 +51,84 @@ namespace Interfaz.ModuloAdmin
 
         protected void btSearch_Click(object sender, EventArgs e)
         {
+            revisarListOptions();
             dgPedidos.DataSource = metodoFiltro();
             dgPedidos.DataBind();
         }
 
-        public dynamic metodoFiltro()
+        public void revisarListOptions()
         {
 
-
-            if (cblFilter.SelectedIndex == 0)
+            int valueOpcion = 0;
+            for (int i = 0; i < cblFilter.Items.Count; i++)
             {
-                if(espaciosVacios1())
+
+                if (cblFilter.Items[i].Selected)
                 {
-                    if (cblFilter.SelectedIndex == 1)
+                    valueOpcion = int.Parse(cblFilter.Items[i].Value);
+                    if (valueOpcion == 1)
                     {
-                        if (cblFilter.SelectedIndex == 2)
+                        filtroCliente = true;
+                    }
+                    else if (valueOpcion == 2)
+                    {
+                        filtroFecha = true;
+                    }
+                    else
+                    {
+                        filtroEstado = true;
+                    }
+                }
+
+            }
+        }
+
+        public dynamic metodoFiltro()
+        {
+            if (filtroCliente)
+            {
+                if (espaciosVacios1())
+                {
+                    if (filtroFecha)
+                    {
+                        if (filtroEstado)
                         {
                             return metodosP.PedidosConFiltro(3, int.Parse(txName.Text), txDate1.Text,
                                                         txDate2.Text, int.Parse(rblStatus.SelectedValue));
                         }
                         return metodosP.PedidosConFiltro(2, int.Parse(txName.Text), txDate1.Text,
                                                         txDate2.Text, 0);
+
                     }
-                    return metodosP.PedidosConFiltro(1, int.Parse(txName.Text), txDate1.Text,
-                                                        txDate2.Text, 0);
+                    else if (filtroEstado)
+                    {
+                        return metodosP.PedidosConFiltro(2, int.Parse(txName.Text), "",
+                                                        "", int.Parse(rblStatus.SelectedValue));
+                    }
+                    return metodosP.PedidosConFiltro(1, int.Parse(txName.Text), "",
+                                                        "", 0);
                 }
             }
-            else if (cblFilter.SelectedIndex == 1)
+            else if (filtroFecha)
             {
                 if (espaciosVaciosFecha())
                 {
-                    if (cblFilter.SelectedIndex == 2)
+                    if (filtroEstado)
                     {
                         return metodosP.PedidosConFiltro(2, 0, txDate1.Text,
                                                         txDate2.Text, int.Parse(rblStatus.SelectedValue));
                     }
-                    return metodosP.PedidosConFiltro(2, 0, txDate1.Text,
+                    return metodosP.PedidosConFiltro(1, 0, txDate1.Text,
                                                         txDate2.Text, 0);
                 }
             }
-            else if (cblFilter.SelectedIndex == 2)
+            else if (filtroEstado)
             {
-                return metodosP.PedidosConFiltro(1, 0, txDate1.Text,
-                                                    txDate2.Text, int.Parse(rblStatus.SelectedValue));
-            }else
+
+                return metodosP.PedidosConFiltro(1, 0, "",
+                                                    "", int.Parse(rblStatus.SelectedValue));
+            }
+            else
             {
                 return metodosP.Pedidos();
             }

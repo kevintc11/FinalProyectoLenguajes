@@ -34,7 +34,7 @@ namespace Interfaz
             {
                 try
                 {
-                    platos.insertarPlato(true, 0, tbDishName.Text, tbDesc.Text, int.Parse(tbPrice.Text), 1, null, 1);
+                    platos.insertarPlato(true, 0, tbDishName.Text, tbDesc.Text, int.Parse(tbPrice.Text), 1, fuPhoto.FileBytes, 1);
                     Type cstype = this.GetType();
                     ClientScriptManager cs = Page.ClientScript;
                     if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))

@@ -313,5 +313,48 @@ namespace AccesoDatos
 
         }
 
+
+        public void insertarPedido(string fecha, int estadoPedidoID, int usuarioID)
+        {
+
+
+            DateTime date2 = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
+
+            LectArchivo lectura1 = new LectArchivo();
+
+            SqlConnectionStringBuilder conect = lectura1.leerServer1();
+            SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+            DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+            Pedido pedido = new Pedido();
+
+
+            pedido.FechaPedido = date2;
+
+            pedido.EstadoPedidoID = Convert.ToInt16(estadoPedidoID);
+            pedido.UsuarioID = Convert.ToInt16(usuarioID);
+
+
+            dc.Pedido.InsertOnSubmit(pedido);
+            dc.SubmitChanges();
+            dc.Connection.Close();
+
+        }
+
+        public DateTime GetDateTime()
+        {
+
+            LectArchivo lectura1 = new LectArchivo();
+
+            SqlConnectionStringBuilder conect = lectura1.leerServer1();
+            SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+            //DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+
+            using (DataClasses1DataContext dc = new DataClasses1DataContext(conexion))
+            {
+                var dQuery = dc.ExecuteQuery<DateTime>("SELECT getdate()");
+                return dQuery.AsEnumerable().First();
+            }
+
+        }
     }
 }

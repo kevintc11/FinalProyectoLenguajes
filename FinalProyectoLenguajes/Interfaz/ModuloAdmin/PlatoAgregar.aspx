@@ -34,7 +34,8 @@
             <br />
             <br />
             Foto Del Plato<br />
-            *No Disponible*<br />
+            <asp:FileUpload ID="fuPhoto" runat="server" />
+            <br />
             <asp:Button ID="btAdd" runat="server" CssClass="btn btn-primary" Height="38px" Text="Agregar" Width="90px" OnClick="btAdd_Click" />
             <br />
             <br />

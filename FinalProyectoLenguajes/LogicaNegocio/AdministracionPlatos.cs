@@ -30,12 +30,12 @@ namespace LogicaNegocio
             return gestor.buscarPlato(platoID);
         }
 
-        public void insertarPlato(bool isAdd, int platoID, string nombre, string descPlato, int precio, int estado, string foto, int activo)
+        public void insertarPlato(bool isAdd, int platoID, string nombre, string descPlato, int precio, int estado, byte[] foto, int activo)
         {
             gestor.modifInsertPlato(isAdd, platoID, nombre, descPlato, precio, estado, foto, activo);
         }
 
-        public void modificarPlato(bool isAdd, int platoID, string nombre, string descPlato, int precio, int estado, string foto, int activo)
+        public void modificarPlato(bool isAdd, int platoID, string nombre, string descPlato, int precio, int estado, byte[] foto, int activo)
         {
             gestor.modifInsertPlato(isAdd, platoID, nombre, descPlato, precio, estado, foto, activo);
         }
@@ -53,6 +53,11 @@ namespace LogicaNegocio
         public dynamic PedidosConFiltro(int filtro, int cliente,string fechaA, string fechaB, int estado)
         {
             return pedidos.consultaPedidosCocnFiltro(filtro, cliente,fechaA,fechaB,estado);
+        }
+
+        public byte[] mostrarImagen(int platoID)
+        {
+            return gestor.mostrarImagen(platoID);
         }
     }
 }

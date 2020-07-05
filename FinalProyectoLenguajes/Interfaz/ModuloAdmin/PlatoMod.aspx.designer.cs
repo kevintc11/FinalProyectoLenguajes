@@ -69,6 +69,24 @@ namespace Interfaz
         protected global::System.Web.UI.WebControls.TextBox tbPrice;
 
         /// <summary>
+        /// Control imgPlato.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgPlato;
+
+        /// <summary>
+        /// Control fuPhoto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fuPhoto;
+
+        /// <summary>
         /// Control rdEstado.
         /// </summary>
         /// <remarks>

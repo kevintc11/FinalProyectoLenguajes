@@ -39,8 +39,12 @@
             <asp:TextBox ID="tbPrice" runat="server"></asp:TextBox>
             <br />
             <br />
-            Foto Del Plato<br />
-            *No Disponible*<br />
+            Foto Del Plato Actual<br />
+            <asp:Image ID="imgPlato" runat="server" Height="90px" Width="90px" />
+            <br />
+            <br />
+            <asp:FileUpload ID="fuPhoto" runat="server" />
+            <br />
             <br />
             Estado<br />
             <asp:RadioButtonList ID="rdEstado" runat="server">

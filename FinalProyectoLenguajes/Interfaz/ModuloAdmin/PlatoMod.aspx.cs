@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -16,7 +19,11 @@ namespace Interfaz
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            tbDishName.Enabled = false;
+            tbDesc.Enabled = false;
+            tbPrice.Enabled = false;
+            fuPhoto.Enabled = false;
+            rdEstado.Enabled = false;
         }
 
         protected void btBack_Click(object sender, EventArgs e)
@@ -27,7 +34,7 @@ namespace Interfaz
         protected void btMod_Click(object sender, EventArgs e)
         {
            
-            if (espaciosVacios() == true)
+            if (espaciosVacios1() == true)
             {
                 try
                 {
@@ -43,13 +50,28 @@ namespace Interfaz
            
                     if (platos.buscarPlato(int.Parse(tbPlatoID.Text)) != null)
                     {
-                        platos.modificarPlato(false, int.Parse(tbPlatoID.Text), tbDishName.Text, tbDesc.Text, int.Parse(tbPrice.Text), int.Parse(rdEstado.SelectedValue), null, 1);
-                        Type cstype = this.GetType();
-                        ClientScriptManager cs = Page.ClientScript;
-                        if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                        if(fuPhoto.FileName != "")
                         {
-                            String cstext = "alert('Plato modificado correctamente');";
-                            cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                            platos.modificarPlato(false, int.Parse(tbPlatoID.Text), tbDishName.Text, tbDesc.Text, int.Parse(tbPrice.Text), int.Parse(rdEstado.SelectedValue), fuPhoto.FileBytes, 1);
+                            Type cstype = this.GetType();
+                            ClientScriptManager cs = Page.ClientScript;
+                            if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                            {
+                                String cstext = "alert('Plato modificado correctamente');";
+                                cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                            }
+                        }
+                        else
+                        {
+                            Plato pl = platos.buscarPlato(int.Parse(tbPlatoID.Text));
+                            platos.modificarPlato(false, int.Parse(tbPlatoID.Text), tbDishName.Text, tbDesc.Text, int.Parse(tbPrice.Text), int.Parse(rdEstado.SelectedValue),pl.Foto, 1);
+                            Type cstype = this.GetType();
+                            ClientScriptManager cs = Page.ClientScript;
+                            if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                            {
+                                String cstext = "alert('Plato modificado correctamente');";
+                                cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                            }
                         }
                     }
                     else
@@ -76,9 +98,27 @@ namespace Interfaz
             }
         }
 
-        public Boolean espaciosVacios()
+        public Boolean espaciosVacios1()
         {
-            if (tbDishName.Text == "" || tbDesc.Text == "" || tbPrice.Text == "" || tbPlatoID.Text == "")
+            if (tbDishName.Text == "" || tbDesc.Text == "" || tbPrice.Text == "")
+            {
+                Type cstype = this.GetType();
+
+                ClientScriptManager cs = Page.ClientScript;
+
+                if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                {
+                    String cstext = "alert('Debe de Llenar Correctamente Todos los Datos Requeridos');";
+                    cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                }
+                return false;
+            }
+            return true;
+        }
+
+        public Boolean espaciosVacios2()
+        {
+            if (tbPlatoID.Text == "")
             {
                 Type cstype = this.GetType();
 
@@ -96,11 +136,28 @@ namespace Interfaz
 
         protected void btnComprobar_Click1(object sender, EventArgs e)
         {
-            if (espaciosVacios())
+            if (espaciosVacios2())
             {
                 if (platos.buscarPlato(int.Parse(tbPlatoID.Text)) != null)
                 {
+                    tbDishName.Enabled = true;
+                    tbDesc.Enabled = true;
+                    tbPrice.Enabled = true;
+                    fuPhoto.Enabled = true;
+                    rdEstado.Enabled = true;
 
+                    Plato pli = platos.buscarPlato(int.Parse(tbPlatoID.Text));
+                    tbDishName.Text = pli.Nombre;
+                    tbDesc.Text = pli.DescPlato;
+                    tbPrice.Text = pli.Precio.ToString();
+                    btnComprobar.Enabled = false;
+                    tbPlatoID.Enabled = false;
+                    string ruta = Server.MapPath("~/Imagen/");
+                    ruta = Path.Combine(ruta, "plato.png");
+                    MemoryStream ms = new MemoryStream(platos.mostrarImagen(int.Parse(tbPlatoID.Text)));
+                    Bitmap imagenBit = (Bitmap)System.Drawing.Image.FromStream(ms);
+                    imagenBit.Save(ruta, ImageFormat.Png);
+                    imgPlato.ImageUrl = ("~/Imagen/plato.png");
                 }
             }
         }

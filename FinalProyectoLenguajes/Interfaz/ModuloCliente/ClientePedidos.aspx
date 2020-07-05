@@ -22,6 +22,8 @@
             Menu De Platos<asp:GridView ID="gvMenu" runat="server">
             </asp:GridView>
             <br />
+            <br />
+            <br />
             Plato ID<br />
             <asp:TextBox ID="tbDishID" runat="server"></asp:TextBox>
             <br />
@@ -29,11 +31,25 @@
             <br />
             <asp:TextBox ID="tbCant" runat="server"></asp:TextBox>
             <br />
-            <asp:Button ID="bt" runat="server" CssClass="btn-primary" Text="Agregar" OnClick="bt_Click" />
+            <asp:Button ID="bt" runat="server" CssClass="btn-primary" Text="Agregar" OnClick="bt_Click" Height="35px" />
             <br />
             <br />
-            Carrito De Compras<asp:GridView ID="gvCarrito" runat="server">
+            Lista Actual<asp:GridView ID="gvCarrito" runat="server">
             </asp:GridView>
+            <br />
+            PedidoID<br />
+            <asp:TextBox ID="TextBox1" runat="server" Width="220px"></asp:TextBox>
+            <br />
+            Cantidad Plato<br />
+            <asp:TextBox ID="TextBox2" runat="server" Width="220px"></asp:TextBox>
+            <br />
+            <asp:Button ID="btnModificar" runat="server" Height="35px" Text="Modificar" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="btnEliminar" runat="server" Height="35px" Text="Eliminar" />
+            <br />
+            <br />
+            <asp:Button ID="btnConfirm" runat="server" Height="35px" Text="Confirmar" />
+            <br />
             <br />
             <asp:Button ID="btBack" runat="server" CssClass="btn-warning" Text="Volver" OnClick="btBack_Click" Height="35px" Width="70px" />
         </div>
