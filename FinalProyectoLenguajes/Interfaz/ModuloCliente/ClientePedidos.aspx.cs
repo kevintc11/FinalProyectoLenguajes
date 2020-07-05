@@ -7,17 +7,22 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using AccesoDatos;
 using LogicaNegocio;
 
 namespace Interfaz.ModuloCliente
 {
     public partial class ClientePedidos : System.Web.UI.Page
     {
+        AdministracionPedidos pedidos = new AdministracionPedidos();
         AdministracionPlatos platos = new AdministracionPlatos();
+        Plato platoBuscado = new Plato();
+        ListPlatoInfo listaPlatosOriginal = new ListPlatoInfo();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            gvMenu.DataSource = platos.listPlatos();
+            gvMenu.DataBind();
         }
 
         protected void btBack_Click(object sender, EventArgs e)
@@ -31,16 +36,17 @@ namespace Interfaz.ModuloCliente
 
             if(espaciosVacios())
             {
+                platoBuscado = platos.buscarPlato(int.Parse(tbDishID.Text));
+                PlatoInfo platoNuevo = new PlatoInfo(int.Parse(tbDishID.Text), int.Parse(tbCant.Text),
+                    (pedidos.getLastPedidoID().PedidoID + 1), platoBuscado.Precio, platoBuscado.Nombre);
 
-                Type cstype = this.GetType();
+                ((ListPlatoInfo)Session["TempLista"]).addPlato(platoNuevo);
+                //listaPlatosOriginal.addPlato(platoNuevo);
+                ((ListPlatoInfo)Session["TempLista"]).eliminarPlato();
 
-                ClientScriptManager cs = Page.ClientScript;
-
-                if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
-                {
-                    String cstext = "alert('Platillo Agregado Correctamente');";
-                    cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
-                }
+                gvCarrito.DataSource = ((ListPlatoInfo)Session["TempLista"]).GetListPlatoInfo();
+                gvCarrito.DataBind();
+                //pedidos.insertPedido("04-01-2003",1,1);
             }
         }
 

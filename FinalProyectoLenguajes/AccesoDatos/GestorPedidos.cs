@@ -13,6 +13,21 @@ namespace AccesoDatos
     public class GestorPedidos
     {
 
+        public dynamic GetLastPedido()
+        {
+            LectArchivo lectura1 = new LectArchivo();
+            SqlConnectionStringBuilder conect = lectura1.leerServer1();
+            SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+            DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+
+            var pedidos = from pedido in dc.Pedido
+                       orderby pedido.PedidoID descending
+                       select pedido;
+
+            return pedidos.First();
+        }
+
+
         public Pedido getPedido(int pedidoID)
         {
             try
@@ -32,6 +47,7 @@ namespace AccesoDatos
                 return null;
             }
         }
+
 
         public dynamic consultaPedidosSinFiltro()
         {

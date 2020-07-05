@@ -45,6 +45,21 @@ namespace LogicaNegocio
             gestor.eliminarPlato(platoID);
         }
 
+        public dynamic buscarConFiltro(string platillo)
+        {
+            return gestor.buscarPlatoFiltro(platillo);
+        }
+
+        public Boolean verificarNombrePlato(string platillo)
+        {
+            return gestor.verificarPlatoNombre(platillo);
+        }
+
+        public dynamic listaPlatos()
+        {
+            return gestor.listPlatos();
+        }
+
         public dynamic Pedidos()
         {
             return pedidos.consultaPedidosSinFiltro();
@@ -58,6 +73,11 @@ namespace LogicaNegocio
         public byte[] mostrarImagen(int platoID)
         {
             return gestor.mostrarImagen(platoID);
+        }
+
+        public dynamic listPlatos()
+        {
+            return gestor.listPlatosActivos();
         }
     }
 }

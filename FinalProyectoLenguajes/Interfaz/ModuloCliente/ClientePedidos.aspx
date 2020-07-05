@@ -19,7 +19,18 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            Menu De Platos<asp:GridView ID="gvMenu" runat="server">
+            Menu De Platos<asp:GridView ID="gvMenu" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                <EditRowStyle BackColor="#999999" />
+                <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
             </asp:GridView>
             <br />
             <br />
@@ -34,7 +45,20 @@
             <asp:Button ID="bt" runat="server" CssClass="btn-primary" Text="Agregar" OnClick="bt_Click" Height="35px" />
             <br />
             <br />
-            Lista Actual<asp:GridView ID="gvCarrito" runat="server">
+            -------------------------------------<br />
+            <br />
+            Lista Actual<asp:GridView ID="gvCarrito" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                <EditRowStyle BackColor="#999999" />
+                <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
             </asp:GridView>
             <br />
             PedidoID<br />
@@ -43,12 +67,12 @@
             Cantidad Plato<br />
             <asp:TextBox ID="TextBox2" runat="server" Width="220px"></asp:TextBox>
             <br />
-            <asp:Button ID="btnModificar" runat="server" Height="35px" Text="Modificar" />
+            <asp:Button ID="btnModificar" runat="server" CssClass="btn-primary" Height="35px" Text="Modificar" />
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnEliminar" runat="server" Height="35px" Text="Eliminar" />
+            <asp:Button ID="btnEliminar" runat="server" CssClass="btn-primary" Height="35px" Text="Eliminar" />
             <br />
             <br />
-            <asp:Button ID="btnConfirm" runat="server" Height="35px" Text="Confirmar" />
+            <asp:Button ID="btnConfirm" runat="server" CssClass="btn-primary" Height="35px" Text="Confirmar" />
             <br />
             <br />
             <asp:Button ID="btBack" runat="server" CssClass="btn-warning" Text="Volver" OnClick="btBack_Click" Height="35px" Width="70px" />

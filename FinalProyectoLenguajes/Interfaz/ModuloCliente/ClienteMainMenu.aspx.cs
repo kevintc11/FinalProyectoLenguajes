@@ -16,11 +16,14 @@ namespace Interfaz.ModuloCliente
 
         String nick;
         Usuario user = new Usuario();
+        ListPlatoInfo listPlatoInfo;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            listPlatoInfo = new ListPlatoInfo();
             nick = Request.QueryString["usuario"];
             Session["temporal1"] = nick;
+            Session["TempLista"] = null;
             user = users.obtenerUsuario(nick);
             this.lbName.Text = user.DescUsuario;
         }
@@ -33,12 +36,13 @@ namespace Interfaz.ModuloCliente
 
         protected void btPedidos_Click(object sender, EventArgs e)
         {
+            Session["TempLista"] = listPlatoInfo;
             Response.Redirect("~/ModuloCliente/ClientePedidos.aspx");
         }
 
         protected void btModInfo_Click(object sender, EventArgs e)
         {
-            ;
+            
             Response.Redirect("~/ModuloCliente/ClienteDatos.aspx");
         }
     }

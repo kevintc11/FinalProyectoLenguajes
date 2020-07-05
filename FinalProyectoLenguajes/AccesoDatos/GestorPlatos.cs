@@ -13,6 +13,46 @@ namespace AccesoDatos
 {
     public class GestorPlatos
     {
+
+        public void insertarPedidoXPlato(int cantidadPlato, int platoID, int pedidoID)
+        {
+
+            LectArchivo lectura1 = new LectArchivo();
+            SqlConnectionStringBuilder conect = lectura1.leerServer1();
+            SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+            DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+
+            Pedido_X_Plato pedido_X_Plato = new Pedido_X_Plato();
+            pedido_X_Plato.CantidadPlato = Convert.ToInt16(cantidadPlato);
+            pedido_X_Plato.PlatoID = Convert.ToInt16(platoID);
+            pedido_X_Plato.PedidoID = Convert.ToInt16(pedidoID);
+            dc.Pedido_X_Plato.InsertOnSubmit(pedido_X_Plato);
+            dc.SubmitChanges();
+            dc.Connection.Close();
+        }
+
+        public dynamic listPlatosActivos()
+        {
+            LectArchivo lectura1 = new LectArchivo();
+            SqlConnectionStringBuilder conect = lectura1.leerServer1();
+            SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+            DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+            try
+            {
+
+                var platos = (from plato in dc.Plato
+                              where plato.Estado == true
+                              select new { plato.PlatoID, plato.Nombre, plato.Precio }).ToList();
+
+                return platos;
+
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         public dynamic buscarPlato(int platoID)
         {
             LectArchivo lectura1 = new LectArchivo();
@@ -23,11 +63,9 @@ namespace AccesoDatos
             {
                 if (verificarPlato(platoID))
                 {
-
                     var platoa = (from plato in dc.Plato
                                   where plato.PlatoID == platoID && plato.ActivoSN == true
                                   select plato).Single();
-
                     //Plato plato1 = dc.Plato.First(pla => pla.PlatoID.Equals(platoID));
                     return platoa;
                 }
@@ -35,6 +73,30 @@ namespace AccesoDatos
                 {
                     return null;
                 }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public dynamic listPlatos()
+        {
+            LectArchivo lectura1 = new LectArchivo();
+            SqlConnectionStringBuilder conect = lectura1.leerServer1();
+            SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+            DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+            try
+            {
+                var platoa = (from plato in dc.Plato
+                              where plato.ActivoSN == true
+                              select new
+                              {
+                                  plato.PlatoID,
+                                  plato.Nombre,
+                                  plato.Precio
+                              }).ToList();
+                    return platoa;
             }
             catch (Exception)
             {
@@ -100,7 +162,6 @@ namespace AccesoDatos
                             platoNuevo = dc.Plato.First(pla => pla.PlatoID.Equals(platoID));
                             platoNuevo.Nombre = nombre;
                         }
-
                     }
                     else
                     {
@@ -251,8 +312,12 @@ namespace AccesoDatos
 
                     var platoa = (from plato in dc.Plato
                                   where plato.Nombre.Contains(nombrePlato) && plato.ActivoSN == true
-                                  select plato);
-
+                                  select new
+                                  {
+                                      plato.PlatoID,
+                                      plato.Nombre,
+                                      plato.Precio
+                                  }).ToList();
                     return platoa;
                 }
                 else

@@ -46,5 +46,10 @@ namespace LogicaNegocio
         {
             pedidos.actualizarAutomatic(hora);
         }
+
+        public Pedido getLastPedidoID()
+        {
+            return pedidos.GetLastPedido();
+        }
     }
 }
