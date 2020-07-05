@@ -45,6 +45,9 @@ namespace AccesoDatos
     partial void InsertPlato(Plato instance);
     partial void UpdatePlato(Plato instance);
     partial void DeletePlato(Plato instance);
+    partial void InsertPedido_X_Plato(Pedido_X_Plato instance);
+    partial void UpdatePedido_X_Plato(Pedido_X_Plato instance);
+    partial void DeletePedido_X_Plato(Pedido_X_Plato instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -93,14 +96,6 @@ namespace AccesoDatos
 			}
 		}
 		
-		public System.Data.Linq.Table<Pedido_X_Plato> Pedido_X_Plato
-		{
-			get
-			{
-				return this.GetTable<Pedido_X_Plato>();
-			}
-		}
-		
 		public System.Data.Linq.Table<TipoUsuario> TipoUsuario
 		{
 			get
@@ -122,6 +117,14 @@ namespace AccesoDatos
 			get
 			{
 				return this.GetTable<Plato>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Pedido_X_Plato> Pedido_X_Plato
+		{
+			get
+			{
+				return this.GetTable<Pedido_X_Plato>();
 			}
 		}
 	}
@@ -254,6 +257,8 @@ namespace AccesoDatos
 		
 		private short _UsuarioID;
 		
+		private EntitySet<Pedido_X_Plato> _Pedido_X_Plato;
+		
 		private EntityRef<EstadoPedido> _EstadoPedido;
 		
 		private EntityRef<Usuario> _Usuario;
@@ -274,6 +279,7 @@ namespace AccesoDatos
 		
 		public Pedido()
 		{
+			this._Pedido_X_Plato = new EntitySet<Pedido_X_Plato>(new Action<Pedido_X_Plato>(this.attach_Pedido_X_Plato), new Action<Pedido_X_Plato>(this.detach_Pedido_X_Plato));
 			this._EstadoPedido = default(EntityRef<EstadoPedido>);
 			this._Usuario = default(EntityRef<Usuario>);
 			OnCreated();
@@ -367,6 +373,19 @@ namespace AccesoDatos
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pedido_Pedido_X_Plato", Storage="_Pedido_X_Plato", ThisKey="PedidoID", OtherKey="PedidoID")]
+		public EntitySet<Pedido_X_Plato> Pedido_X_Plato
+		{
+			get
+			{
+				return this._Pedido_X_Plato;
+			}
+			set
+			{
+				this._Pedido_X_Plato.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EstadoPedido_Pedido", Storage="_EstadoPedido", ThisKey="EstadoPedidoID", OtherKey="EstadoPedidoID", IsForeignKey=true)]
 		public EstadoPedido EstadoPedido
 		{
@@ -454,68 +473,17 @@ namespace AccesoDatos
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Pedido_X_Plato")]
-	public partial class Pedido_X_Plato
-	{
 		
-		private short _PlatoID;
-		
-		private short _PedidoID;
-		
-		private short _CantidadPlato;
-		
-		public Pedido_X_Plato()
+		private void attach_Pedido_X_Plato(Pedido_X_Plato entity)
 		{
+			this.SendPropertyChanging();
+			entity.Pedido = this;
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlatoID", DbType="SmallInt NOT NULL")]
-		public short PlatoID
+		private void detach_Pedido_X_Plato(Pedido_X_Plato entity)
 		{
-			get
-			{
-				return this._PlatoID;
-			}
-			set
-			{
-				if ((this._PlatoID != value))
-				{
-					this._PlatoID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PedidoID", DbType="SmallInt NOT NULL")]
-		public short PedidoID
-		{
-			get
-			{
-				return this._PedidoID;
-			}
-			set
-			{
-				if ((this._PedidoID != value))
-				{
-					this._PedidoID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantidadPlato", DbType="SmallInt NOT NULL")]
-		public short CantidadPlato
-		{
-			get
-			{
-				return this._CantidadPlato;
-			}
-			set
-			{
-				if ((this._CantidadPlato != value))
-				{
-					this._CantidadPlato = value;
-				}
-			}
+			this.SendPropertyChanging();
+			entity.Pedido = null;
 		}
 	}
 	
@@ -976,6 +944,8 @@ namespace AccesoDatos
 		
 		private bool _ActivoSN;
 		
+		private EntitySet<Pedido_X_Plato> _Pedido_X_Plato;
+		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -998,6 +968,7 @@ namespace AccesoDatos
 		
 		public Plato()
 		{
+			this._Pedido_X_Plato = new EntitySet<Pedido_X_Plato>(new Action<Pedido_X_Plato>(this.attach_Pedido_X_Plato), new Action<Pedido_X_Plato>(this.detach_Pedido_X_Plato));
 			OnCreated();
 		}
 		
@@ -1137,6 +1108,247 @@ namespace AccesoDatos
 					this._ActivoSN = value;
 					this.SendPropertyChanged("ActivoSN");
 					this.OnActivoSNChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Plato_Pedido_X_Plato", Storage="_Pedido_X_Plato", ThisKey="PlatoID", OtherKey="PlatoID")]
+		public EntitySet<Pedido_X_Plato> Pedido_X_Plato
+		{
+			get
+			{
+				return this._Pedido_X_Plato;
+			}
+			set
+			{
+				this._Pedido_X_Plato.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Pedido_X_Plato(Pedido_X_Plato entity)
+		{
+			this.SendPropertyChanging();
+			entity.Plato = this;
+		}
+		
+		private void detach_Pedido_X_Plato(Pedido_X_Plato entity)
+		{
+			this.SendPropertyChanging();
+			entity.Plato = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Pedido_X_Plato")]
+	public partial class Pedido_X_Plato : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private short _PlatoID;
+		
+		private short _PedidoID;
+		
+		private short _CantidadPlato;
+		
+		private int _PedidoXPlatoID;
+		
+		private EntityRef<Pedido> _Pedido;
+		
+		private EntityRef<Plato> _Plato;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnPlatoIDChanging(short value);
+    partial void OnPlatoIDChanged();
+    partial void OnPedidoIDChanging(short value);
+    partial void OnPedidoIDChanged();
+    partial void OnCantidadPlatoChanging(short value);
+    partial void OnCantidadPlatoChanged();
+    partial void OnPedidoXPlatoIDChanging(int value);
+    partial void OnPedidoXPlatoIDChanged();
+    #endregion
+		
+		public Pedido_X_Plato()
+		{
+			this._Pedido = default(EntityRef<Pedido>);
+			this._Plato = default(EntityRef<Plato>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlatoID", DbType="SmallInt NOT NULL")]
+		public short PlatoID
+		{
+			get
+			{
+				return this._PlatoID;
+			}
+			set
+			{
+				if ((this._PlatoID != value))
+				{
+					if (this._Plato.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPlatoIDChanging(value);
+					this.SendPropertyChanging();
+					this._PlatoID = value;
+					this.SendPropertyChanged("PlatoID");
+					this.OnPlatoIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PedidoID", DbType="SmallInt NOT NULL")]
+		public short PedidoID
+		{
+			get
+			{
+				return this._PedidoID;
+			}
+			set
+			{
+				if ((this._PedidoID != value))
+				{
+					if (this._Pedido.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPedidoIDChanging(value);
+					this.SendPropertyChanging();
+					this._PedidoID = value;
+					this.SendPropertyChanged("PedidoID");
+					this.OnPedidoIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CantidadPlato", DbType="SmallInt NOT NULL")]
+		public short CantidadPlato
+		{
+			get
+			{
+				return this._CantidadPlato;
+			}
+			set
+			{
+				if ((this._CantidadPlato != value))
+				{
+					this.OnCantidadPlatoChanging(value);
+					this.SendPropertyChanging();
+					this._CantidadPlato = value;
+					this.SendPropertyChanged("CantidadPlato");
+					this.OnCantidadPlatoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PedidoXPlatoID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int PedidoXPlatoID
+		{
+			get
+			{
+				return this._PedidoXPlatoID;
+			}
+			set
+			{
+				if ((this._PedidoXPlatoID != value))
+				{
+					this.OnPedidoXPlatoIDChanging(value);
+					this.SendPropertyChanging();
+					this._PedidoXPlatoID = value;
+					this.SendPropertyChanged("PedidoXPlatoID");
+					this.OnPedidoXPlatoIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Pedido_Pedido_X_Plato", Storage="_Pedido", ThisKey="PedidoID", OtherKey="PedidoID", IsForeignKey=true)]
+		public Pedido Pedido
+		{
+			get
+			{
+				return this._Pedido.Entity;
+			}
+			set
+			{
+				Pedido previousValue = this._Pedido.Entity;
+				if (((previousValue != value) 
+							|| (this._Pedido.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Pedido.Entity = null;
+						previousValue.Pedido_X_Plato.Remove(this);
+					}
+					this._Pedido.Entity = value;
+					if ((value != null))
+					{
+						value.Pedido_X_Plato.Add(this);
+						this._PedidoID = value.PedidoID;
+					}
+					else
+					{
+						this._PedidoID = default(short);
+					}
+					this.SendPropertyChanged("Pedido");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Plato_Pedido_X_Plato", Storage="_Plato", ThisKey="PlatoID", OtherKey="PlatoID", IsForeignKey=true)]
+		public Plato Plato
+		{
+			get
+			{
+				return this._Plato.Entity;
+			}
+			set
+			{
+				Plato previousValue = this._Plato.Entity;
+				if (((previousValue != value) 
+							|| (this._Plato.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Plato.Entity = null;
+						previousValue.Pedido_X_Plato.Remove(this);
+					}
+					this._Plato.Entity = value;
+					if ((value != null))
+					{
+						value.Pedido_X_Plato.Add(this);
+						this._PlatoID = value.PlatoID;
+					}
+					else
+					{
+						this._PlatoID = default(short);
+					}
+					this.SendPropertyChanged("Plato");
 				}
 			}
 		}
