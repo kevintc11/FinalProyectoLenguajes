@@ -36,6 +36,7 @@ namespace Interfaz
                     String cstext = "alert('Se Han Efectuado Los Cambios');";
                     cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
                 }
+                Response.Redirect("~/ModuloCliente/ClienteMainMenu.aspx?");
             }
         }
 
