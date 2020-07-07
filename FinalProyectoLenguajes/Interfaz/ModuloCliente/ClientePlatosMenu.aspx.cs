@@ -34,12 +34,17 @@ namespace Interfaz
                         lbName.Text = pli.Nombre;
                         lbDesc.Text = pli.DescPlato;
                         lbPrice.Text = pli.Precio.ToString();
-                        string ruta = Server.MapPath("~/Imagen/");
-                        ruta = Path.Combine(ruta, "plato.png");
-                        MemoryStream ms = new MemoryStream(platos.mostrarImagen(int.Parse(tbId.Text)));
-                        Bitmap imagenBit = (Bitmap)System.Drawing.Image.FromStream(ms);
-                        imagenBit.Save(ruta, ImageFormat.Png);
-                        imgPlato.ImageUrl = ("~/Imagen/plato.png");
+                        //string ruta = Server.MapPath("~/");
+                        //ruta = Path.Combine(ruta, "plato.png");
+                        //MemoryStream ms = new MemoryStream(platos.mostrarImagen(int.Parse(tbId.Text)));
+                        //Bitmap imagenBit = (Bitmap)System.Drawing.Image.FromStream(ms);
+                        //imagenBit.Save(ruta, ImageFormat.Png);
+                        //imgPlato.ImageUrl = Server.MapPath("~/plato.png");
+                        //imgPlato = System.Drawing.Image.FromStream(ms);
+                        byte[] imageData = platos.mostrarImagen(int.Parse(tbId.Text));
+                        string img = Convert.ToBase64String(imageData, 0, imageData.Length);
+                        //imagenBit.Save(ruta, ImageFormat.Png);
+                        imgPlato.ImageUrl = "data:image/png;base64,"+ img;
                     }
                     else
                     {

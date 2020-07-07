@@ -62,14 +62,16 @@ namespace Interfaz.ModuloCocinero
 
         protected void btnCambiarEstado_Click(object sender, EventArgs e)
         {
-            ejecucion();
-            cambiarColores();
+           
+            if (espaciosVacios())
+            {
+                ejecucion();
+                cambiarColores();
+            }
         }
 
         public void ejecucion()
         {
-            if (espaciosVacios())
-            {
                 if (pedidos.esNumero(tbPedidoID.Text))
                 {
                     if (pedidos.comprobarPedido(tbPedidoID.Text))
@@ -92,7 +94,6 @@ namespace Interfaz.ModuloCocinero
                 {
                     lbError.Text = "Valor Invalido";
                 }
-            }
         }
 
         public void reinicar()
@@ -109,15 +110,7 @@ namespace Interfaz.ModuloCocinero
         {
             if (tbPedidoID.Text == "")
             {
-                Type cstype = this.GetType();
-
-                ClientScriptManager cs = Page.ClientScript;
-
-                if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
-                {
-                    String cstext = "alert('Debe de Llenar Correctamente Todos los Datos Requeridos');";
-                    cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
-                }
+                lbError.Text = "Por favor rellene todos los campos";
                 return false;
             }
             return true;
@@ -149,7 +142,7 @@ namespace Interfaz.ModuloCocinero
 
         protected void btSalir_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("~/InicioSesion.aspx");
         }
     }
 }
