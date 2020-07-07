@@ -80,6 +80,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ModuloAdmin\ModPedidos.aspx" />
     <Content Include="ModuloCliente\ClientePlatosMenu.aspx" />
     <Content Include="ModuloAdmin\Pedidos.aspx" />
     <Content Include="ModuloCliente\ClienteMainMenu.aspx" />
@@ -103,6 +104,13 @@
     <Content Include="ModuloAdmin\PlatoMenu.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ModuloAdmin\ModPedidos.aspx.cs">
+      <DependentUpon>ModPedidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModuloAdmin\ModPedidos.aspx.designer.cs">
+      <DependentUpon>ModPedidos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ModuloCliente\ClientePlatosMenu.aspx.cs">
       <DependentUpon>ClientePlatosMenu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

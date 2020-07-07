@@ -34,6 +34,9 @@
             <asp:Button ID="btPed" runat="server" Height="35px" Text="Administrar Pedidos" Width="170px" CssClass="btn btn-primary" OnClick="btPed_Click" />
             <br />
             <br />
+            <asp:Button ID="btModPedidos" runat="server" Height="35px" Text="Gestionar Pedidos" Width="170px" CssClass="btn btn-primary" OnClick="btModPedidos_Click" />
+            <br />
+            <br />
             <asp:Button ID="btBack" runat="server" Text="Salir" Width="70px" CssClass="btn btn-warning" OnClick="btBack_Click" Height="35px" />
         </div>
     </form>

@@ -7,11 +7,11 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace Interfaz
+namespace Interfaz.ModuloAdmin
 {
 
 
-    public partial class WebForm2
+    public partial class ModPedidos
     {
 
         /// <summary>
@@ -24,49 +24,40 @@ namespace Interfaz
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Control btDishes.
+        /// Control GridView1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btDishes;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
-        /// Control btUsers.
+        /// Control tbPedidoID.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btUsers;
+        protected global::System.Web.UI.WebControls.TextBox tbPedidoID;
 
         /// <summary>
-        /// Control btClient.
+        /// Control rblStatus.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btClient;
+        protected global::System.Web.UI.WebControls.RadioButtonList rblStatus;
 
         /// <summary>
-        /// Control btPed.
+        /// Control btModify.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btPed;
-
-        /// <summary>
-        /// Control btModPedidos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btModPedidos;
+        protected global::System.Web.UI.WebControls.Button btModify;
 
         /// <summary>
         /// Control btBack.
