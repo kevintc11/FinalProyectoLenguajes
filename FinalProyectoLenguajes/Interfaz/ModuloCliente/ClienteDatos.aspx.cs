@@ -17,7 +17,7 @@ namespace Interfaz
         AdministracionUsuarios mInterfaz = new AdministracionUsuarios();
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //nick = (string)Session["temporal1"];
         }
 
         protected void btMod_Click(object sender, EventArgs e)
@@ -41,7 +41,7 @@ namespace Interfaz
 
         protected void btBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/ModuloCliente/ClienteMainMenu.aspx?usuario=" + (String)Session["temporal1"]);
+            Response.Redirect("~/ModuloCliente/ClienteMainMenu.aspx?");
         }
 
         public Boolean espaciosVacios()

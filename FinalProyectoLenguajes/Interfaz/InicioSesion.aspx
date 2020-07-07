@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Inicio Sesion.aspx.cs" Inherits="Interfaz.WebForm1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="InicioSesion.aspx.cs" Inherits="Interfaz.WebForm1" %>
 
 <!DOCTYPE html>
 

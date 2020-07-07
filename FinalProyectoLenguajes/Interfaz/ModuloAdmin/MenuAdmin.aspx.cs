@@ -12,9 +12,7 @@ namespace Interfaz
         string nick;
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["temporal1"] = Request.QueryString["usuario"];
-            nick = (string)Session["temporal1"];
-            lbName.Text = nick;
+
         }
 
         protected void SubmitBtn_Click(object sender, EventArgs e)
@@ -24,7 +22,7 @@ namespace Interfaz
 
         protected void btBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Inicio Sesion.aspx");
+            Response.Redirect("~/InicioSesion.aspx");
         }
 
         protected void btDishes_Click(object sender, EventArgs e)

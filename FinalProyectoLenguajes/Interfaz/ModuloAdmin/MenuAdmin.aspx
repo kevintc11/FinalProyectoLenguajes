@@ -22,7 +22,6 @@
         <div>
             Menú Administrador<br />
             Bienvenido
-            <asp:Label ID="lbName" runat="server" Text="*Nombre*"></asp:Label>
             <br />
             <br />
             <asp:Button ID="btDishes" runat="server" Height="35px" Text="Administrar Platos" Width="170px" CssClass="btn btn-primary" OnClick="btDishes_Click" />

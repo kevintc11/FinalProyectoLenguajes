@@ -21,17 +21,14 @@ namespace Interfaz.ModuloCliente
         protected void Page_Load(object sender, EventArgs e)
         {
             listPlatoInfo = new ListPlatoInfo();
-            nick = Request.QueryString["usuario"];
-            Session["temporal1"] = nick;
+            //Session["temporal1"] = nick;
             Session["TempLista"] = null;
-            user = users.obtenerUsuario(nick);
-            this.lbName.Text = user.DescUsuario;
         }
         
 
         protected void btSalir_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Inicio Sesion.aspx");
+            Response.Redirect("~/InicioSesion.aspx");
         }
 
         protected void btPedidos_Click(object sender, EventArgs e)

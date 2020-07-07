@@ -33,7 +33,8 @@ namespace Interfaz
                 {
                     if(interfaz.tipoUsuario(txNick.Text) == 1)
                     {
-                        userData = "~/ModuloAdmin/MenuAdmin.aspx?usuario=" + txNick.Text;
+                        Session["temporal1"] = txNick.Text;
+                        userData = "~/ModuloAdmin/MenuAdmin.aspx?";
                         Response.Redirect(userData);
                     }
                     else if(interfaz.tipoUsuario(txNick.Text) == 2)
@@ -44,7 +45,8 @@ namespace Interfaz
                     }
                     else if(interfaz.tipoUsuario(txNick.Text) == 3) 
                     {
-                        userData = "~/ModuloCliente/ClienteMainMenu.aspx?usuario=" + txNick.Text;
+                        Session["temporal1"] = txNick.Text;
+                        userData = "~/ModuloCliente/ClienteMainMenu.aspx?";
                         Response.Redirect(userData);
                     }
                 }

@@ -18,7 +18,7 @@ namespace Interfaz
 
         protected void btBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Inicio Sesion.aspx");
+            Response.Redirect("~/InicioSesion.aspx");
         }
 
         protected void btRegist_Click(object sender, EventArgs e)

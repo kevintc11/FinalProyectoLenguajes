@@ -21,7 +21,6 @@
         <div style="text-align: center">
             Menú Cliente<br />
             Bienvenido
-            <asp:Label ID="lbName" runat="server" Text="*Nombre*"></asp:Label>
             <br />
             <br />
             <asp:Button ID="btPedidos" runat="server" Text="Pedidos" CssClass="btn btn-primary" Height="35px" OnClick="btPedidos_Click" Width="170px" />

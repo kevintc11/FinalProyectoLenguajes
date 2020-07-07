@@ -98,7 +98,7 @@
     <Content Include="ModuloAdmin\PlatoEliminar.aspx" />
     <Content Include="ModuloAdmin\PlatoMod.aspx" />
     <Content Include="Web.config" />
-    <Content Include="Inicio Sesion.aspx" />
+    <Content Include="InicioSesion.aspx" />
     <Content Include="ModuloAdmin\MenuAdmin.aspx" />
     <Content Include="ModuloAdmin\PlatoMenu.aspx" />
   </ItemGroup>
@@ -223,12 +223,12 @@
       <DependentUpon>PlatoMod.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Inicio Sesion.aspx.cs">
-      <DependentUpon>Inicio Sesion.aspx</DependentUpon>
+    <Compile Include="InicioSesion.aspx.cs">
+      <DependentUpon>InicioSesion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Inicio Sesion.aspx.designer.cs">
-      <DependentUpon>Inicio Sesion.aspx</DependentUpon>
+    <Compile Include="InicioSesion.aspx.designer.cs">
+      <DependentUpon>InicioSesion.aspx</DependentUpon>
     </Compile>
     <Compile Include="ModuloAdmin\MenuAdmin.aspx.cs">
       <DependentUpon>MenuAdmin.aspx</DependentUpon>
