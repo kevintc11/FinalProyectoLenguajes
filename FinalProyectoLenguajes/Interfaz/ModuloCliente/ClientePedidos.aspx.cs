@@ -35,12 +35,45 @@ namespace Interfaz.ModuloCliente
         {
 
             if (espaciosVacios())
-            {
-                if (platos.validarPlato(int.Parse(tbDishID.Text)))
+            {   
+                if(pedidos.esNumero(tbDishID.Text) && pedidos.esNumero(tbCant.Text))
                 {
-                    platoBuscado = platos.buscarPlato(int.Parse(tbDishID.Text));
+                    if (platos.validarPlato(int.Parse(tbDishID.Text)))
+                    {
+                        platoBuscado = platos.buscarPlato(int.Parse(tbDishID.Text));
 
-                    if (platoBuscado == null)
+                        if (platoBuscado == null)
+                        {
+                            Type cstype = this.GetType();
+
+                            ClientScriptManager cs = Page.ClientScript;
+
+                            if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                            {
+                                String cstext = "alert('El platoID ingresado no coincide con ningún plato');";
+                                cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                            }
+                        }
+                        else
+                        {
+                            PlatoInfo platoNuevo = new PlatoInfo(int.Parse(tbDishID.Text), int.Parse(tbCant.Text),
+                            (pedidos.getLastPedidoID().PedidoID + 1), platoBuscado.Precio, platoBuscado.Nombre);
+
+                            if (((ListPlatoInfo)Session["TempLista"]).contienePlato(platoNuevo.getPlatoID()))
+                            {
+                                ((ListPlatoInfo)Session["TempLista"]).setCantidadPlatoExistente(platoNuevo.getCantidadPlato(), platoNuevo.getPlatoID());
+                            }
+                            else
+                            {
+                                ((ListPlatoInfo)Session["TempLista"]).addPlato(platoNuevo);
+                            }
+
+                            gvCarrito.DataSource = ((ListPlatoInfo)Session["TempLista"]).GetListPlatoInfo();
+                            gvCarrito.DataBind();
+                        }
+
+                    }
+                    else
                     {
                         Type cstype = this.GetType();
 
@@ -52,24 +85,6 @@ namespace Interfaz.ModuloCliente
                             cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
                         }
                     }
-                    else
-                    {
-                        PlatoInfo platoNuevo = new PlatoInfo(int.Parse(tbDishID.Text), int.Parse(tbCant.Text),
-                        (pedidos.getLastPedidoID().PedidoID + 1), platoBuscado.Precio, platoBuscado.Nombre);
-
-                        if (((ListPlatoInfo)Session["TempLista"]).contienePlato(platoNuevo.getPlatoID()))
-                        {
-                            ((ListPlatoInfo)Session["TempLista"]).setCantidadPlatoExistente(platoNuevo.getCantidadPlato(), platoNuevo.getPlatoID());
-                        }
-                        else
-                        {
-                            ((ListPlatoInfo)Session["TempLista"]).addPlato(platoNuevo);
-                        }
-
-                        gvCarrito.DataSource = ((ListPlatoInfo)Session["TempLista"]).GetListPlatoInfo();
-                        gvCarrito.DataBind();
-                    }
-                 
                 }
                 else
                 {
@@ -79,14 +94,11 @@ namespace Interfaz.ModuloCliente
 
                     if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
                     {
-                        String cstext = "alert('El platoID ingresado no coincide con ningún plato');";
+                        String cstext = "alert('valores invalidos');";
                         cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
                     }
-
                 }
-
             }
-
         }
 
         public Boolean espaciosVacios()
@@ -146,13 +158,29 @@ namespace Interfaz.ModuloCliente
 
         protected void btnModificar_Click1(object sender, EventArgs e)
         {
+
             if (espaciosVaciosDatosCarrito())
             {
-                if (platos.validarPlato(int.Parse(txtPedidoID.Text)))
+                if (pedidos.esNumero(txtPedidoID.Text) && pedidos.esNumero(txtCantidad.Text))
                 {
-                    if (((ListPlatoInfo)Session["TempLista"]).contienePlato(int.Parse(txtPedidoID.Text)))
+                    if (platos.validarPlato(int.Parse(txtPedidoID.Text)))
                     {
-                        ((ListPlatoInfo)Session["TempLista"]).modificarCantidadPlatos(int.Parse(txtCantidad.Text), int.Parse(txtPedidoID.Text));
+                        if (((ListPlatoInfo)Session["TempLista"]).contienePlato(int.Parse(txtPedidoID.Text)))
+                        {
+                            ((ListPlatoInfo)Session["TempLista"]).modificarCantidadPlatos(int.Parse(txtCantidad.Text), int.Parse(txtPedidoID.Text));
+                        }
+                        else
+                        {
+                            Type cstype = this.GetType();
+
+                            ClientScriptManager cs = Page.ClientScript;
+
+                            if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                            {
+                                String cstext = "alert('El platoID ingresado no coincide con nigún plato de su lista');";
+                                cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                            }
+                        }
                     }
                     else
                     {
@@ -162,7 +190,7 @@ namespace Interfaz.ModuloCliente
 
                         if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
                         {
-                            String cstext = "alert('El platoID ingresado no coincide con nigún plato de su lista');";
+                            String cstext = "alert('El platoID ingresado no coincide con ningún plato');";
                             cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
                         }
                     }
@@ -175,28 +203,41 @@ namespace Interfaz.ModuloCliente
 
                     if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
                     {
-                        String cstext = "alert('El platoID ingresado no coincide con ningún plato');";
+                        String cstext = "alert('valores invalidos');";
                         cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
                     }
                 }
-               
-
-            }
             gvMenu.DataSource = platos.listPlatos();
             gvMenu.DataBind();
             gvCarrito.DataSource = ((ListPlatoInfo)Session["TempLista"]).GetListPlatoInfo();
             gvCarrito.DataBind();
+        }
         }
 
         protected void btnEliminar_Click1(object sender, EventArgs e)
         {
             if (espaciosVaciosOpcEliminar())
             {
-                if (platos.validarPlato(int.Parse(txtPedidoID.Text)))
+                if (pedidos.esNumero(txtPedidoID.Text) && pedidos.esNumero(txtCantidad.Text))
                 {
-                    if (((ListPlatoInfo)Session["TempLista"]).contienePlato(int.Parse(txtPedidoID.Text)))
+                    if (platos.validarPlato(int.Parse(txtPedidoID.Text)))
                     {
-                        ((ListPlatoInfo)Session["TempLista"]).eliminarPlato(((ListPlatoInfo)Session["TempLista"]).getPlato(int.Parse(txtPedidoID.Text)));
+                        if (((ListPlatoInfo)Session["TempLista"]).contienePlato(int.Parse(txtPedidoID.Text)))
+                        {
+                            ((ListPlatoInfo)Session["TempLista"]).eliminarPlato(((ListPlatoInfo)Session["TempLista"]).getPlato(int.Parse(txtPedidoID.Text)));
+                        }
+                        else
+                        {
+                            Type cstype = this.GetType();
+
+                            ClientScriptManager cs = Page.ClientScript;
+
+                            if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                            {
+                                String cstext = "alert('El platoID ingresado no coincide con nigún plato de su lista');";
+                                cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                            }
+                        }
                     }
                     else
                     {
@@ -206,7 +247,7 @@ namespace Interfaz.ModuloCliente
 
                         if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
                         {
-                            String cstext = "alert('El platoID ingresado no coincide con nigún plato de su lista');";
+                            String cstext = "alert('El platoID ingresado no coincide con ningún plato');";
                             cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
                         }
                     }
@@ -219,11 +260,10 @@ namespace Interfaz.ModuloCliente
 
                     if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
                     {
-                        String cstext = "alert('El platoID ingresado no coincide con ningún plato');";
+                        String cstext = "alert('valores invalidos');";
                         cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
                     }
                 }
-
             }
             gvMenu.DataSource = platos.listPlatos();
             gvMenu.DataBind();
