@@ -39,11 +39,12 @@ namespace Interfaz.ModuloCocinero
             }
             else if(pedidos.getCantidadPedidos() > 10)
             {
-                //hay mas de 10 platos que no se pueden poner entonces poner mensaje
+                lbError.Text = "Existen más platos en espera de ser procesados";
             }
             else
             {
                 //hay menores de 5 entonces esta vara esta vacia entonces poner mensaje
+                lbError.Text = "La cantidad de platos es menor a 5 por lo que no se muestra ninguno";
             }
             
         }

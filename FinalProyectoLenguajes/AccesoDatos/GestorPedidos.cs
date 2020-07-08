@@ -304,7 +304,7 @@ namespace AccesoDatos
             }
 
 
-            if (horaAct != tiempoPedido)
+            if (horaAct != tiempoPedido && pedido.EstadoPedidoID < 3)
             {
                 int tiempoTranscurrido = 0;
 
