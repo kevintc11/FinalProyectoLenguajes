@@ -354,6 +354,19 @@ namespace AccesoDatos
 
         }
 
+        public dynamic getTiempoEstadoPedido(int estadoPedidoID)
+        {
+            LectArchivo lectura1 = new LectArchivo();
+            SqlConnectionStringBuilder conect = lectura1.leerServer1();
+            SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+            DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+
+            var estadoPedidos = (from EstadoPedido in dc.EstadoPedido
+                                 where EstadoPedido.EstadoPedidoID == estadoPedidoID
+                                 select EstadoPedido).Single();
+
+            return estadoPedidos;
+        }
 
         public void insertarPedido(int estadoPedidoID, int usuarioID)
         {

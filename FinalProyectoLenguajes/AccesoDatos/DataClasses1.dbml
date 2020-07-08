@@ -1,12 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="dbproyectolenguajes" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=proyectolenguajesfinal.database.windows.net;Initial Catalog=dbproyectolenguajes;User ID=kevintc;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False" SettingsObjectName="AccesoDatos.Properties.Settings" SettingsPropertyName="dbproyectolenguajesConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.EstadoPedido" Member="EstadoPedido">
-    <Type Name="EstadoPedido">
-      <Column Name="EstadoPedidoID" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="DescEstadoPedido" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="EstadoPedido_Pedido" Member="Pedido" ThisKey="EstadoPedidoID" OtherKey="EstadoPedidoID" Type="Pedido" />
-    </Type>
-  </Table>
   <Table Name="dbo.Pedido" Member="Pedido">
     <Type Name="Pedido">
       <Column Name="PedidoID" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -14,8 +7,8 @@
       <Column Name="EstadoPedidoID" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
       <Column Name="UsuarioID" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
       <Association Name="Pedido_Pedido_X_Plato" Member="Pedido_X_Plato" ThisKey="PedidoID" OtherKey="PedidoID" Type="Pedido_X_Plato" />
-      <Association Name="EstadoPedido_Pedido" Member="EstadoPedido" ThisKey="EstadoPedidoID" OtherKey="EstadoPedidoID" Type="EstadoPedido" IsForeignKey="true" />
       <Association Name="Usuario_Pedido" Member="Usuario" ThisKey="UsuarioID" OtherKey="UsuarioID" Type="Usuario" IsForeignKey="true" />
+      <Association Name="EstadoPedido_Pedido" Member="EstadoPedido" ThisKey="EstadoPedidoID" OtherKey="EstadoPedidoID" Type="EstadoPedido" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.TipoUsuario" Member="TipoUsuario">
@@ -60,6 +53,14 @@
       <Column Name="PedidoXPlatoID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Association Name="Pedido_Pedido_X_Plato" Member="Pedido" ThisKey="PedidoID" OtherKey="PedidoID" Type="Pedido" IsForeignKey="true" />
       <Association Name="Plato_Pedido_X_Plato" Member="Plato" ThisKey="PlatoID" OtherKey="PlatoID" Type="Plato" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EstadoPedido" Member="EstadoPedido">
+    <Type Name="EstadoPedido">
+      <Column Name="EstadoPedidoID" Type="System.Int16" DbType="SmallInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DescEstadoPedido" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TiempoCambioEstado" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Association Name="EstadoPedido_Pedido" Member="Pedido" ThisKey="EstadoPedidoID" OtherKey="EstadoPedidoID" Type="Pedido" />
     </Type>
   </Table>
 </Database>

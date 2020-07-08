@@ -30,9 +30,6 @@ namespace AccesoDatos
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnCreated();
-    partial void InsertEstadoPedido(EstadoPedido instance);
-    partial void UpdateEstadoPedido(EstadoPedido instance);
-    partial void DeleteEstadoPedido(EstadoPedido instance);
     partial void InsertPedido(Pedido instance);
     partial void UpdatePedido(Pedido instance);
     partial void DeletePedido(Pedido instance);
@@ -48,6 +45,9 @@ namespace AccesoDatos
     partial void InsertPedido_X_Plato(Pedido_X_Plato instance);
     partial void UpdatePedido_X_Plato(Pedido_X_Plato instance);
     partial void DeletePedido_X_Plato(Pedido_X_Plato instance);
+    partial void InsertEstadoPedido(EstadoPedido instance);
+    partial void UpdateEstadoPedido(EstadoPedido instance);
+    partial void DeleteEstadoPedido(EstadoPedido instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -78,14 +78,6 @@ namespace AccesoDatos
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<EstadoPedido> EstadoPedido
-		{
-			get
-			{
-				return this.GetTable<EstadoPedido>();
-			}
 		}
 		
 		public System.Data.Linq.Table<Pedido> Pedido
@@ -127,119 +119,13 @@ namespace AccesoDatos
 				return this.GetTable<Pedido_X_Plato>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EstadoPedido")]
-	public partial class EstadoPedido : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private short _EstadoPedidoID;
-		
-		private string _DescEstadoPedido;
-		
-		private EntitySet<Pedido> _Pedido;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnEstadoPedidoIDChanging(short value);
-    partial void OnEstadoPedidoIDChanged();
-    partial void OnDescEstadoPedidoChanging(string value);
-    partial void OnDescEstadoPedidoChanged();
-    #endregion
-		
-		public EstadoPedido()
-		{
-			this._Pedido = new EntitySet<Pedido>(new Action<Pedido>(this.attach_Pedido), new Action<Pedido>(this.detach_Pedido));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EstadoPedidoID", AutoSync=AutoSync.OnInsert, DbType="SmallInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public short EstadoPedidoID
+		public System.Data.Linq.Table<EstadoPedido> EstadoPedido
 		{
 			get
 			{
-				return this._EstadoPedidoID;
+				return this.GetTable<EstadoPedido>();
 			}
-			set
-			{
-				if ((this._EstadoPedidoID != value))
-				{
-					this.OnEstadoPedidoIDChanging(value);
-					this.SendPropertyChanging();
-					this._EstadoPedidoID = value;
-					this.SendPropertyChanged("EstadoPedidoID");
-					this.OnEstadoPedidoIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DescEstadoPedido", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string DescEstadoPedido
-		{
-			get
-			{
-				return this._DescEstadoPedido;
-			}
-			set
-			{
-				if ((this._DescEstadoPedido != value))
-				{
-					this.OnDescEstadoPedidoChanging(value);
-					this.SendPropertyChanging();
-					this._DescEstadoPedido = value;
-					this.SendPropertyChanged("DescEstadoPedido");
-					this.OnDescEstadoPedidoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EstadoPedido_Pedido", Storage="_Pedido", ThisKey="EstadoPedidoID", OtherKey="EstadoPedidoID")]
-		public EntitySet<Pedido> Pedido
-		{
-			get
-			{
-				return this._Pedido;
-			}
-			set
-			{
-				this._Pedido.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Pedido(Pedido entity)
-		{
-			this.SendPropertyChanging();
-			entity.EstadoPedido = this;
-		}
-		
-		private void detach_Pedido(Pedido entity)
-		{
-			this.SendPropertyChanging();
-			entity.EstadoPedido = null;
 		}
 	}
 	
@@ -259,9 +145,9 @@ namespace AccesoDatos
 		
 		private EntitySet<Pedido_X_Plato> _Pedido_X_Plato;
 		
-		private EntityRef<EstadoPedido> _EstadoPedido;
-		
 		private EntityRef<Usuario> _Usuario;
+		
+		private EntityRef<EstadoPedido> _EstadoPedido;
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnLoaded();
@@ -280,8 +166,8 @@ namespace AccesoDatos
 		public Pedido()
 		{
 			this._Pedido_X_Plato = new EntitySet<Pedido_X_Plato>(new Action<Pedido_X_Plato>(this.attach_Pedido_X_Plato), new Action<Pedido_X_Plato>(this.detach_Pedido_X_Plato));
-			this._EstadoPedido = default(EntityRef<EstadoPedido>);
 			this._Usuario = default(EntityRef<Usuario>);
+			this._EstadoPedido = default(EntityRef<EstadoPedido>);
 			OnCreated();
 		}
 		
@@ -386,40 +272,6 @@ namespace AccesoDatos
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EstadoPedido_Pedido", Storage="_EstadoPedido", ThisKey="EstadoPedidoID", OtherKey="EstadoPedidoID", IsForeignKey=true)]
-		public EstadoPedido EstadoPedido
-		{
-			get
-			{
-				return this._EstadoPedido.Entity;
-			}
-			set
-			{
-				EstadoPedido previousValue = this._EstadoPedido.Entity;
-				if (((previousValue != value) 
-							|| (this._EstadoPedido.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._EstadoPedido.Entity = null;
-						previousValue.Pedido.Remove(this);
-					}
-					this._EstadoPedido.Entity = value;
-					if ((value != null))
-					{
-						value.Pedido.Add(this);
-						this._EstadoPedidoID = value.EstadoPedidoID;
-					}
-					else
-					{
-						this._EstadoPedidoID = default(short);
-					}
-					this.SendPropertyChanged("EstadoPedido");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Usuario_Pedido", Storage="_Usuario", ThisKey="UsuarioID", OtherKey="UsuarioID", IsForeignKey=true)]
 		public Usuario Usuario
 		{
@@ -450,6 +302,40 @@ namespace AccesoDatos
 						this._UsuarioID = default(short);
 					}
 					this.SendPropertyChanged("Usuario");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EstadoPedido_Pedido", Storage="_EstadoPedido", ThisKey="EstadoPedidoID", OtherKey="EstadoPedidoID", IsForeignKey=true)]
+		public EstadoPedido EstadoPedido
+		{
+			get
+			{
+				return this._EstadoPedido.Entity;
+			}
+			set
+			{
+				EstadoPedido previousValue = this._EstadoPedido.Entity;
+				if (((previousValue != value) 
+							|| (this._EstadoPedido.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._EstadoPedido.Entity = null;
+						previousValue.Pedido.Remove(this);
+					}
+					this._EstadoPedido.Entity = value;
+					if ((value != null))
+					{
+						value.Pedido.Add(this);
+						this._EstadoPedidoID = value.EstadoPedidoID;
+					}
+					else
+					{
+						this._EstadoPedidoID = default(short);
+					}
+					this.SendPropertyChanged("EstadoPedido");
 				}
 			}
 		}
@@ -1371,6 +1257,144 @@ namespace AccesoDatos
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EstadoPedido")]
+	public partial class EstadoPedido : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private short _EstadoPedidoID;
+		
+		private string _DescEstadoPedido;
+		
+		private System.Nullable<short> _TiempoCambioEstado;
+		
+		private EntitySet<Pedido> _Pedido;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnEstadoPedidoIDChanging(short value);
+    partial void OnEstadoPedidoIDChanged();
+    partial void OnDescEstadoPedidoChanging(string value);
+    partial void OnDescEstadoPedidoChanged();
+    partial void OnTiempoCambioEstadoChanging(System.Nullable<short> value);
+    partial void OnTiempoCambioEstadoChanged();
+    #endregion
+		
+		public EstadoPedido()
+		{
+			this._Pedido = new EntitySet<Pedido>(new Action<Pedido>(this.attach_Pedido), new Action<Pedido>(this.detach_Pedido));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EstadoPedidoID", AutoSync=AutoSync.OnInsert, DbType="SmallInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public short EstadoPedidoID
+		{
+			get
+			{
+				return this._EstadoPedidoID;
+			}
+			set
+			{
+				if ((this._EstadoPedidoID != value))
+				{
+					this.OnEstadoPedidoIDChanging(value);
+					this.SendPropertyChanging();
+					this._EstadoPedidoID = value;
+					this.SendPropertyChanged("EstadoPedidoID");
+					this.OnEstadoPedidoIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DescEstadoPedido", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string DescEstadoPedido
+		{
+			get
+			{
+				return this._DescEstadoPedido;
+			}
+			set
+			{
+				if ((this._DescEstadoPedido != value))
+				{
+					this.OnDescEstadoPedidoChanging(value);
+					this.SendPropertyChanging();
+					this._DescEstadoPedido = value;
+					this.SendPropertyChanged("DescEstadoPedido");
+					this.OnDescEstadoPedidoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TiempoCambioEstado", DbType="SmallInt")]
+		public System.Nullable<short> TiempoCambioEstado
+		{
+			get
+			{
+				return this._TiempoCambioEstado;
+			}
+			set
+			{
+				if ((this._TiempoCambioEstado != value))
+				{
+					this.OnTiempoCambioEstadoChanging(value);
+					this.SendPropertyChanging();
+					this._TiempoCambioEstado = value;
+					this.SendPropertyChanged("TiempoCambioEstado");
+					this.OnTiempoCambioEstadoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="EstadoPedido_Pedido", Storage="_Pedido", ThisKey="EstadoPedidoID", OtherKey="EstadoPedidoID")]
+		public EntitySet<Pedido> Pedido
+		{
+			get
+			{
+				return this._Pedido;
+			}
+			set
+			{
+				this._Pedido.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Pedido(Pedido entity)
+		{
+			this.SendPropertyChanging();
+			entity.EstadoPedido = this;
+		}
+		
+		private void detach_Pedido(Pedido entity)
+		{
+			this.SendPropertyChanging();
+			entity.EstadoPedido = null;
 		}
 	}
 }
