@@ -35,8 +35,10 @@
             <br />
             <br />
             <asp:Button ID="btModPedidos" runat="server" Height="35px" Text="Gestionar Pedidos" Width="170px" CssClass="btn btn-primary" OnClick="btModPedidos_Click" />
+            &nbsp;&nbsp;
+            <asp:Button ID="btModEstados" runat="server" Height="35px" Text="Modificar Estados" Width="170px" CssClass="btn btn-primary" OnClick="btModEstados_Click" />
             <br />
-            <br />
+            &nbsp;<br />
             <asp:Button ID="btBack" runat="server" Text="Salir" Width="70px" CssClass="btn btn-warning" OnClick="btBack_Click" Height="35px" />
         </div>
     </form>

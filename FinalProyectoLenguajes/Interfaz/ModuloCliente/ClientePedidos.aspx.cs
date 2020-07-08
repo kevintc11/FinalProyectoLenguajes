@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -249,21 +250,23 @@ namespace Interfaz.ModuloCliente
             }
             else
             {
+                lbAlerta.Text = "Pedido Agregado Con Exito";
+                Thread.Sleep(300);
+                //Type cstype = this.GetType();
 
-                Type cstype = this.GetType();
+                //ClientScriptManager cs = Page.ClientScript;
 
-                ClientScriptManager cs = Page.ClientScript;
-
-                if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
-                {
-                    String cstext = "alert('Debe de agregar platos a su pedido');";
-                    cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
-                }
+                //if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                //{
+                //    String cstext = "alert('Debe de agregar platos a su pedido');";
+                //    cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                //}
 
                 gvMenu.DataSource = platos.listPlatos();
                 gvMenu.DataBind();
                 gvCarrito.DataSource = ((ListPlatoInfo)Session["TempLista"]).GetListPlatoInfo();
                 gvCarrito.DataBind();
+                Response.Redirect("~/ModuloCliente/ClienteMainMenu.aspx?");
             }
         }
     }

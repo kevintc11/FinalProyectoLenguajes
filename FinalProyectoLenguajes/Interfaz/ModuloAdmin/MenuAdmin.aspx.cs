@@ -49,5 +49,10 @@ namespace Interfaz
         {
             Response.Redirect("~/ModuloAdmin/ModPedidos.aspx");
         }
+
+        protected void btModEstados_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ModuloAdmin/ModEstados.aspx");
+        }
     }
 }
