@@ -235,6 +235,7 @@ namespace Interfaz.ModuloCliente
         {
             if (((ListPlatoInfo)Session["TempLista"]).isEmpty() == false)
             {
+                lbAlerta.Text = "Pedido Agregado Con Exito";
                 string nombreActual = Session["temporal1"].ToString();
                 Usuario actual = gestionUsuario.obtenerUsuario(nombreActual);
 
@@ -247,26 +248,22 @@ namespace Interfaz.ModuloCliente
                 {
                     platos.insertarPedido_Plato(info.getCantidadPlato(), info.getPlatoID(), info.getPedidoID());
                 }
+                Thread.Sleep(3000);
+                Response.Redirect("~/ModuloCliente/ClienteMainMenu.aspx?");
             }
             else
             {
-                lbAlerta.Text = "Pedido Agregado Con Exito";
-                Thread.Sleep(300);
-                //Type cstype = this.GetType();
 
-                //ClientScriptManager cs = Page.ClientScript;
 
-                //if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
-                //{
-                //    String cstext = "alert('Debe de agregar platos a su pedido');";
-                //    cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
-                //}
+                Type cstype = this.GetType();
 
-                gvMenu.DataSource = platos.listPlatos();
-                gvMenu.DataBind();
-                gvCarrito.DataSource = ((ListPlatoInfo)Session["TempLista"]).GetListPlatoInfo();
-                gvCarrito.DataBind();
-                Response.Redirect("~/ModuloCliente/ClienteMainMenu.aspx?");
+                ClientScriptManager cs = Page.ClientScript;
+
+                if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                {
+                    String cstext = "alert('Debe de agregar platos a su pedido');";
+                    cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                }
             }
         }
     }

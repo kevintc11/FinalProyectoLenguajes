@@ -307,18 +307,20 @@ namespace AccesoDatos
             if (horaAct != tiempoPedido && pedido.EstadoPedidoID < 3)
             {
                 int tiempoTranscurrido = 0;
-
+                EstadoPedido est1 = getTiempoEstadoPedido(1);
+                EstadoPedido est2 = getTiempoEstadoPedido(2);
                 if (esMayor)
                 {
 
                     tiempoTranscurrido = (horaAct - tiempoPedido);
 
+                   
 
-                    if (tiempoTranscurrido < getTiempoEstadoPedido(1))
+                    if (tiempoTranscurrido < est1.TiempoCambioEstado)
                     {
                         pedido.EstadoPedidoID = 1;
                     }
-                    else if (tiempoTranscurrido < getTiempoEstadoPedido(2))
+                    else if (tiempoTranscurrido < est2.TiempoCambioEstado)
                     {
                         pedido.EstadoPedidoID = 2;
                     }
@@ -332,11 +334,11 @@ namespace AccesoDatos
                 {
 
                     tiempoTranscurrido = (horaAct - tiempoPedido) + 60;
-                    if (tiempoTranscurrido < getTiempoEstadoPedido(1))
+                    if (tiempoTranscurrido < est1.TiempoCambioEstado)
                     {
                         pedido.EstadoPedidoID = 1;
                     }
-                    else if (tiempoTranscurrido < getTiempoEstadoPedido(2))
+                    else if (tiempoTranscurrido < est2.TiempoCambioEstado)
                     {
                         pedido.EstadoPedidoID = 2;
                     }

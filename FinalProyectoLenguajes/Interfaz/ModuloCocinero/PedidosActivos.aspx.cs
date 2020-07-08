@@ -20,7 +20,7 @@ namespace Interfaz.ModuloCocinero
         AdministracionPedidos pedidos = new AdministracionPedidos();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (pedidos.getCantidadPedidos()>=5)
+            if (pedidos.getCantidadPedidos()>=5 && pedidos.getCantidadPedidos() <= 10)
             {
                 string iniciaHilo = (string)Session["hilo"];
                 if (iniciaHilo == "true")
