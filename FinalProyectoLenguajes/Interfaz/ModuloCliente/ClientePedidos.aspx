@@ -74,6 +74,8 @@
             <br />
             <asp:Button ID="btnConfirm" runat="server" CssClass="btn-primary" Height="35px" Text="Confirmar" OnClick="btnConfirm_Click" />
             <br />
+            <asp:Label ID="lbAlerta" runat="server" ForeColor="Red"></asp:Label>
+            <br />
             <br />
             <asp:Button ID="btBack" runat="server" CssClass="btn-warning" Text="Volver" OnClick="btBack_Click" Height="35px" Width="70px" />
         </div>
