@@ -20,18 +20,32 @@ namespace Interfaz.ModuloCocinero
         AdministracionPedidos pedidos = new AdministracionPedidos();
         protected void Page_Load(object sender, EventArgs e)
         {
-            string iniciaHilo = (string)Session["hilo"];
-            if (iniciaHilo == "true")
+            if (pedidos.getCantidadPedidos()>=5)
             {
-                lblHilo.Text = "2";
-                Session["hilo"] = dato;
-                tAct = new Thread(hiloAct);
-                tAct.Start();
+                string iniciaHilo = (string)Session["hilo"];
+                if (iniciaHilo == "true")
+                {
+                    lblHilo.Text = "2";
+                    Session["hilo"] = dato;
+                    tAct = new Thread(hiloAct);
+                    tAct.Start();
+                }
+                btnDeshacer.Enabled = false;
+                dgPedidos.DataSource = pedidos.pedidosActivos();
+                dgPedidos.DataBind();
+                cambiarColores();
+                UpdatePanel6.Update();
+               
             }
-            btnDeshacer.Enabled = false;
-            dgPedidos.DataSource = pedidos.pedidosActivos();
-            dgPedidos.DataBind();
-            cambiarColores();
+            else if(pedidos.getCantidadPedidos() > 10)
+            {
+                //hay mas de 10 platos que no se pueden poner entonces poner mensaje
+            }
+            else
+            {
+                //hay menores de 5 entonces esta vara esta vacia entonces poner mensaje
+            }
+            
         }
 
         protected void dgPedidos_SelectedIndexChanged(object sender, EventArgs e)
@@ -131,11 +145,13 @@ namespace Interfaz.ModuloCocinero
 
         protected void hiloAct()
         {
-            for (int i = 0; i < 2; i++)
+            while (Session["Name_Cliente"] != null)
             {
-                cambiarColores();
                 pedidos.cambiarEstadoPedAutomatic(int.Parse(DateTime.Now.Minute.ToString()));
-                Thread.Sleep(6000);
+                cambiarColores();
+                dgPedidos.DataSource = pedidos.pedidosActivos();
+                dgPedidos.DataBind();
+                Thread.Sleep(30000);
             }
             tAct.Abort();
         }
@@ -143,6 +159,11 @@ namespace Interfaz.ModuloCocinero
         protected void btSalir_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/InicioSesion.aspx");
+        }
+
+        protected void Timer1_Tick1(object sender, EventArgs e)
+        {
+            UpdatePanel6.Update();
         }
     }
 }

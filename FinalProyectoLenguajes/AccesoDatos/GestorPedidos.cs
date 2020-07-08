@@ -13,6 +13,23 @@ namespace AccesoDatos
     public class GestorPedidos
     {
 
+
+        public int getNumeroPedidos()
+        {
+            LectArchivo lectura1 = new LectArchivo();
+            SqlConnectionStringBuilder conect = lectura1.leerServer1();
+            SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+            DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+
+            var pedidos = (from pedido in dc.Pedido
+                           where pedido.EstadoPedidoID <= 3
+                           orderby pedido.FechaPedido descending
+                           select pedido).Count();
+            int count = (int)pedidos;
+            return pedidos;
+
+        }
+
         public dynamic GetLastPedido()
         {
             LectArchivo lectura1 = new LectArchivo();
@@ -233,7 +250,7 @@ namespace AccesoDatos
                           join usuario in dc.Usuario on pedido.UsuarioID equals usuario.UsuarioID
                           join estado in dc.EstadoPedido on pedido.EstadoPedidoID equals estado.EstadoPedidoID
                            where pedido.EstadoPedidoID <= 3
-                          orderby pedido.FechaPedido ascending
+                          orderby pedido.FechaPedido descending
                           select new
                           {
                               usuario.NombreCompleto,
@@ -245,13 +262,13 @@ namespace AccesoDatos
                               pedido.PedidoID,
                               pedido.EstadoPedidoID,
                               estado.DescEstadoPedido
-                          }).ToList();
+                          }).Take(5);
             return pedidos;
         }
 
         public void actualizarAutomatic(int horaActual)
         {
-            MessageBox.Show("Probandodooo");
+
             LectArchivo lectura1 = new LectArchivo();
             SqlConnectionStringBuilder conect = lectura1.leerServer1();
             SqlConnection conexion = new SqlConnection(conect.ConnectionString);
@@ -265,6 +282,8 @@ namespace AccesoDatos
             {
                 cambiarEstadoPedidoAutomatic(pedido.PedidoID, horaActual);
             }
+
+
         }
 
         public void cambiarEstadoPedidoAutomatic(int pedidoID, int horaAct)
@@ -284,48 +303,54 @@ namespace AccesoDatos
                 esMayor = true;
             }
 
-            int tiempoTranscurrido = 0;
 
-            if (esMayor)
+            if (horaAct != tiempoPedido)
             {
+                int tiempoTranscurrido = 0;
 
-                tiempoTranscurrido = (horaAct - tiempoPedido);
-
-
-                if (tiempoTranscurrido < 3)
+                if (esMayor)
                 {
-                    pedido.EstadoPedidoID = 1;
-                }
-                else if (tiempoTranscurrido < 7)
-                {
-                    pedido.EstadoPedidoID = 2;
+
+                    tiempoTranscurrido = (horaAct - tiempoPedido);
+
+
+                    if (tiempoTranscurrido < 2)
+                    {
+                        pedido.EstadoPedidoID = 1;
+                    }
+                    else if (tiempoTranscurrido < 4)
+                    {
+                        pedido.EstadoPedidoID = 2;
+                    }
+                    else
+                    {
+                        pedido.EstadoPedidoID = 3;
+                    }
+
                 }
                 else
                 {
-                    pedido.EstadoPedidoID = 3;
+
+                    tiempoTranscurrido = (horaAct - tiempoPedido) + 60;
+                    if (tiempoTranscurrido < 3)
+                    {
+                        pedido.EstadoPedidoID = 1;
+                    }
+                    else if (tiempoTranscurrido < 7)
+                    {
+                        pedido.EstadoPedidoID = 2;
+                    }
+                    else
+                    {
+                        pedido.EstadoPedidoID = 3;
+                    }
+
                 }
+                dc.SubmitChanges();
+                dc.Connection.Close();
 
             }
-            else
-            {
 
-                tiempoTranscurrido = (horaAct - tiempoPedido) + 60;
-                if (tiempoTranscurrido < 3)
-                {
-                    pedido.EstadoPedidoID = 1;
-                }
-                else if (tiempoTranscurrido < 7)
-                {
-                    pedido.EstadoPedidoID = 2;
-                }
-                else
-                {
-                    pedido.EstadoPedidoID = 3;
-                }
-
-            }
-            dc.SubmitChanges();
-            dc.Connection.Close();
 
         }
 

@@ -13,6 +13,11 @@ namespace LogicaNegocio
         GestorPedidos pedidos = new GestorPedidos();
         GestorUsuarios usuarios = new GestorUsuarios();
 
+        public int getCantidadPedidos()
+        {
+            return pedidos.getNumeroPedidos();
+        }
+
         public dynamic pedidosActivos()
         {
             return pedidos.GetListPedidosActivos();

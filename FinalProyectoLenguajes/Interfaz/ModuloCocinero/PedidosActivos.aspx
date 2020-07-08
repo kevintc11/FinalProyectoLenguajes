@@ -21,10 +21,12 @@
         <div>
             <asp:ScriptManager ID="ScriptManager1" runat="server">
             </asp:ScriptManager>
-            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <asp:UpdatePanel ID="UpdatePanel6" runat="server" UpdateMode="Conditional">
                 <ContentTemplate>
                     Pedidos Activos<asp:GridView ID="dgPedidos" runat="server" OnSelectedIndexChanged="dgPedidos_SelectedIndexChanged">
                     </asp:GridView>
+                    <asp:Timer ID="Timer1" runat="server" Interval="10000" OnTick="Timer1_Tick1">
+                    </asp:Timer>
                     <br />
                     <asp:Label ID="lblHilo" runat="server"></asp:Label>
                     <br />
@@ -36,7 +38,6 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnDeshacer" runat="server" CssClass="btn btn-primary" Height="35px" OnClick="btnDeshacer_Click" Text="Deshacer" />
                     <br />
                     <asp:Button ID="btSalir" runat="server" CssClass="btn btn-warning" Height="35px" OnClick="btSalir_Click" Text="Salir" Width="70px" />
-                    <br />
                 </ContentTemplate>
             </asp:UpdatePanel>
             <asp:UpdatePanel ID="UpdatePanel5" runat="server">

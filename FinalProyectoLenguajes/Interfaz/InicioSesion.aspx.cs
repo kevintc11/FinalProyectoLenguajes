@@ -20,6 +20,7 @@ namespace Interfaz
         {
             Session["temporal1"] = null;
             Session["hilo"] = null;
+            Session["Name_Cliente"] = null;
         }
 
         AdministracionUsuarios interfaz = new AdministracionUsuarios();
@@ -40,6 +41,7 @@ namespace Interfaz
                     else if(interfaz.tipoUsuario(txNick.Text) == 2)
                     {
                         Session["hilo"] = dato;
+                        Session["Name_Cliente"] = txNick.Text;
                         userData = "~/ModuloCocinero/PedidosActivos.aspx?usuario=" + txNick.Text;
                         Response.Redirect(userData);
                     }
