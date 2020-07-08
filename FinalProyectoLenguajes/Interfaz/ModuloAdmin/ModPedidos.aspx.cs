@@ -11,19 +11,32 @@ namespace Interfaz.ModuloAdmin
     public partial class ModPedidos : System.Web.UI.Page
     {
         AdministracionPedidos pedidos = new AdministracionPedidos();
+        AdministracionPlatos platos = new AdministracionPlatos();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            GridView1.DataSource = platos.Pedidos();
+            lblMensaje.Text = "";
+            GridView1.DataBind();
         }
 
         protected void btModify_Click(object sender, EventArgs e)
         {
-            if(espaciosLlenos())
+            if (espaciosLlenos())
             {
-                if(pedidos.esNumero(tbPedidoID.Text))
+                if (pedidos.esNumero(tbPedidoID.Text))
                 {
-
+                    if (pedidos.comprobarPedido(tbPedidoID.Text))
+                    {
+                        pedidos.actualizarEstadoPedido(int.Parse(tbPedidoID.Text), int.Parse(rblStatus.SelectedValue));
+                        GridView1.DataSource = platos.Pedidos();
+                        GridView1.DataBind();
+                        lblMensaje.Text = "El pedido se actualizó correctamente";
+                    }
+                    else
+                    {
+                        lblMensaje.Text = "El pedido no existe";
+                    }
                 }
             }
         }
@@ -37,15 +50,7 @@ namespace Interfaz.ModuloAdmin
         {
             if (tbPedidoID.Text == "")
             {
-                Type cstype = this.GetType();
-
-                ClientScriptManager cs = Page.ClientScript;
-
-                if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
-                {
-                    String cstext = "alert('Debe de Llenar Correctamente Todos los Datos Requeridos');";
-                    cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
-                }
+                lblMensaje.Text = "Debe digitar el ID del pedido a actualizar";
                 return false;
             }
             return true;

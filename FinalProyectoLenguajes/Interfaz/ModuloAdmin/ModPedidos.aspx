@@ -19,37 +19,45 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            Lista De Pedidos Actuales<br />
-            <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
-                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-                <EditRowStyle BackColor="#999999" />
-                <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-                <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-                <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                <SortedAscendingCellStyle BackColor="#E9E7E2" />
-                <SortedAscendingHeaderStyle BackColor="#506C8C" />
-                <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
-            </asp:GridView>
+            <asp:ScriptManager ID="ScriptManager1" runat="server">
+            </asp:ScriptManager>
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+<br />
+                    Lista De Pedidos Actuales<br />
+                    <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
+                        <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                        <EditRowStyle BackColor="#999999" />
+                        <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                        <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                        <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                        <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                        <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                        <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                    </asp:GridView>
             <br />
-            Pedido ID<br />
-            <asp:TextBox ID="tbPedidoID" runat="server"></asp:TextBox>
+                    Pedido ID<br />
+                    <asp:TextBox ID="tbPedidoID" runat="server"></asp:TextBox>
+            <br />
+                    <asp:Label ID="lblMensaje" runat="server" Text="Label"></asp:Label>
+            <br />
+                    Estado Pedido<asp:RadioButtonList ID="rblStatus" runat="server">
+                        <asp:ListItem Selected="True" Value="1">A Tiempo</asp:ListItem>
+                        <asp:ListItem Value="2">Sobre Tiempo</asp:ListItem>
+                        <asp:ListItem Value="3">Demorado</asp:ListItem>
+                        <asp:ListItem Value="4">Anulado</asp:ListItem>
+                        <asp:ListItem Value="5">Entregado</asp:ListItem>
+                    </asp:RadioButtonList>
+            <br />
+                    <asp:Button ID="btModify" runat="server" CssClass="btn btn-primary" Height="38px" OnClick="btModify_Click" Text="Actualizar" Width="120px" />
             <br />
             <br />
-            Estado Pedido<asp:RadioButtonList ID="rblStatus" runat="server">
-                <asp:ListItem Selected="True" Value="1">A Tiempo</asp:ListItem>
-                <asp:ListItem Value="2">Sobre Tiempo</asp:ListItem>
-                <asp:ListItem Value="3">Demorado</asp:ListItem>
-                <asp:ListItem Value="4">Anulado</asp:ListItem>
-                <asp:ListItem Value="5">Entregado</asp:ListItem>
-            </asp:RadioButtonList>
-            <br />
-            <asp:Button ID="btModify" runat="server" CssClass="btn btn-primary" Height="38px" Text="Buscar" Width="90px" OnClick="btModify_Click"/>
-            <br />
-            <br />
-            <asp:Button ID="btBack" runat="server" Text="Volver" Width="70px" CssClass="btn btn-warning" Height="35px" OnClick="btBack_Click" />
+                    <asp:Button ID="btBack" runat="server" CssClass="btn btn-warning" Height="35px" OnClick="btBack_Click" Text="Volver" Width="70px" />
+                </ContentTemplate>
+            </asp:UpdatePanel>
         </div>
     </form>
 </body>
