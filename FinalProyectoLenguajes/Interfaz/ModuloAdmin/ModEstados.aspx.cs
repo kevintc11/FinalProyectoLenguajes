@@ -14,7 +14,8 @@ namespace Interfaz.ModuloAdmin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            gvEstados.DataSource = pedidos.getEstadoPedidos();
+            gvEstados.DataBind();
         }
 
         protected void btBack_Click(object sender, EventArgs e)
@@ -28,8 +29,20 @@ namespace Interfaz.ModuloAdmin
             {
                 if(pedidos.esNumero(tbTime.Text) && pedidos.esNumero(tbID.Text))
                 {
+                    pedidos.cambiarTiempoPedido(int.Parse(tbID.Text), int.Parse(tbTime.Text));
+                    gvEstados.DataSource = pedidos.getEstadoPedidos();
+                    gvEstados.DataBind();
+                    Type cstype = this.GetType();
 
-                }else
+                    ClientScriptManager cs = Page.ClientScript;
+
+                    if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                    {
+                        String cstext = "alert('Pedido actualizado correctamente');";
+                        cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                    }
+                }
+                else
                 {
                     Type cstype = this.GetType();
 

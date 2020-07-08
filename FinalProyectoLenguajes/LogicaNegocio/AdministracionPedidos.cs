@@ -61,5 +61,20 @@ namespace LogicaNegocio
         {
             pedidos.insertarPedido(estadoID,usuarioID);
         }
+
+        public void cambiarTiempoPedido(int estadoID, int tiempo)
+        {
+            pedidos.CambiarEstadoID(estadoID, tiempo);
+        }
+
+        public dynamic getTiempoEstadoPedido(int estadoPedidoID)
+        {
+            return pedidos.getTiempoEstadoPedido(estadoPedidoID);
+        }
+
+        public dynamic getEstadoPedidos()
+        {
+            return pedidos.getListEstados();
+        }
     }
 }

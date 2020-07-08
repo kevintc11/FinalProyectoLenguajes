@@ -314,11 +314,11 @@ namespace AccesoDatos
                     tiempoTranscurrido = (horaAct - tiempoPedido);
 
 
-                    if (tiempoTranscurrido < 2)
+                    if (tiempoTranscurrido < getTiempoEstadoPedido(1))
                     {
                         pedido.EstadoPedidoID = 1;
                     }
-                    else if (tiempoTranscurrido < 4)
+                    else if (tiempoTranscurrido < getTiempoEstadoPedido(2))
                     {
                         pedido.EstadoPedidoID = 2;
                     }
@@ -332,11 +332,11 @@ namespace AccesoDatos
                 {
 
                     tiempoTranscurrido = (horaAct - tiempoPedido) + 60;
-                    if (tiempoTranscurrido < 3)
+                    if (tiempoTranscurrido < getTiempoEstadoPedido(1))
                     {
                         pedido.EstadoPedidoID = 1;
                     }
-                    else if (tiempoTranscurrido < 7)
+                    else if (tiempoTranscurrido < getTiempoEstadoPedido(2))
                     {
                         pedido.EstadoPedidoID = 2;
                     }
@@ -392,6 +392,35 @@ namespace AccesoDatos
             dc.SubmitChanges();
             dc.Connection.Close();
 
+        }
+
+        public void CambiarEstadoID(int estadoID, int tiempoCambio)
+        {
+            LectArchivo lectura1 = new LectArchivo();
+            SqlConnectionStringBuilder conect = lectura1.leerServer1();
+            SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+            DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+
+            var estados = (from estado in dc.EstadoPedido
+                           where estado.EstadoPedidoID == estadoID
+                           select estado).Single();
+
+            estados.TiempoCambioEstado = Convert.ToInt16(tiempoCambio);
+            dc.SubmitChanges();
+            dc.Connection.Close();
+        }
+
+        public dynamic getListEstados()
+        {
+            LectArchivo lectura1 = new LectArchivo();
+            SqlConnectionStringBuilder conect = lectura1.leerServer1();
+            SqlConnection conexion = new SqlConnection(conect.ConnectionString);
+            DataClasses1DataContext dc = new DataClasses1DataContext(conexion);
+
+            var estados = (from estado in dc.EstadoPedido
+                           where estado.EstadoPedidoID <= 2
+                           select estado).ToList();
+            return estados;
         }
 
         public DateTime GetDateTime()
