@@ -152,12 +152,15 @@ namespace Interfaz
                     tbPrice.Text = pli.Precio.ToString();
                     btnComprobar.Enabled = false;
                     tbPlatoID.Enabled = false;
-                    string ruta = Server.MapPath("~/Imagen/");
-                    ruta = Path.Combine(ruta, "plato.png");
-                    MemoryStream ms = new MemoryStream(platos.mostrarImagen(int.Parse(tbPlatoID.Text)));
-                    Bitmap imagenBit = (Bitmap)System.Drawing.Image.FromStream(ms);
-                    imagenBit.Save(ruta, ImageFormat.Png);
-                    imgPlato.ImageUrl = ("~/Imagen/plato.png");
+                    //string ruta = Server.MapPath("~/Imagen/");
+                    //ruta = Path.Combine(ruta, "plato.png");
+                    //MemoryStream ms = new MemoryStream(platos.mostrarImagen(int.Parse(tbPlatoID.Text)));
+                    //Bitmap imagenBit = (Bitmap)System.Drawing.Image.FromStream(ms);
+                    //imagenBit.Save(ruta, ImageFormat.Png);
+                    //imgPlato.ImageUrl = ("~/Imagen/plato.png");
+                    byte[] imageData = platos.mostrarImagen(int.Parse(tbPlatoID.Text));
+                    string img = Convert.ToBase64String(imageData, 0, imageData.Length);
+                    imgPlato.ImageUrl = "data:image/png;base64," + img;
                 }
             }
         }

@@ -61,7 +61,7 @@
                 <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
             </asp:GridView>
             <br />
-            PedidoID<br />
+            PlatoID<br />
             <asp:TextBox ID="txtPedidoID" runat="server" Width="220px"></asp:TextBox>
             <br />
             Cantidad Plato<br />

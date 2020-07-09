@@ -315,9 +315,7 @@ namespace AccesoDatos
                     }
 
                     dc.SubmitChanges();
-                    //MessageBox.Show("Se actualizó correctamente"); AQUI PUEDE VER UN MENSAJE
                     dc.Connection.Close();
-
                 }
         }
 

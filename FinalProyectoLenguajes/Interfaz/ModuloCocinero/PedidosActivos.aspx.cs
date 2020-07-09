@@ -20,25 +20,26 @@ namespace Interfaz.ModuloCocinero
         AdministracionPedidos pedidos = new AdministracionPedidos();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (pedidos.getCantidadPedidos()>=5 && pedidos.getCantidadPedidos() <= 10)
+            string iniciaHilo = (string)Session["hilo"];
+            if (iniciaHilo == "true")
             {
-                string iniciaHilo = (string)Session["hilo"];
-                if (iniciaHilo == "true")
-                {
-                    lblHilo.Text = "2";
-                    Session["hilo"] = dato;
-                    tAct = new Thread(hiloAct);
-                    tAct.Start();
-                }
-                btnDeshacer.Enabled = false;
-                dgPedidos.DataSource = pedidos.pedidosActivos();
-                dgPedidos.DataBind();
-                cambiarColores();
-                UpdatePanel6.Update();
-               
+                Session["hilo"] = dato;
+                tAct = new Thread(hiloAct);
+                tAct.Start();
             }
-            else if(pedidos.getCantidadPedidos() > 10)
+            btnDeshacer.Enabled = false;
+            dgPedidos.DataSource = pedidos.pedidosActivos();
+            dgPedidos.DataBind();
+            cambiarColores();
+            UpdatePanel6.Update();
+            if (pedidos.getCantidadPedidos() >= 5 && pedidos.getCantidadPedidos() <= 10)
             {
+                
+
+            }
+            else if (pedidos.getCantidadPedidos() > 10)
+            {
+
                 lbError.Text = "Existen más platos en espera de ser procesados";
             }
             else
@@ -46,7 +47,7 @@ namespace Interfaz.ModuloCocinero
                 //hay menores de 5 entonces esta vara esta vacia entonces poner mensaje
                 lbError.Text = "La cantidad de platos es menor a 5 por lo que no se muestra ninguno";
             }
-            
+
         }
 
         protected void dgPedidos_SelectedIndexChanged(object sender, EventArgs e)

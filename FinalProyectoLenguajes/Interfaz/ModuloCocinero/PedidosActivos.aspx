@@ -28,7 +28,6 @@
                     <asp:Timer ID="Timer1" runat="server" Interval="10000" OnTick="Timer1_Tick1">
                     </asp:Timer>
                     <br />
-                    <asp:Label ID="lblHilo" runat="server"></asp:Label>
                     <br />
                     Para cambiar el estado de la orden, digite el pedidoID<br />
                     <asp:TextBox ID="tbPedidoID" runat="server" Width="140px"></asp:TextBox>
