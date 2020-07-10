@@ -20,13 +20,7 @@ namespace Interfaz.ModuloCocinero
         AdministracionPedidos pedidos = new AdministracionPedidos();
         protected void Page_Load(object sender, EventArgs e)
         {
-            string iniciaHilo = (string)Session["hilo"];
-            if (iniciaHilo == "true")
-            {
-                Session["hilo"] = dato;
-                tAct = new Thread(hiloAct);
-                tAct.Start();
-            }
+          
             btnDeshacer.Enabled = false;
             dgPedidos.DataSource = pedidos.pedidosActivos();
             dgPedidos.DataBind();
@@ -46,6 +40,15 @@ namespace Interfaz.ModuloCocinero
             {
                 //hay menores de 5 entonces esta vara esta vacia entonces poner mensaje
                 lbError.Text = "La cantidad de platos es menor a 5 por lo que no se muestra ninguno";
+            }
+
+            string iniciaHilo = (string)Session["hilo"];
+            if (iniciaHilo == "true")
+            {
+                
+                Session["hilo"] = dato;
+                tAct = new Thread(hiloAct);
+                tAct.Start();
             }
 
         }
@@ -74,6 +77,8 @@ namespace Interfaz.ModuloCocinero
                     dgPedidos.Rows[row.RowIndex].BackColor = Color.Red;
                 }
             }
+
+            lbError.Text = "";
         }
 
         protected void btnCambiarEstado_Click(object sender, EventArgs e)
@@ -167,5 +172,6 @@ namespace Interfaz.ModuloCocinero
         {
             UpdatePanel6.Update();
         }
+
     }
 }
