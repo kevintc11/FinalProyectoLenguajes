@@ -91,36 +91,131 @@ namespace Interfaz.ModuloAdmin
                 {
                     if (filtroFecha)
                     {
-                        if (filtroEstado)
+                        if (isFecha(txDate1.Text) && isFecha(txDate2.Text))
                         {
-                            return metodosP.PedidosConFiltro(3, int.Parse(txName.Text), txDate1.Text,
-                                                        txDate2.Text, int.Parse(rblStatus.SelectedValue));
+                            if (filtroEstado)
+                            {
+                                if (metodosP.esNumero(txName.Text))
+                                {
+                                    return metodosP.PedidosConFiltro(3, int.Parse(txName.Text), txDate1.Text,
+                                                            txDate2.Text, int.Parse(rblStatus.SelectedValue));
+                                }
+                                else
+                                {
+                                    Type cstype = this.GetType();
+
+                                    ClientScriptManager cs = Page.ClientScript;
+
+                                    if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                                    {
+                                        String cstext = "alert('Por favor escriba el formato correcto');";
+                                        cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                                    }
+                                }
+                            }
+                            if (metodosP.esNumero(txName.Text))
+                            {
+                                return metodosP.PedidosConFiltro(2, int.Parse(txName.Text), txDate1.Text,
+                                                            txDate2.Text, 0);
+                            }
+                            else
+                            {
+                                Type cstype = this.GetType();
+
+                                ClientScriptManager cs = Page.ClientScript;
+
+                                if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                                {
+                                    String cstext = "alert('Por favor escriba el formato correcto');";
+                                    cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                                }
+                            }
                         }
-                        return metodosP.PedidosConFiltro(2, int.Parse(txName.Text), txDate1.Text,
-                                                        txDate2.Text, 0);
+                        else
+                        {
+                            Type cstype = this.GetType();
+
+                            ClientScriptManager cs = Page.ClientScript;
+
+                            if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                            {
+                                String cstext = "alert('Por favor escriba el formato correcto');";
+                                cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                            }
+                        }
+
 
                     }
                     else if (filtroEstado)
                     {
-                        return metodosP.PedidosConFiltro(2, int.Parse(txName.Text), "",
+                        if (metodosP.esNumero(txName.Text))
+                        {
+                            return metodosP.PedidosConFiltro(2, int.Parse(txName.Text), "",
                                                         "", int.Parse(rblStatus.SelectedValue));
+                        }
+                        else
+                        {
+                            Type cstype = this.GetType();
+
+                            ClientScriptManager cs = Page.ClientScript;
+
+                            if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                            {
+                                String cstext = "alert('Por favor escriba el formato correcto');";
+                                cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                            }
+                        }
+
                     }
-                    return metodosP.PedidosConFiltro(1, int.Parse(txName.Text), "",
+                    if (metodosP.esNumero(txName.Text))
+                    {
+                        return metodosP.PedidosConFiltro(1, int.Parse(txName.Text), "",
                                                         "", 0);
+                    }
+                    else
+                    {
+                        Type cstype = this.GetType();
+
+                        ClientScriptManager cs = Page.ClientScript;
+
+                        if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                        {
+                            String cstext = "alert('Por favor escriba el formato correcto');";
+                            cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                        }
+                    }
+
                 }
+
             }
             else if (filtroFecha)
             {
-                if (espaciosVaciosFecha())
+                if (isFecha(txDate1.Text) && isFecha(txDate2.Text))
                 {
-                    if (filtroEstado)
+                    if (espaciosVaciosFecha())
                     {
-                        return metodosP.PedidosConFiltro(2, 0, txDate1.Text,
-                                                        txDate2.Text, int.Parse(rblStatus.SelectedValue));
+                        if (filtroEstado)
+                        {
+                            return metodosP.PedidosConFiltro(2, 0, txDate1.Text,
+                                                            txDate2.Text, int.Parse(rblStatus.SelectedValue));
+                        }
+                        return metodosP.PedidosConFiltro(1, 0, txDate1.Text,
+                                                            txDate2.Text, 0);
                     }
-                    return metodosP.PedidosConFiltro(1, 0, txDate1.Text,
-                                                        txDate2.Text, 0);
                 }
+                else
+                {
+                    Type cstype = this.GetType();
+
+                    ClientScriptManager cs = Page.ClientScript;
+
+                    if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                    {
+                        String cstext = "alert('Por favor escriba el formato de fecha correcto');";
+                        cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                    }
+                }
+
             }
             else if (filtroEstado)
             {
@@ -133,6 +228,22 @@ namespace Interfaz.ModuloAdmin
                 return metodosP.Pedidos();
             }
             return metodosP.Pedidos();
+        }
+
+        public static bool isFecha(object Expression)
+        {
+            try
+            {
+                bool isFecha;
+                DateTime retDate;
+                isFecha = DateTime.TryParse(Convert.ToString(Expression), out retDate);
+                return isFecha;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
         }
 
         public Boolean espaciosVacios1()

@@ -22,21 +22,36 @@ namespace Interfaz
 
         protected void btMod_Click(object sender, EventArgs e)
         {
-            if(espaciosVacios())
+            if (espaciosVacios())
             {
                 nick = (string)Session["temporal1"];
-                mInterfaz.actualizarUsuario(nick, tbMail.Text, tbName.Text,
-                                            tbPass.Text, tbAddress.Text);
-                Type cstype = this.GetType();
-
-                ClientScriptManager cs = Page.ClientScript;
-
-                if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                try
                 {
-                    String cstext = "alert('Se Han Efectuado Los Cambios');";
-                    cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                    mInterfaz.actualizarUsuario(nick, tbMail.Text, tbName.Text,
+                                                tbPass.Text, tbAddress.Text);
+                    Type cstype1 = this.GetType();
+
+                    ClientScriptManager cs1 = Page.ClientScript;
+
+                    if (!cs1.IsStartupScriptRegistered(cstype1, "PopupScript"))
+                    {
+                        String cstext = "alert('Se Han Efectuado Los Cambios');";
+                        cs1.RegisterStartupScript(cstype1, "PopupScript", cstext, true);
+                    }
+                    Response.Redirect("~/ModuloCliente/ClienteMainMenu.aspx?");
                 }
-                Response.Redirect("~/ModuloCliente/ClienteMainMenu.aspx?");
+                catch (Exception ex)
+                {
+                    Type cstype = this.GetType();
+
+                    ClientScriptManager cs = Page.ClientScript;
+
+                    if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                    {
+                        String cstext = "alert('" + ex.Message + "');";
+                        cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                    }
+                }
             }
         }
 

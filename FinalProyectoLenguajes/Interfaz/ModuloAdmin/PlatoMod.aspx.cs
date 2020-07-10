@@ -40,7 +40,22 @@ namespace Interfaz
                 {
                     try
                     {
-                        platos.buscarPlato(int.Parse(tbPlatoID.Text));
+
+                        if (platos.esNumero(int.Parse(tbPlatoID.Text)))
+                        {
+                            
+                            platos.buscarPlato(int.Parse(tbPlatoID.Text));
+                        }
+                        else
+                        {
+                            Type cstype = this.GetType();
+                            ClientScriptManager cs = Page.ClientScript;
+                            if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                            {
+                                String cstext = "alert('El platoID debe ser un número');";
+                                cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                            }
+                        }
                     }
                     catch (Exception)
                     {
@@ -138,29 +153,49 @@ namespace Interfaz
         {
             if (espaciosVacios2())
             {
-                if (platos.buscarPlato(int.Parse(tbPlatoID.Text)) != null)
+                if (platos.esNumero(tbPlatoID.Text))
                 {
-                    tbDishName.Enabled = true;
-                    tbDesc.Enabled = true;
-                    tbPrice.Enabled = true;
-                    fuPhoto.Enabled = true;
-                    rdEstado.Enabled = true;
+                    if (platos.buscarPlato(int.Parse(tbPlatoID.Text)) != null)
+                    {
+                        tbDishName.Enabled = true;
+                        tbDesc.Enabled = true;
+                        tbPrice.Enabled = true;
+                        fuPhoto.Enabled = true;
+                        rdEstado.Enabled = true;
+                        Plato pli = platos.buscarPlato(int.Parse(tbPlatoID.Text));
+                        tbDishName.Text = pli.Nombre;
+                        tbDesc.Text = pli.DescPlato;
+                        tbPrice.Text = pli.Precio.ToString();
+                        btnComprobar.Enabled = false;
+                        tbPlatoID.Enabled = false;
+                        byte[] imageData = platos.mostrarImagen(int.Parse(tbPlatoID.Text));
+                        string img = Convert.ToBase64String(imageData, 0, imageData.Length);
+                        imgPlato.ImageUrl = "data:image/png;base64," + img;
+                    }
+                    else
+                    {
+                        Type cstype = this.GetType();
 
-                    Plato pli = platos.buscarPlato(int.Parse(tbPlatoID.Text));
-                    tbDishName.Text = pli.Nombre;
-                    tbDesc.Text = pli.DescPlato;
-                    tbPrice.Text = pli.Precio.ToString();
-                    btnComprobar.Enabled = false;
-                    tbPlatoID.Enabled = false;
-                    //string ruta = Server.MapPath("~/Imagen/");
-                    //ruta = Path.Combine(ruta, "plato.png");
-                    //MemoryStream ms = new MemoryStream(platos.mostrarImagen(int.Parse(tbPlatoID.Text)));
-                    //Bitmap imagenBit = (Bitmap)System.Drawing.Image.FromStream(ms);
-                    //imagenBit.Save(ruta, ImageFormat.Png);
-                    //imgPlato.ImageUrl = ("~/Imagen/plato.png");
-                    byte[] imageData = platos.mostrarImagen(int.Parse(tbPlatoID.Text));
-                    string img = Convert.ToBase64String(imageData, 0, imageData.Length);
-                    imgPlato.ImageUrl = "data:image/png;base64," + img;
+                        ClientScriptManager cs = Page.ClientScript;
+
+                        if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                        {
+                            String cstext = "alert('El plato no existe');";
+                            cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                        }
+                    }
+                }
+                else
+                {
+                    Type cstype = this.GetType();
+
+                    ClientScriptManager cs = Page.ClientScript;
+
+                    if (!cs.IsStartupScriptRegistered(cstype, "PopupScript"))
+                    {
+                        String cstext = "alert('Debe digitar solamente números');";
+                        cs.RegisterStartupScript(cstype, "PopupScript", cstext, true);
+                    }
                 }
             }
         }
