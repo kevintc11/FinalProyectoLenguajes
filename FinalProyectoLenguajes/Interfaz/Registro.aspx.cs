@@ -78,7 +78,7 @@ namespace Interfaz
                     }
                     mInterfaz.insertarUsuario(txUser.Text, txMail.Text, txName.Text,
                                               txPassd1.Text, valor, txAddress.Text);
-
+                    Response.Redirect("~/InicioSesion.aspx");
                     Type cstype = this.GetType();
 
                     ClientScriptManager cs = Page.ClientScript;
