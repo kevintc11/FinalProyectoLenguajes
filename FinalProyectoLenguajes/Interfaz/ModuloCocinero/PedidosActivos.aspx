@@ -27,10 +27,11 @@
                     </asp:GridView>
                     <asp:Timer ID="Timer1" runat="server" Interval="10000" OnTick="Timer1_Tick1">
                     </asp:Timer>
+                    <asp:Label ID="lbMensaje" runat="server" Text="Espere unos segundos para que la página se actualice"></asp:Label>
                     <br />
                     <br />
                     Para cambiar el estado de la orden, digite el pedidoID<br />
-                    <asp:TextBox ID="tbPedidoID" runat="server" Width="140px" OnTextChanged="tbPedidoID_TextChanged"></asp:TextBox>
+                    <asp:TextBox ID="tbPedidoID" runat="server" Width="140px"></asp:TextBox>
                     <br />
                     <br />
                     <asp:Button ID="btnCambiarEstado" runat="server" CssClass="btn btn-primary" Height="35px" OnClick="btnCambiarEstado_Click" Text="Cambiar estado de orden" Width="210px" />

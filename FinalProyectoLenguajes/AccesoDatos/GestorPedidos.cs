@@ -262,7 +262,7 @@ namespace AccesoDatos
                               pedido.PedidoID,
                               pedido.EstadoPedidoID,
                               estado.DescEstadoPedido
-                          }).Take(5);
+                          }).Take(10);
             return pedidos;
         }
 

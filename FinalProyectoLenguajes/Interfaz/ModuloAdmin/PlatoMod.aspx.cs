@@ -41,7 +41,7 @@ namespace Interfaz
                     try
                     {
 
-                        if (platos.esNumero(int.Parse(tbPlatoID.Text)))
+                        if (platos.esNumero(tbPlatoID.Text))
                         {
                             
                             platos.buscarPlato(int.Parse(tbPlatoID.Text));
@@ -67,6 +67,7 @@ namespace Interfaz
                     {
                         if(fuPhoto.FileName != "")
                         {
+                            
                             platos.modificarPlato(false, int.Parse(tbPlatoID.Text), tbDishName.Text, tbDesc.Text, int.Parse(tbPrice.Text), int.Parse(rdEstado.SelectedValue), fuPhoto.FileBytes, 1);
                             Type cstype = this.GetType();
                             ClientScriptManager cs = Page.ClientScript;
@@ -165,7 +166,11 @@ namespace Interfaz
                         Plato pli = platos.buscarPlato(int.Parse(tbPlatoID.Text));
                         tbDishName.Text = pli.Nombre;
                         tbDesc.Text = pli.DescPlato;
-                        tbPrice.Text = pli.Precio.ToString();
+                        string[] precioD = pli.Precio.ToString().Split('.');
+                        string precio = precioD[0];
+
+
+                        tbPrice.Text = precio;
                         btnComprobar.Enabled = false;
                         tbPlatoID.Enabled = false;
                         byte[] imageData = platos.mostrarImagen(int.Parse(tbPlatoID.Text));

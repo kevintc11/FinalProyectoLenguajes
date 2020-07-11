@@ -20,18 +20,22 @@ namespace Interfaz.ModuloCocinero
         AdministracionPedidos pedidos = new AdministracionPedidos();
         protected void Page_Load(object sender, EventArgs e)
         {
-          
+           
+            string iniciaHilo = (string)Session["hilo"];
+            if (iniciaHilo == "true")
+            {
+
+                Session["hilo"] = dato;
+                tAct = new Thread(hiloAct);
+                tAct.Start();
+            }
             btnDeshacer.Enabled = false;
             dgPedidos.DataSource = pedidos.pedidosActivos();
             dgPedidos.DataBind();
             cambiarColores();
             UpdatePanel6.Update();
-            if (pedidos.getCantidadPedidos() >= 5 && pedidos.getCantidadPedidos() <= 10)
-            {
-                
-
-            }
-            else if (pedidos.getCantidadPedidos() > 10)
+            
+            if (pedidos.getCantidadPedidos() > 10)
             {
 
                 lbError.Text = "Existen más platos en espera de ser procesados";
@@ -42,14 +46,14 @@ namespace Interfaz.ModuloCocinero
                 lbError.Text = "La cantidad de platos es menor a 5 por lo que no se muestra ninguno";
             }
 
-            string iniciaHilo = (string)Session["hilo"];
-            if (iniciaHilo == "true")
-            {
+            //string iniciaHilo = (string)Session["hilo"];
+            //if (iniciaHilo == "true")
+            //{
                 
-                Session["hilo"] = dato;
-                tAct = new Thread(hiloAct);
-                tAct.Start();
-            }
+            //    Session["hilo"] = dato;
+            //    tAct = new Thread(hiloAct);
+            //    tAct.Start();
+            //}
 
         }
 
@@ -77,8 +81,6 @@ namespace Interfaz.ModuloCocinero
                     dgPedidos.Rows[row.RowIndex].BackColor = Color.Red;
                 }
             }
-
-            lbError.Text = "";
         }
 
         protected void btnCambiarEstado_Click(object sender, EventArgs e)
