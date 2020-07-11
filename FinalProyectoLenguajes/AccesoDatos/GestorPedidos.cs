@@ -250,7 +250,7 @@ namespace AccesoDatos
                           join usuario in dc.Usuario on pedido.UsuarioID equals usuario.UsuarioID
                           join estado in dc.EstadoPedido on pedido.EstadoPedidoID equals estado.EstadoPedidoID
                            where pedido.EstadoPedidoID <= 3
-                          orderby pedido.FechaPedido descending
+                          orderby pedido.FechaPedido ascending
                           select new
                           {
                               usuario.NombreCompleto,
