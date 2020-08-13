@@ -28,7 +28,7 @@
             <asp:TextBox ID="txPass" runat="server" TextMode="Password" Width="180px"></asp:TextBox>
             <br />
             <br />
-            <asp:Button ID="btSign" runat="server" Text="Iniciar Sesion" CssClass="btn btn-primary" OnClick="btSign_Click" Height="35px" Width="130px" />
+            <asp:Button ID="btSign" runat="server" Text="IniciarSesion101010101" CssClass="btn btn-primary" OnClick="btSign_Click" Height="35px" Width="130px" />
 &nbsp; O&nbsp;
             <asp:Button ID="btRegist" runat="server" Text="Registrarse" CssClass="btn btn-primary" Height="35px" OnClick="btRegist_Click" Width="130px" />
         </div>
